@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Custom Training and Prediction Classes &mdash; ImageAI 2.0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Video and Live-Feed Detection and Analysis" href="../video/index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ImageAI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prediction/index.html">Prediction Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/index.html">Detection Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../video/index.html">Video and Live-Feed Detection and Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Custom Training and Prediction Classes</a><ul class="simple">
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ImageAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Custom Training and Prediction Classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/custom/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="custom-training-and-prediction-classes">
+<h1>Custom Training and Prediction Classes<a class="headerlink" href="#custom-training-and-prediction-classes" title="Permalink to this headline">¶</a></h1>
+<p><strong>ImageAI</strong> provides very powerful yet easy to use classes to train state-of-the-art deep learning algorithms like <strong>SqueezeNet</strong> , <strong>ResNet</strong>
+, <strong>InceptionV3</strong> and <strong>DenseNet</strong> on your own image datasets using as few as <strong>5 lines of code</strong> to generate your own custom models .
+Once you have trained your own custom model, you can use the <strong>CustomImagePrediction</strong> class provided by <strong>ImageAI</strong> to use your own models to recognize/predict
+any image or set of images.</p>
+<p><strong>======= imageai.Prediction.Custom.ModelTraining =======</strong></p>
+<p>The <strong>ModelTraining</strong> class allows you to train any of the 4 supported deep learning algorithms (<strong>SqueezeNet</strong> , <strong>ResNet</strong>
+, <strong>InceptionV3</strong> and <strong>DenseNet</strong>) on your own image dataset to generate your own custom models. Your image dataset must contain at least
+2 different classes/types of images (e.g cat and dog) and you must collect at least 500 images for each of the classes to achieve maximum accuracy.</p>
+<p>The training process generates a JSON file that maps the objects types in your image dataset and creates lots of models.
+You will then peak the model with the highest accuracy and perform custom image prediction using the model and the JSON file generated.</p>
+<p>Because model training is a compute intensive tasks, we strongly advise you perform this experiment using a computer with a NVIDIA GPU and the GPU version of Tensorflow installed. Performing model training on CPU will my take hours or days. With NVIDIA GPU powered computer system, this will take a few hours. You can use Google Colab for this experiment as it has an NVIDIA K80 GPU available.
+To train a custom prediction model, you need to prepare the images you want to use to train the model. You will prepare the images as follows:</p>
+<blockquote>
+<div><p>– Create a dataset folder with the name you will like your dataset to be called (e.g pets)</p>
+<p class="attribution">&mdash;In the dataset folder, create a folder by the name train</p>
+</div></blockquote>
+<blockquote>
+<div><p>– In the dataset folder, create a folder by the name test</p>
+<p class="attribution">&mdash;In the train folder, create a folder for each object you want to the model to predict and give the folder a name that corresponds to the respective object name (e.g dog, cat, squirrel, snake)</p>
+</div></blockquote>
+<blockquote>
+<div><p>– In the test folder, create a folder for each object you want to the model to predict and give the folder a name that corresponds to the respective object name (e.g dog, cat, squirrel, snake)</p>
+<p class="attribution">&mdash;In each folder present in the train folder, put the images of each object in its respective folder. This images are the ones to be used to train the model</p>
+</div></blockquote>
+<blockquote>
+<div><p>– To produce a model that can perform well in practical applications, I recommend you about 500 or more images per object. 1000 images per object is just great</p>
+<p class="attribution">&mdash;In each folder present in the test folder, put about 100 to 200 images of each object in its respective folder. These images are the ones to be used to test the model as it trains</p>
+</div></blockquote>
+<blockquote>
+<div><p>– Once you have done this, the structure of your image dataset folder should look like below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pets</span><span class="o">//</span><span class="n">train</span><span class="o">//</span><span class="n">dog</span><span class="o">//</span><span class="n">dog</span><span class="o">-</span><span class="n">train</span><span class="o">-</span><span class="n">images</span>
+<span class="n">pets</span><span class="o">//</span><span class="n">train</span><span class="o">//</span><span class="n">cat</span><span class="o">//</span><span class="n">cat</span><span class="o">-</span><span class="n">train</span><span class="o">-</span><span class="n">images</span>
+<span class="n">pets</span><span class="o">//</span><span class="n">train</span><span class="o">//</span><span class="n">squirrel</span><span class="o">//</span><span class="n">squirrel</span><span class="o">-</span><span class="n">train</span><span class="o">-</span><span class="n">images</span>
+<span class="n">pets</span><span class="o">//</span><span class="n">train</span><span class="o">//</span><span class="n">snake</span><span class="o">//</span><span class="n">snake</span><span class="o">-</span><span class="n">train</span><span class="o">-</span><span class="n">images</span>
+
+<span class="n">pets</span><span class="o">//</span><span class="n">test</span><span class="o">//</span><span class="n">dog</span><span class="o">//</span><span class="n">dog</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">images</span>
+<span class="n">pets</span><span class="o">//</span><span class="n">test</span><span class="o">//</span><span class="n">cat</span><span class="o">//</span><span class="n">cat</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">images</span>
+<span class="n">pets</span><span class="o">//</span><span class="n">test</span><span class="o">//</span><span class="n">squirrel</span><span class="o">//</span><span class="n">squirrel</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">images</span>
+<span class="n">pets</span><span class="o">//</span><span class="n">test</span><span class="o">//</span><span class="n">snake</span><span class="o">//</span><span class="n">snake</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">images</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Once your dataset is ready, you can proceed to creating an instance of the <strong>ModelTraining</strong> class. Find the example below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction.Custom</span> <span class="k">import</span> <span class="n">ModelTraining</span>
+
+<span class="n">model_trainer</span> <span class="o">=</span> <span class="n">ModelTraining</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Once you have created an instance above, you can use the functions below to set your instance property and start the traning process.</p>
+<ul>
+<li><p class="first"><strong>.setModelTypeAsSqueezeNet()</strong> , This function sets the model type of the training instance you created to the <strong>SqueezeNet</strong> model, which means the <strong>SqueezeNet</strong> algorithm will be trained on your dataset.  Find example code below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_trainer</span><span class="o">.</span><span class="n">setModelTypeAsSqueezeNet</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelTypeAsResNet()</strong> , This function sets the model type of the training instance you created to the <strong>ResNet</strong> model, which means the <strong>ResNet</strong> algorithm will be trained on your dataset.  Find example code below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_trainer</span><span class="o">.</span><span class="n">setModelTypeAsResNet</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelTypeAsInceptionV3()</strong> , This function sets the model type of the training instance you created to the <strong>InceptionV3</strong> model, which means the <strong>InceptionV3</strong> algorithm will be trained on your dataset.  Find example code below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_trainer</span><span class="o">.</span><span class="n">setModelTypeAsInceptionV3</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelTypeAsDenseNet()</strong> , This function sets the model type of the training instance you created to the <strong>DenseNet</strong> model, which means the <strong>DenseNet</strong> algorithm will be trained on your dataset.  Find example code below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_trainer</span><span class="o">.</span><span class="n">setModelTypeAsDenseNet</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setDataDirectory()</strong> , This function accepts a string which must be the path to the folder that contains the <strong>test</strong> and <strong>train</strong> subfolder of your image dataset. Find example code,and parameters of the function below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setDataDirectory</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:/Users/Moses/Documents/Moses/AI/Custom Datasets/pets&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div>– <em>parameter</em> <strong>data_directory</strong> (required) : This is the path to the folder that comtaims your image dataset.</div></blockquote>
+<ul>
+<li><p class="first"><strong>.trainModel()</strong> , This is the function that starts the training process. Once it starts, it will create a JSON file in the <strong>dataset/json</strong> folder (e.g <strong>pets/json</strong>) which contains the mapping of the classes of the dataset. The JSON file  will be used during custom prediction to produce reults. Find exmaple code below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_trainer</span><span class="o">.</span><span class="n">trainModel</span><span class="p">(</span><span class="n">num_objects</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">num_experiments</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">enhance_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">show_network_summary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>num_objects</strong> (required) : This refers to the number of different classes in your image dataset.</p>
+<p class="attribution">&mdash;<em>parameter</em> <strong>num_experiments</strong> (required) : This is the number of times the algorithm will be trained on your image dataset. The accuracy of your training does increases as the number of times it trains increases. However, it does peak after a certain number of trainings;and that point depends on the size and nature of the dataset.</p>
+</div></blockquote>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>enhance_data</strong> (optional) : This parameter is used to tranform your image dataset in order to generate more sample for training. It is set to False by default. However, it is useful to set it to True if your image dataset contains less than 1000 images per class.</p>
+<p class="attribution">&mdash;<em>parameter</em> <strong>batch_size</strong> (optional) : During training, the algorithm is trained on a set of images in parallel. Because of this, the default value is set to 32. You can increase or reduce this value if you understand well enough to know the capacity of the system you are using to train. Should you intend to chamge this value, you should set it to values that are in multiples of 8 to optimize the training process.</p>
+</div></blockquote>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>show_network_summary</strong> (optional) : This paramter when set to True displays the structure of the algorithm you are training on your image dataset in the CLI before training starts. It is set to False by default.</p>
+<p class="attribution">&mdash;<em>parameter</em> <strong>initial_learning_rate</strong> (optional) : This parameter is a highly technical value. It determines and control the behaviour of your training which is critical to the accuracy that can be achieved. Change this parameter’s value only if you understand its function fully.</p>
+</div></blockquote>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>initial_learning_rate</strong> (optional) : This parameter is a highly technical value. It determines and control the behaviour of your training which is critical to the accuracy that can be achieved. Change this parameter’s value only if you understand its function fully.</p>
+<p class="attribution">&mdash;<em>training_image_size</em> <strong>initial_learning_rate</strong> (optional) : This is the size at which the images in your image dataset will be trained, irrespective of their original sizes. The default value is 224 and must not be set to less than 100. Increasing this value increases accuracy but increases training time, and vice-versa.</p>
+</div></blockquote>
+<p><strong>Sample Code for Custom Model Training</strong></p>
+<p>Find below a sample code for training custom models for your image dataset</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction.Custom</span> <span class="k">import</span> <span class="n">ModelTraining</span>
+
+<span class="n">model_trainer</span> <span class="o">=</span> <span class="n">ModelTraining</span><span class="p">()</span>
+<span class="n">model_trainer</span><span class="o">.</span><span class="n">setModelTypeAsResNet</span><span class="p">()</span>
+<span class="n">model_trainer</span><span class="o">.</span><span class="n">setDataDirectory</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:/Users/Moses/Documents/Moses/AI/Custom Datasets/pets&quot;</span><span class="p">)</span>
+<span class="n">model_trainer</span><span class="o">.</span><span class="n">trainModel</span><span class="p">(</span><span class="n">num_objects</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num_experiments</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">enhance_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">show_network_summary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Below is a sample of the result when the training starts</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Epoch</span> <span class="mi">1</span><span class="o">/</span><span class="mi">100</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">&gt;.............................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">52</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3026</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.2500</span>
+<span class="mi">2</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">=&gt;............................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">41</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3027</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.1250</span>
+<span class="mi">3</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">==&gt;...........................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">37</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.2961</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.1667</span>
+<span class="mi">4</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">===&gt;..........................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">36</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.2980</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.1250</span>
+<span class="mi">5</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">=====&gt;........................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">33</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3178</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.1000</span>
+<span class="mi">6</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">======&gt;.......................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">31</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3214</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0833</span>
+<span class="mi">7</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">=======&gt;......................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">30</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3202</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0714</span>
+<span class="mi">8</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">========&gt;.....................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">29</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3207</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0625</span>
+<span class="mi">9</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">=========&gt;....................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">27</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3191</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0556</span>
+<span class="mi">10</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">===========&gt;..................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">25</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3167</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0750</span>
+<span class="mi">11</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">============&gt;.................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">23</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3162</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0682</span>
+<span class="mi">12</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">=============&gt;................</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">21</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3143</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0833</span>
+<span class="mi">13</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">==============&gt;...............</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">20</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3135</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0769</span>
+<span class="mi">14</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">===============&gt;..............</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">18</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3132</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0714</span>
+<span class="mi">15</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">=================&gt;............</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">16</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3128</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0667</span>
+<span class="mi">16</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">==================&gt;...........</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">15</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3121</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0781</span>
+<span class="mi">17</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">===================&gt;..........</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">13</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3116</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0735</span>
+<span class="mi">18</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">====================&gt;.........</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">12</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3114</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0694</span>
+<span class="mi">19</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">=====================&gt;........</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">10</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3112</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0658</span>
+<span class="mi">20</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">=======================&gt;......</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">8</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3109</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0625</span>
+<span class="mi">21</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">========================&gt;.....</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">7</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3107</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0595</span>
+<span class="mi">22</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">=========================&gt;....</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">5</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3104</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0568</span>
+<span class="mi">23</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">==========================&gt;...</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">3</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3101</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0543</span>
+<span class="mi">24</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">===========================&gt;..</span><span class="p">]</span> <span class="o">-</span> <span class="n">ETA</span><span class="p">:</span> <span class="mi">1</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3097</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0625</span><span class="n">Epoch</span> <span class="mi">00000</span><span class="p">:</span> <span class="n">saving</span> <span class="n">model</span> <span class="n">to</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Moses</span>\<span class="n">Documents</span>\<span class="n">Moses</span>\<span class="n">W7</span>\<span class="n">AI</span>\<span class="n">Custom</span> <span class="n">Datasets</span>\<span class="n">IDENPROF</span>\<span class="n">idenprof</span><span class="o">-</span><span class="n">small</span><span class="o">-</span><span class="n">test</span>\<span class="n">idenprof</span>\<span class="n">models</span>\<span class="n">model_ex</span><span class="o">-</span><span class="mi">000</span><span class="n">_acc</span><span class="o">-</span><span class="mf">0.100000</span><span class="o">.</span><span class="n">h5</span>
+
+<span class="mi">25</span><span class="o">/</span><span class="mi">25</span> <span class="p">[</span><span class="o">==============================</span><span class="p">]</span> <span class="o">-</span> <span class="mi">51</span><span class="n">s</span> <span class="o">-</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">2.3095</span> <span class="o">-</span> <span class="n">acc</span><span class="p">:</span> <span class="mf">0.0600</span> <span class="o">-</span> <span class="n">val_loss</span><span class="p">:</span> <span class="mf">2.3026</span> <span class="o">-</span> <span class="n">val_acc</span><span class="p">:</span> <span class="mf">0.1000</span>
+</pre></div>
+</div>
+<p>Let us explain the details shown above:</p>
+<ol class="arabic simple">
+<li>The line Epoch 1/100 means the network is training the first experiment of the targeted 100</li>
+<li>The line 1/25 [&gt;………………………..] - ETA: 52s - loss: 2.3026 - acc: 0.2500 represents the number of batches that has been trained in the present experiment</li>
+<li>The line Epoch 00000: saving model to C:UsersUserPycharmProjectsImageAITestpetsmodelsmodelex-000acc-0.100000.h5 refers to the model saved after the present experiment. The ex_000 represents the experiment at this stage while the acc0.100000 and valacc: 0.1000 represents the accuracy of the model on the test images after the present experiment (maximum value value of accuracy is 1.0). This result helps to know the best performed model you can use for custom image prediction.</li>
+</ol>
+<p>Once you are done training your custom model, you can use the <strong>CustomImagePrediction</strong> class described below to perform image prediction with your model.</p>
+<p><strong>======= imageai.Prediction.Custom.CustomImagePrediction =======</strong></p>
+<p>This class can be considered a replica of the <strong>imageai.Prediction.ImagePrediction</strong> as it has all the same functions, parameters and results. The
+only differences are that this class works with your own trained model, you will need to specify the path to the JSON file generated during the training
+and will need to specify the number of classes in your image dataset when loading the model. Below is an example of creating an instance of the class</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction.Custom</span> <span class="k">import</span> <span class="n">CustomImagePrediction</span>
+
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">CustomImagePrediction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Once you have created the new instance, you can use the functions below to set your instance property and start recognizing
+objects in images.</p>
+<ul>
+<li><p class="first"><strong>.setModelTypeAsSqueezeNet()</strong> , This function sets the model type of the image recognition instance you created to the <strong>SqueezeNet</strong> model, which means you will be performing your image prediction tasks using the “SqueezeNet” model generated during your custom training.  Find example code below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelTypeAsSqueezeNet</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelTypeAsResNet()</strong> , This function sets the model type of the image recognition instance you created to the <strong>ResNet</strong> model, which means you will be performing your image prediction tasks using the “ResNet” model model generated during your custom training. Find example code below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelTypeAsResNet</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelTypeAsInceptionV3()</strong> , This function sets the model type of the image recognition instance you created to the <strong>InecptionV3</strong> model, which means you will be performing your image prediction tasks using the “InceptionV3” model generated during your custom training.  Find example code below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelTypeAsInceptionV3</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelTypeAsDenseNet()</strong> , This function sets the model type of the image recognition instance you created to the <strong>DenseNet</strong> model, which means you will be performing your image prediction tasks using the “DenseNet” model generated during your custom training. Find example code below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelTypeAsDenseNet</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelPath()</strong> , This function accepts a string which must be the path to the model file generated during your custom training and must corresponds to the model type you set for your image prediction instance. Find example code,and parameters of the function below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="s2">&quot;resnet_model_ex-020_acc-0.651714.h5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div>– <em>parameter</em> <strong>model_path</strong> (required) : This is the path to your downloaded model file.</div></blockquote>
+<ul>
+<li><p class="first"><strong>.setJsonPath()</strong> , This function accepts a string which must be the path to the JSON file generated during your custom training. Find example code and parameters of the function below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setJsonPath</span><span class="p">(</span><span class="s2">&quot;model_class.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div>– <em>parameter</em> <strong>model_path</strong> (required) : This is the path to your downloaded model file.</div></blockquote>
+<ul>
+<li><p class="first"><strong>.loadModel()</strong> , This function loads the model from the path you specified in the function call above into your image prediction instance. You will have to set the parameter <strong>num_objects</strong> to the number of classes in your image dataset. Find example code and parameter details below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">loadModel</span><span class="p">(</span><span class="n">num_objects</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div>– <em>parameter</em> <strong>num_objects</strong> (required) : This must be set to the number of classes in your image dataset.</div></blockquote>
+<p>– <em>parameter</em> <strong>prediction_speed</strong> (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are “normal”, “fast”, “faster” and “fastest”. The default values is “normal”</p>
+<ul>
+<li><p class="first"><strong>.predictImage()</strong> , This is the function that performs actual prediction of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span><span class="p">,</span> <span class="n">probabilities</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">predictImage</span><span class="p">(</span><span class="s2">&quot;image1.jpg&quot;</span><span class="p">,</span> <span class="n">result_count</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>image_input</strong> (required) : This refers to the path to your image file, Numpy array of your image or image file stream of your image, depending on the input type you specified.</p>
+<p class="attribution">&mdash;<em>parameter</em> <strong>result_count</strong> (optional) : This refers to the number of possible predictions that should be returned. The parameter is set to 5 by default.</p>
+</div></blockquote>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>input_type</strong> (optional) : This refers to the type of input you are parse into the <strong>image_input</strong> parameter. It is “file” by default and it accepts “array” and “stream” as well.</p>
+<p class="attribution">&mdash;<em>returns</em> <strong>prediction_results</strong> (a python list) : The first value returned by the <strong>predictImage</strong> function is a list that contains all the possible prediction results. The results are arranged in descending order of the percentage probability.</p>
+</div></blockquote>
+<blockquote>
+<div>– <em>returns</em> <strong>prediction_probabilities</strong> (a python list) : The second value returned by the <strong>predictImage</strong> function is a list that contains the corresponding percentage probability of all the possible predictions in the <strong>prediction_results</strong>.</div></blockquote>
+<ul>
+<li><p class="first"><strong>.predictMultipleImages()</strong> , This function can be used to perform prediction on 2 or more images at once. Find example code, parameters of the function and returned values below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results_array</span> <span class="o">=</span> <span class="n">multiple_prediction</span><span class="o">.</span><span class="n">predictMultipleImages</span><span class="p">(</span><span class="n">all_images_array</span><span class="p">,</span> <span class="n">result_count_per_image</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">each_result</span> <span class="ow">in</span> <span class="n">results_array</span><span class="p">:</span>
+    <span class="n">predictions</span><span class="p">,</span> <span class="n">percentage_probabilities</span> <span class="o">=</span> <span class="n">each_result</span><span class="p">[</span><span class="s2">&quot;predictions&quot;</span><span class="p">],</span> <span class="n">each_result</span><span class="p">[</span><span class="s2">&quot;percentage_probabilities&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">predictions</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">,</span> <span class="s2">&quot; : &quot;</span> <span class="p">,</span> <span class="n">percentage_probabilities</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>– <em>parameter</em> <strong>sent_images_array</strong> (required) : This refers to a list that contains the path to your image files, Numpy array of your images or image file stream of your images, depending on the input type you specified.</p>
+<p>– <em>parameter</em> <strong>result_count_per_image</strong> (optional) : This refers to the number of possible predictions that should be returned for each of the images. The parameter is set to 2 by default.</p>
+<p>– <em>parameter</em> <strong>input_type</strong> (optional) : This refers to the format in which your images are in the list you parsed into the <strong>sent_images_array</strong> parameter. It is “file” by default and it accepts “array” and “stream” as well.</p>
+<p>– <em>returns</em> <strong>output_array</strong> (a python list) : The value returned by the <strong>predictMultipleImages</strong> function is a list that contains dictionaries. Each dictionary correspondes
+the images contained in the array you parsed into the <strong>sent_images_array</strong>. Each dictionary has “prediction_results” property which is a list of athe prediction result for the image
+in that index as well as the “prediction_probabilities” which is a list of the corresponding percentage probability for each result.</p>
+</li>
+</ul>
+<p><strong>Sample Codes</strong></p>
+<p>Find below sample code for custom prediction</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction.Custom</span> <span class="k">import</span> <span class="n">CustomImagePrediction</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">CustomImagePrediction</span><span class="p">()</span>
+<span class="n">prediction</span><span class="o">.</span><span class="n">setModelTypeAsResNet</span><span class="p">()</span>
+<span class="n">prediction</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;resnet_model_ex-020_acc-0.651714.h5&quot;</span><span class="p">))</span>
+<span class="n">prediction</span><span class="o">.</span><span class="n">setJsonPath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;model_class.json&quot;</span><span class="p">))</span>
+<span class="n">prediction</span><span class="o">.</span><span class="n">loadModel</span><span class="p">(</span><span class="n">num_objects</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">predictions</span><span class="p">,</span> <span class="n">probabilities</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">predictImage</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;4.jpg&quot;</span><span class="p">),</span> <span class="n">result_count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eachPrediction</span><span class="p">,</span> <span class="n">eachProbability</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eachPrediction</span> <span class="p">,</span> <span class="s2">&quot; : &quot;</span> <span class="p">,</span> <span class="n">eachProbability</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../video/index.html" class="btn btn-neutral" title="Video and Live-Feed Detection and Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Moses Olafenwa and John Olafenwa.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.0.2',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

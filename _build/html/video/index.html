@@ -1,0 +1,602 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Video and Live-Feed Detection and Analysis &mdash; ImageAI 2.0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Custom Training and Prediction Classes" href="../custom/index.html" />
+    <link rel="prev" title="Detection Classes" href="../detection/index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ImageAI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prediction/index.html">Prediction Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/index.html">Detection Classes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Video and Live-Feed Detection and Analysis</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../custom/index.html">Custom Training and Prediction Classes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ImageAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Video and Live-Feed Detection and Analysis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/video/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="video-and-live-feed-detection-and-analysis">
+<h1>Video and Live-Feed Detection and Analysis<a class="headerlink" href="#video-and-live-feed-detection-and-analysis" title="Permalink to this headline">¶</a></h1>
+<p><strong>ImageAI</strong> provided very powerful yet easy to use classes and functions to perform  <strong>Video Object Detection and Tracking</strong>
+and <strong>Video analysis</strong>. <strong>ImageAI</strong> allows you to perform all of these with state-of-the-art deep learning algorithms like <strong>RetinaNet</strong>, <strong>YOLOv3</strong> and <strong>TinyYOLOv3</strong>.
+With <strong>ImageAI</strong> you can run detection tasks and analyse videos and live-video feeds from device cameras and IP cameras.
+Find below the classes and their respective functions available for you to use.
+These classes can be integrated into any traditional python program you are developing, be it a website, Windows/Linux/MacOS application or a system
+that supports or part of a Local-Area-Network.</p>
+<p><strong>======= imageai.Detection.VideoObjectDetection =======</strong></p>
+<p>This <strong>VideoObjectDetection</strong> class provides you function to detect objects in videos and live-feed from device cameras and IP cameras, using <strong>pre-trained</strong> models that was trained on
+the <strong>COCO</strong> dataset. The models supported are <strong>RetinaNet</strong>, <strong>YOLOv3</strong> and <strong>TinyYOLOv3</strong>. This means you can detect and recognize 80 different kind of
+common everyday objects in any video. To get started, download any of the pre-trained model that you want to use via the links below.</p>
+<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download RetinaNet Model</a></p>
+<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download YOLOv3 Model</a></p>
+<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download TinyYOLOv3 Model</a></p>
+<p>Once you have downloaded the model you chose to use, create an instance of the <strong>VideoObjectDetection</strong> as seen below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">VideoObjectDetection</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Once you have created an instance of the class, you can call the functions below to set its properties and detect objects in a video.</p>
+<ul>
+<li><p class="first"><strong>.setModelTypeAsRetinaNet()</strong> , This function sets the model type of the object detection instance you created to the <strong>RetinaNet</strong> model, which means you will be performing your object detection tasks using the pre-trained “RetinaNet” model you downloaded from the links above.  Find example code below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsRetinaNet</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelTypeAsYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>YOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “YOLOv3” model you downloaded from the links above.  Find example code below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsYOLOv3</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelTypeAsTinyYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>TinyYOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “TinyYOLOv3” model you downloaded from the links above.  Find example code below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsTinyYOLOv3</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>.setModelPath()</strong> , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your object detection instance. Find example code,and parameters of the function below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="s2">&quot;yolo.h5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div>– <em>parameter</em> <strong>model_path</strong> (required) : This is the path to your downloaded model file.</div></blockquote>
+<ul>
+<li><p class="first"><strong>.loadModel()</strong> , This function loads the model from the path you specified in the function call above into your object detection instance. Find example code below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div>– <em>parameter</em> <strong>detection_speed</strong> (optional) : This parameter allows you to reduce the time it takes to detect objects in a video by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are “normal”, “fast”, “faster”, “fastest” and “flash”. The default values is “normal”</div></blockquote>
+<ul>
+<li><p class="first"><strong>.detectObjectsFromVideo()</strong> , This is the function that performs object detecttion on a video file or video live-feed after the model has been loaded into the instance you created.  Find a full sample code below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">VideoObjectDetection</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsYOLOv3</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span> <span class="p">,</span> <span class="s2">&quot;yolo.h5&quot;</span><span class="p">))</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
+
+<span class="n">video_path</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detectObjectsFromVideo</span><span class="p">(</span><span class="n">input_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;traffic.mp4&quot;</span><span class="p">),</span>
+                            <span class="n">output_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;traffic_detected&quot;</span><span class="p">)</span>
+                            <span class="p">,</span> <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">log_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">video_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>input_file_path</strong> (required if you did not set <strong>camera_input</strong>) : This refers to the path to the video file you want to detect.</p>
+<p class="attribution">&mdash;<em>parameter</em> <strong>output_file_path</strong> (required if you did not set <strong>save_detected_video</strong> = False) : This refers to the path to which the detected video will be saved. By default, this functionsaves video  <strong>.avi</strong> format.</p>
+</div></blockquote>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>frames_per_second</strong> (optional , but recommended) : This parameters allows you to set your desired frames per second for the detected video that will be saved. The default value is 20 but we recommend you set the value that suits your video or camera live-feed.</p>
+<p class="attribution">&mdash;<em>parameter</em> <strong>log_progress</strong> (optional) : Setting this parameter to True shows the progress of the video or live-feed as it is detected in the CLI. It will report every frame detected as it progresses. The default value is False.</p>
+</div></blockquote>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>return_detected_frame</strong> (optional) : This parameter allows you to return the detected frame as a Numpy array at every frame, second and minute of the video detected. The returned Numpy array will be parsed into the respective <strong>per_frame_function</strong>, <strong>per_second_function</strong> and <strong>per_minute_function</strong> (See details below)</p>
+<p class="attribution">&mdash;<em>parameter</em> <strong>camera_input</strong> (optional) : This parameter can be set in replacement of the <strong>input_file_path</strong> if you want to detect objects in the live-feed of a camera. All you need is to load the camera with OpenCV’s <strong>VideoCapture()</strong> function and parse the object into this parameter.</p>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><p>See a full code sample below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="n">camera</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">VideoObjectDetection</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsYOLOv3</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span> <span class="p">,</span> <span class="s2">&quot;yolo.h5&quot;</span><span class="p">))</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
+
+<span class="n">video_path</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detectObjectsFromVideo</span><span class="p">(</span><span class="n">camera_input</span><span class="o">=</span><span class="n">camera</span><span class="p">,</span>
+    <span class="n">output_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;camera_detected_video&quot;</span><span class="p">)</span>
+    <span class="p">,</span> <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">log_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">video_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p class="attribution">&mdash;<em>parameter</em> <strong>minimum_percentage_probability</strong> (optional ) :  This parameter is used to determine the integrity of the detection results. Lowering the value shows more objects while increasing the value ensures objects with the highest accuracy are detected. The default value is 50.</p>
+</div></blockquote>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>display_percentage_probability</strong> (optional ) :  This parameter can be used to hide the percentage probability of each object detected in the detected video if set to False. The default values is True.</p>
+<p class="attribution">&mdash;<em>parameter</em> <strong>display_object_name</strong> (optional ) :  This parameter can be used to hide the name of each object detected in the detected video if set to False. The default values is True.</p>
+</div></blockquote>
+<blockquote>
+<div><p>– <em>parameter</em> <strong>save_detected_video</strong> (optional ) :  This parameter can be used to or not to save the detected video or not to save it. It is set to True by default.</p>
+<p class="attribution">&mdash;<em>parameter</em> <strong>per_frame_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every frame of the video that is detected, the function will be parsed into the parameter will be executed and and analytical data of the video will be parsed into the function. The data returned can be visualized or saved in a NoSQL database for future processing and visualization.</p>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><p>See the sample code below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This parameter allows you to parse in a function you will want to execute after</span>
+<span class="sd">each frame of the video is detected. If this parameter is set to a function, after every video</span>
+<span class="sd">frame is detected, the function will be executed with the following values parsed into it:</span>
+<span class="sd">-- position number of the frame</span>
+<span class="sd">-- an array of dictinaries, with each dictinary corresponding to each object detected.</span>
+<span class="sd">    Each dictionary contains &#39;name&#39;, &#39;percentage_probability&#39; and &#39;box_points&#39;</span>
+<span class="sd">-- a dictionary with with keys being the name of each unique objects and value</span>
+<span class="sd">   are the number of instances of each of the objects present</span>
+<span class="sd">-- If return_detected_frame is set to True, the numpy array of the detected frame will be parsed</span>
+<span class="sd">    as the fourth value into the function</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="k">def</span> <span class="nf">forFrame</span><span class="p">(</span><span class="n">frame_number</span><span class="p">,</span> <span class="n">output_array</span><span class="p">,</span> <span class="n">output_count</span><span class="p">):</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FOR FRAME &quot;</span> <span class="p">,</span> <span class="n">frame_number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output for each object : &quot;</span><span class="p">,</span> <span class="n">output_array</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output count for unique objects : &quot;</span><span class="p">,</span> <span class="n">output_count</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------END OF A FRAME --------------&quot;</span><span class="p">)</span>
+
+
+<span class="n">video_detector</span> <span class="o">=</span> <span class="n">VideoObjectDetection</span><span class="p">()</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">setModelTypeAsYOLOv3</span><span class="p">()</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;yolo.h5&quot;</span><span class="p">))</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
+
+
+<span class="n">video_detector</span><span class="o">.</span><span class="n">detectObjectsFromVideo</span><span class="p">(</span><span class="n">input_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;traffic.mp4&quot;</span><span class="p">),</span> <span class="n">output_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;video_frame_analysis&quot;</span><span class="p">)</span> <span class="p">,</span>  <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">per_frame_function</span><span class="o">=</span><span class="n">forFrame</span><span class="p">,</span>  <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the above example, once every frame in the video is processed and detected, the function will receive and prints out the analytical data for objects detected in the video frame as you can see below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="k">for</span> <span class="n">each</span> <span class="nb">object</span> <span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">362</span><span class="p">,</span> <span class="mi">295</span><span class="p">,</span> <span class="mi">443</span><span class="p">,</span> <span class="mi">355</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">26.666194200515747</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">319</span><span class="p">,</span> <span class="mi">245</span><span class="p">,</span> <span class="mi">386</span><span class="p">,</span> <span class="mi">296</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">30.052968859672546</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">219</span><span class="p">,</span> <span class="mi">308</span><span class="p">,</span> <span class="mi">341</span><span class="p">,</span> <span class="mi">358</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">47.46982455253601</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">589</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">621</span><span class="p">,</span> <span class="mi">241</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">24.62330162525177</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">519</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">583</span><span class="p">,</span> <span class="mi">263</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">27.446213364601135</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">493</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">561</span><span class="p">,</span> <span class="mi">272</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">59.81815457344055</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">432</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mi">491</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">64.42965269088745</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">157</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">21.150341629981995</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">324</span><span class="p">,</span> <span class="mi">249</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mi">293</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">24.089913070201874</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">152</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">327</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">30.341443419456482</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">433</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">485</span><span class="p">,</span> <span class="mi">244</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">37.205660343170166</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">184</span><span class="p">,</span> <span class="mi">226</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">260</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">38.52525353431702</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">296</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">359</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">47.80363142490387</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">357</span><span class="p">,</span> <span class="mi">302</span><span class="p">,</span> <span class="mi">439</span><span class="p">,</span> <span class="mi">359</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">47.94844686985016</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">481</span><span class="p">,</span> <span class="mi">266</span><span class="p">,</span> <span class="mi">546</span><span class="p">,</span> <span class="mi">314</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">65.8585786819458</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">597</span><span class="p">,</span> <span class="mi">269</span><span class="p">,</span> <span class="mi">624</span><span class="p">,</span> <span class="mi">318</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">27.125394344329834</span><span class="p">}]</span>
+
+<span class="n">Output</span> <span class="n">count</span> <span class="k">for</span> <span class="n">unique</span> <span class="n">objects</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+
+<span class="o">------------</span><span class="n">END</span> <span class="n">OF</span> <span class="n">A</span> <span class="n">FRAME</span> <span class="o">--------------</span>
+</pre></div>
+</div>
+<p>Below is a full code that has a function that taskes the analyitical data and visualizes it and the detected frame in real time as the video is processed and detected:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+<span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="n">color_index</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;handbag&#39;</span><span class="p">:</span> <span class="s1">&#39;steelblue&#39;</span><span class="p">,</span> <span class="s1">&#39;giraffe&#39;</span><span class="p">:</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;spoon&#39;</span><span class="p">:</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;cup&#39;</span><span class="p">:</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;chair&#39;</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;elephant&#39;</span><span class="p">:</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="s1">&#39;indigo&#39;</span><span class="p">,</span> <span class="s1">&#39;motorcycle&#39;</span><span class="p">:</span> <span class="s1">&#39;azure&#39;</span><span class="p">,</span> <span class="s1">&#39;refrigerator&#39;</span><span class="p">:</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;keyboard&#39;</span><span class="p">:</span> <span class="s1">&#39;violet&#39;</span><span class="p">,</span> <span class="s1">&#39;cow&#39;</span><span class="p">:</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="s1">&#39;mouse&#39;</span><span class="p">:</span> <span class="s1">&#39;crimson&#39;</span><span class="p">,</span> <span class="s1">&#39;sports ball&#39;</span><span class="p">:</span> <span class="s1">&#39;raspberry&#39;</span><span class="p">,</span> <span class="s1">&#39;horse&#39;</span><span class="p">:</span> <span class="s1">&#39;maroon&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">:</span> <span class="s1">&#39;orchid&#39;</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="s1">&#39;slateblue&#39;</span><span class="p">,</span> <span class="s1">&#39;hot dog&#39;</span><span class="p">:</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">:</span> <span class="s1">&#39;cobalt&#39;</span><span class="p">,</span> <span class="s1">&#39;parking meter&#39;</span><span class="p">:</span> <span class="s1">&#39;aliceblue&#39;</span><span class="p">,</span> <span class="s1">&#39;sandwich&#39;</span><span class="p">:</span> <span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;skis&#39;</span><span class="p">:</span> <span class="s1">&#39;deepskyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;microwave&#39;</span><span class="p">:</span> <span class="s1">&#39;peacock&#39;</span><span class="p">,</span> <span class="s1">&#39;knife&#39;</span><span class="p">:</span> <span class="s1">&#39;cadetblue&#39;</span><span class="p">,</span> <span class="s1">&#39;baseball bat&#39;</span><span class="p">:</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;oven&#39;</span><span class="p">:</span> <span class="s1">&#39;lightcyan&#39;</span><span class="p">,</span> <span class="s1">&#39;carrot&#39;</span><span class="p">:</span> <span class="s1">&#39;coldgrey&#39;</span><span class="p">,</span> <span class="s1">&#39;scissors&#39;</span><span class="p">:</span> <span class="s1">&#39;seagreen&#39;</span><span class="p">,</span> <span class="s1">&#39;sheep&#39;</span><span class="p">:</span> <span class="s1">&#39;deepgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;toothbrush&#39;</span><span class="p">:</span> <span class="s1">&#39;cobaltgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;fire hydrant&#39;</span><span class="p">:</span> <span class="s1">&#39;limegreen&#39;</span><span class="p">,</span> <span class="s1">&#39;remote&#39;</span><span class="p">:</span> <span class="s1">&#39;forestgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;bicycle&#39;</span><span class="p">:</span> <span class="s1">&#39;olivedrab&#39;</span><span class="p">,</span> <span class="s1">&#39;toilet&#39;</span><span class="p">:</span> <span class="s1">&#39;ivory&#39;</span><span class="p">,</span> <span class="s1">&#39;tv&#39;</span><span class="p">:</span> <span class="s1">&#39;khaki&#39;</span><span class="p">,</span> <span class="s1">&#39;skateboard&#39;</span><span class="p">:</span> <span class="s1">&#39;palegoldenrod&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="s1">&#39;cornsilk&#39;</span><span class="p">,</span> <span class="s1">&#39;zebra&#39;</span><span class="p">:</span> <span class="s1">&#39;wheat&#39;</span><span class="p">,</span> <span class="s1">&#39;tie&#39;</span><span class="p">:</span> <span class="s1">&#39;burlywood&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">:</span> <span class="s1">&#39;melon&#39;</span><span class="p">,</span> <span class="s1">&#39;bird&#39;</span><span class="p">:</span> <span class="s1">&#39;bisque&#39;</span><span class="p">,</span> <span class="s1">&#39;dining table&#39;</span><span class="p">:</span> <span class="s1">&#39;chocolate&#39;</span><span class="p">,</span> <span class="s1">&#39;hair drier&#39;</span><span class="p">:</span> <span class="s1">&#39;sandybrown&#39;</span><span class="p">,</span> <span class="s1">&#39;cell phone&#39;</span><span class="p">:</span> <span class="s1">&#39;sienna&#39;</span><span class="p">,</span> <span class="s1">&#39;sink&#39;</span><span class="p">:</span> <span class="s1">&#39;coral&#39;</span><span class="p">,</span> <span class="s1">&#39;bench&#39;</span><span class="p">:</span> <span class="s1">&#39;salmon&#39;</span><span class="p">,</span> <span class="s1">&#39;bottle&#39;</span><span class="p">:</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="s1">&#39;silver&#39;</span><span class="p">,</span> <span class="s1">&#39;bowl&#39;</span><span class="p">:</span> <span class="s1">&#39;maroon&#39;</span><span class="p">,</span> <span class="s1">&#39;tennis racket&#39;</span><span class="p">:</span> <span class="s1">&#39;palevilotered&#39;</span><span class="p">,</span> <span class="s1">&#39;airplane&#39;</span><span class="p">:</span> <span class="s1">&#39;lavenderblush&#39;</span><span class="p">,</span> <span class="s1">&#39;pizza&#39;</span><span class="p">:</span> <span class="s1">&#39;hotpink&#39;</span><span class="p">,</span> <span class="s1">&#39;umbrella&#39;</span><span class="p">:</span> <span class="s1">&#39;deeppink&#39;</span><span class="p">,</span> <span class="s1">&#39;bear&#39;</span><span class="p">:</span> <span class="s1">&#39;plum&#39;</span><span class="p">,</span> <span class="s1">&#39;fork&#39;</span><span class="p">:</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;laptop&#39;</span><span class="p">:</span> <span class="s1">&#39;indigo&#39;</span><span class="p">,</span> <span class="s1">&#39;vase&#39;</span><span class="p">:</span> <span class="s1">&#39;mediumpurple&#39;</span><span class="p">,</span> <span class="s1">&#39;baseball glove&#39;</span><span class="p">:</span> <span class="s1">&#39;slateblue&#39;</span><span class="p">,</span> <span class="s1">&#39;traffic light&#39;</span><span class="p">:</span> <span class="s1">&#39;mediumblue&#39;</span><span class="p">,</span> <span class="s1">&#39;bed&#39;</span><span class="p">:</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;broccoli&#39;</span><span class="p">:</span> <span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="s1">&#39;backpack&#39;</span><span class="p">:</span> <span class="s1">&#39;slategray&#39;</span><span class="p">,</span> <span class="s1">&#39;snowboard&#39;</span><span class="p">:</span> <span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;kite&#39;</span><span class="p">:</span> <span class="s1">&#39;cadetblue&#39;</span><span class="p">,</span> <span class="s1">&#39;teddy bear&#39;</span><span class="p">:</span> <span class="s1">&#39;peacock&#39;</span><span class="p">,</span> <span class="s1">&#39;clock&#39;</span><span class="p">:</span> <span class="s1">&#39;lightcyan&#39;</span><span class="p">,</span> <span class="s1">&#39;wine glass&#39;</span><span class="p">:</span> <span class="s1">&#39;teal&#39;</span><span class="p">,</span> <span class="s1">&#39;frisbee&#39;</span><span class="p">:</span> <span class="s1">&#39;aquamarine&#39;</span><span class="p">,</span> <span class="s1">&#39;donut&#39;</span><span class="p">:</span> <span class="s1">&#39;mincream&#39;</span><span class="p">,</span> <span class="s1">&#39;suitcase&#39;</span><span class="p">:</span> <span class="s1">&#39;seagreen&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">:</span> <span class="s1">&#39;springgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span> <span class="s1">&#39;emeraldgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="s1">&#39;honeydew&#39;</span><span class="p">,</span> <span class="s1">&#39;surfboard&#39;</span><span class="p">:</span> <span class="s1">&#39;palegreen&#39;</span><span class="p">,</span> <span class="s1">&#39;cake&#39;</span><span class="p">:</span> <span class="s1">&#39;sapgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;book&#39;</span><span class="p">:</span> <span class="s1">&#39;lawngreen&#39;</span><span class="p">,</span> <span class="s1">&#39;potted plant&#39;</span><span class="p">:</span> <span class="s1">&#39;greenyellow&#39;</span><span class="p">,</span> <span class="s1">&#39;toaster&#39;</span><span class="p">:</span> <span class="s1">&#39;ivory&#39;</span><span class="p">,</span> <span class="s1">&#39;stop sign&#39;</span><span class="p">:</span> <span class="s1">&#39;beige&#39;</span><span class="p">,</span> <span class="s1">&#39;couch&#39;</span><span class="p">:</span> <span class="s1">&#39;khaki&#39;</span><span class="p">}</span>
+
+
+<span class="n">resized</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">forFrame</span><span class="p">(</span><span class="n">frame_number</span><span class="p">,</span> <span class="n">output_array</span><span class="p">,</span> <span class="n">output_count</span><span class="p">,</span> <span class="n">returned_frame</span><span class="p">):</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+
+    <span class="n">this_colors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">eachItem</span> <span class="ow">in</span> <span class="n">output_count</span><span class="p">:</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eachItem</span> <span class="o">+</span> <span class="s2">&quot; = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">output_count</span><span class="p">[</span><span class="n">eachItem</span><span class="p">]))</span>
+        <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_count</span><span class="p">[</span><span class="n">eachItem</span><span class="p">])</span>
+        <span class="n">this_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">color_index</span><span class="p">[</span><span class="n">eachItem</span><span class="p">])</span>
+
+    <span class="k">global</span> <span class="n">resized</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">resized</span> <span class="o">==</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">manager</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_current_fig_manager</span><span class="p">()</span>
+        <span class="n">manager</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+        <span class="n">resized</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Frame : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">frame_number</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">returned_frame</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Analysis: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">frame_number</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">this_colors</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f%%</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+
+
+<span class="n">video_detector</span> <span class="o">=</span> <span class="n">VideoObjectDetection</span><span class="p">()</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">setModelTypeAsYOLOv3</span><span class="p">()</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;yolo.h5&quot;</span><span class="p">))</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">video_detector</span><span class="o">.</span><span class="n">detectObjectsFromVideo</span><span class="p">(</span><span class="n">input_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;traffic.mp4&quot;</span><span class="p">),</span> <span class="n">output_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;video_frame_analysis&quot;</span><span class="p">)</span> <span class="p">,</span>  <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">per_frame_function</span><span class="o">=</span><span class="n">forFrame</span><span class="p">,</span>  <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">return_detected_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p class="attribution">&mdash;<em>parameter</em> <strong>per_second_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every second of the video that is detected, the function will be parsed into the parameter will be executed and analytical data of the video will be parsed into the function. The data returned can be visualized or saved in a NoSQL database for future processing and visualization.</p>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><p>See the sample code below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This parameter allows you to parse in a function you will want to execute after</span>
+<span class="sd">each second of the video is detected. If this parameter is set to a function, after every second of a video</span>
+<span class="sd">is detected, the function will be executed with the following values parsed into it:</span>
+<span class="sd">-- position number of the second</span>
+<span class="sd">-- an array of dictionaries whose keys are position number of each frame present in the last second , and the value for each key is the array for each frame that contains the dictionaries for each object detected in the frame</span>
+
+<span class="sd">-- an array of dictionaries, with each dictionary corresponding to each frame in the past second, and the keys of each dictionary are the name of the number of unique objects detected in each frame, and the key values are the number of instances of the objects found in the frame</span>
+
+<span class="sd">-- a dictionary with its keys being the name of each unique object detected throughout the past second, and the key values are the average number of instances of the object found in all the frames contained in the past second</span>
+
+<span class="sd">-- If return_detected_frame is set to True, the numpy array of the detected frame will be parsed as the fifth value into the function</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="k">def</span> <span class="nf">forSeconds</span><span class="p">(</span><span class="n">second_number</span><span class="p">,</span> <span class="n">output_arrays</span><span class="p">,</span> <span class="n">count_arrays</span><span class="p">,</span> <span class="n">average_output_count</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SECOND : &quot;</span><span class="p">,</span> <span class="n">second_number</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array for the outputs of each frame &quot;</span><span class="p">,</span> <span class="n">output_arrays</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array for output count for unique objects in each frame : &quot;</span><span class="p">,</span> <span class="n">count_arrays</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output average count for unique objects in the last second: &quot;</span><span class="p">,</span> <span class="n">average_output_count</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------END OF A SECOND --------------&quot;</span><span class="p">)</span>
+
+
+<span class="n">video_detector</span> <span class="o">=</span> <span class="n">VideoObjectDetection</span><span class="p">()</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">setModelTypeAsYOLOv3</span><span class="p">()</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;yolo.h5&quot;</span><span class="p">))</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
+
+
+<span class="n">video_detector</span><span class="o">.</span><span class="n">detectObjectsFromVideo</span><span class="p">(</span><span class="n">input_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;traffic.mp4&quot;</span><span class="p">),</span> <span class="n">output_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;video_second_analysis&quot;</span><span class="p">)</span> <span class="p">,</span>  <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">per_second_function</span><span class="o">=</span><span class="n">forSecond</span><span class="p">,</span>  <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the above example, once every second in the video is processed and detected, the function will receive and prints out the analytical data for objects detected in the video as you can see below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Array</span> <span class="k">for</span> <span class="n">the</span> <span class="n">outputs</span> <span class="n">of</span> <span class="n">each</span> <span class="n">frame</span> <span class="p">[[{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">362</span><span class="p">,</span> <span class="mi">295</span><span class="p">,</span> <span class="mi">443</span><span class="p">,</span> <span class="mi">355</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">26.666194200515747</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">319</span><span class="p">,</span> <span class="mi">245</span><span class="p">,</span> <span class="mi">386</span><span class="p">,</span> <span class="mi">296</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">30.052968859672546</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">219</span><span class="p">,</span> <span class="mi">308</span><span class="p">,</span> <span class="mi">341</span><span class="p">,</span> <span class="mi">358</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">47.46982455253601</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">589</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">621</span><span class="p">,</span> <span class="mi">241</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">24.62330162525177</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">519</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">583</span><span class="p">,</span> <span class="mi">263</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">27.446213364601135</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">493</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">561</span><span class="p">,</span> <span class="mi">272</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">59.81815457344055</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">432</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mi">491</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">64.42965269088745</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">157</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">21.150341629981995</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">324</span><span class="p">,</span> <span class="mi">249</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mi">293</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">24.089913070201874</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">152</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">327</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">30.341443419456482</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">433</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">485</span><span class="p">,</span> <span class="mi">244</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">37.205660343170166</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">184</span><span class="p">,</span> <span class="mi">226</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">260</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">38.52525353431702</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">296</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">359</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">47.80363142490387</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">357</span><span class="p">,</span> <span class="mi">302</span><span class="p">,</span> <span class="mi">439</span><span class="p">,</span> <span class="mi">359</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">47.94844686985016</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">481</span><span class="p">,</span> <span class="mi">266</span><span class="p">,</span> <span class="mi">546</span><span class="p">,</span> <span class="mi">314</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">65.8585786819458</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">597</span><span class="p">,</span> <span class="mi">269</span><span class="p">,</span> <span class="mi">624</span><span class="p">,</span> <span class="mi">318</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">27.125394344329834</span><span class="p">}],</span>
+    <span class="p">[{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">316</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="mi">302</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">29.594269394874573</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">361</span><span class="p">,</span> <span class="mi">295</span><span class="p">,</span> <span class="mi">441</span><span class="p">,</span> <span class="mi">354</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">36.11513376235962</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">216</span><span class="p">,</span> <span class="mi">305</span><span class="p">,</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">357</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">44.89373862743378</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">432</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">488</span><span class="p">,</span> <span class="mi">244</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;truck&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">22.914741933345795</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">589</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="mi">623</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">20.545457303524017</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">519</span><span class="p">,</span> <span class="mi">182</span><span class="p">,</span> <span class="mi">583</span><span class="p">,</span> <span class="mi">263</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">24.467085301876068</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">492</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">563</span><span class="p">,</span> <span class="mi">271</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">61.112016439437866</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">433</span><span class="p">,</span> <span class="mi">188</span><span class="p">,</span> <span class="mi">490</span><span class="p">,</span> <span class="mi">241</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">65.08989334106445</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">352</span><span class="p">,</span> <span class="mi">303</span><span class="p">,</span> <span class="mi">442</span><span class="p">,</span> <span class="mi">357</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">20.025095343589783</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">136</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="mi">188</span><span class="p">,</span> <span class="mi">195</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">21.571354568004608</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">152</span><span class="p">,</span> <span class="mi">276</span><span class="p">,</span> <span class="mi">261</span><span class="p">,</span> <span class="mi">326</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">33.07966589927673</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">181</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">230</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">35.111838579177856</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">432</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">488</span><span class="p">,</span> <span class="mi">244</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">36.25282347202301</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">292</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">360</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">67.55480170249939</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">479</span><span class="p">,</span> <span class="mi">265</span><span class="p">,</span> <span class="mi">546</span><span class="p">,</span> <span class="mi">314</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">71.47912979125977</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">597</span><span class="p">,</span> <span class="mi">269</span><span class="p">,</span> <span class="mi">625</span><span class="p">,</span> <span class="mi">318</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">25.903674960136414</span><span class="p">}],</span><span class="o">................</span><span class="p">,</span>
+    <span class="p">[{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">133</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mi">278</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;umbrella&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">21.518094837665558</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">154</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">218</span><span class="p">,</span> <span class="mi">259</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;umbrella&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">23.687003552913666</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">348</span><span class="p">,</span> <span class="mi">311</span><span class="p">,</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">360</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">21.015766263008118</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">164</span><span class="p">,</span> <span class="mi">137</span><span class="p">,</span> <span class="mi">225</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">32.20453858375549</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">424</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mi">485</span><span class="p">,</span> <span class="mi">243</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">38.043853640556335</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">496</span><span class="p">,</span> <span class="mi">186</span><span class="p">,</span> <span class="mi">570</span><span class="p">,</span> <span class="mi">264</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">63.83994221687317</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">588</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">622</span><span class="p">,</span> <span class="mi">240</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">23.51653128862381</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">58</span><span class="p">,</span> <span class="mi">268</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">303</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">24.538707733154297</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">246</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">301</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">28.433072566986084</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">472</span><span class="p">,</span> <span class="mi">273</span><span class="p">,</span> <span class="mi">539</span><span class="p">,</span> <span class="mi">323</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">87.17672824859619</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;box_points&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">597</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">626</span><span class="p">,</span> <span class="mi">317</span><span class="p">),</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_probability&#39;</span><span class="p">:</span> <span class="mf">27.459821105003357</span><span class="p">}]</span>
+    <span class="p">]</span>
+
+<span class="n">Array</span> <span class="k">for</span> <span class="n">output</span> <span class="n">count</span> <span class="k">for</span> <span class="n">unique</span> <span class="n">objects</span> <span class="ow">in</span> <span class="n">each</span> <span class="n">frame</span> <span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;umbrella&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;umbrella&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;umbrella&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;umbrella&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]</span>
+
+<span class="n">Output</span> <span class="n">average</span> <span class="n">count</span> <span class="k">for</span> <span class="n">unique</span> <span class="n">objects</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">last</span> <span class="n">second</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="mf">3.7</span><span class="p">,</span> <span class="s1">&#39;umbrella&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mf">6.6</span><span class="p">}</span>
+
+<span class="o">------------</span><span class="n">END</span> <span class="n">OF</span> <span class="n">A</span> <span class="n">SECOND</span> <span class="o">--------------</span>
+</pre></div>
+</div>
+<p>Below is a full code that has a function that taskes the analyitical data and visualizes it and the detected frame at the end of the second in real time as the video is processed and detected:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+<span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+<span class="n">color_index</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bus&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;handbag&#39;</span><span class="p">:</span> <span class="s1">&#39;steelblue&#39;</span><span class="p">,</span> <span class="s1">&#39;giraffe&#39;</span><span class="p">:</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;spoon&#39;</span><span class="p">:</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;cup&#39;</span><span class="p">:</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;chair&#39;</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;elephant&#39;</span><span class="p">:</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;truck&#39;</span><span class="p">:</span> <span class="s1">&#39;indigo&#39;</span><span class="p">,</span> <span class="s1">&#39;motorcycle&#39;</span><span class="p">:</span> <span class="s1">&#39;azure&#39;</span><span class="p">,</span> <span class="s1">&#39;refrigerator&#39;</span><span class="p">:</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;keyboard&#39;</span><span class="p">:</span> <span class="s1">&#39;violet&#39;</span><span class="p">,</span> <span class="s1">&#39;cow&#39;</span><span class="p">:</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="s1">&#39;mouse&#39;</span><span class="p">:</span> <span class="s1">&#39;crimson&#39;</span><span class="p">,</span> <span class="s1">&#39;sports ball&#39;</span><span class="p">:</span> <span class="s1">&#39;raspberry&#39;</span><span class="p">,</span> <span class="s1">&#39;horse&#39;</span><span class="p">:</span> <span class="s1">&#39;maroon&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">:</span> <span class="s1">&#39;orchid&#39;</span><span class="p">,</span> <span class="s1">&#39;boat&#39;</span><span class="p">:</span> <span class="s1">&#39;slateblue&#39;</span><span class="p">,</span> <span class="s1">&#39;hot dog&#39;</span><span class="p">:</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">:</span> <span class="s1">&#39;cobalt&#39;</span><span class="p">,</span> <span class="s1">&#39;parking meter&#39;</span><span class="p">:</span> <span class="s1">&#39;aliceblue&#39;</span><span class="p">,</span> <span class="s1">&#39;sandwich&#39;</span><span class="p">:</span> <span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;skis&#39;</span><span class="p">:</span> <span class="s1">&#39;deepskyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;microwave&#39;</span><span class="p">:</span> <span class="s1">&#39;peacock&#39;</span><span class="p">,</span> <span class="s1">&#39;knife&#39;</span><span class="p">:</span> <span class="s1">&#39;cadetblue&#39;</span><span class="p">,</span> <span class="s1">&#39;baseball bat&#39;</span><span class="p">:</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;oven&#39;</span><span class="p">:</span> <span class="s1">&#39;lightcyan&#39;</span><span class="p">,</span> <span class="s1">&#39;carrot&#39;</span><span class="p">:</span> <span class="s1">&#39;coldgrey&#39;</span><span class="p">,</span> <span class="s1">&#39;scissors&#39;</span><span class="p">:</span> <span class="s1">&#39;seagreen&#39;</span><span class="p">,</span> <span class="s1">&#39;sheep&#39;</span><span class="p">:</span> <span class="s1">&#39;deepgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;toothbrush&#39;</span><span class="p">:</span> <span class="s1">&#39;cobaltgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;fire hydrant&#39;</span><span class="p">:</span> <span class="s1">&#39;limegreen&#39;</span><span class="p">,</span> <span class="s1">&#39;remote&#39;</span><span class="p">:</span> <span class="s1">&#39;forestgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;bicycle&#39;</span><span class="p">:</span> <span class="s1">&#39;olivedrab&#39;</span><span class="p">,</span> <span class="s1">&#39;toilet&#39;</span><span class="p">:</span> <span class="s1">&#39;ivory&#39;</span><span class="p">,</span> <span class="s1">&#39;tv&#39;</span><span class="p">:</span> <span class="s1">&#39;khaki&#39;</span><span class="p">,</span> <span class="s1">&#39;skateboard&#39;</span><span class="p">:</span> <span class="s1">&#39;palegoldenrod&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="s1">&#39;cornsilk&#39;</span><span class="p">,</span> <span class="s1">&#39;zebra&#39;</span><span class="p">:</span> <span class="s1">&#39;wheat&#39;</span><span class="p">,</span> <span class="s1">&#39;tie&#39;</span><span class="p">:</span> <span class="s1">&#39;burlywood&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">:</span> <span class="s1">&#39;melon&#39;</span><span class="p">,</span> <span class="s1">&#39;bird&#39;</span><span class="p">:</span> <span class="s1">&#39;bisque&#39;</span><span class="p">,</span> <span class="s1">&#39;dining table&#39;</span><span class="p">:</span> <span class="s1">&#39;chocolate&#39;</span><span class="p">,</span> <span class="s1">&#39;hair drier&#39;</span><span class="p">:</span> <span class="s1">&#39;sandybrown&#39;</span><span class="p">,</span> <span class="s1">&#39;cell phone&#39;</span><span class="p">:</span> <span class="s1">&#39;sienna&#39;</span><span class="p">,</span> <span class="s1">&#39;sink&#39;</span><span class="p">:</span> <span class="s1">&#39;coral&#39;</span><span class="p">,</span> <span class="s1">&#39;bench&#39;</span><span class="p">:</span> <span class="s1">&#39;salmon&#39;</span><span class="p">,</span> <span class="s1">&#39;bottle&#39;</span><span class="p">:</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="s1">&#39;silver&#39;</span><span class="p">,</span> <span class="s1">&#39;bowl&#39;</span><span class="p">:</span> <span class="s1">&#39;maroon&#39;</span><span class="p">,</span> <span class="s1">&#39;tennis racket&#39;</span><span class="p">:</span> <span class="s1">&#39;palevilotered&#39;</span><span class="p">,</span> <span class="s1">&#39;airplane&#39;</span><span class="p">:</span> <span class="s1">&#39;lavenderblush&#39;</span><span class="p">,</span> <span class="s1">&#39;pizza&#39;</span><span class="p">:</span> <span class="s1">&#39;hotpink&#39;</span><span class="p">,</span> <span class="s1">&#39;umbrella&#39;</span><span class="p">:</span> <span class="s1">&#39;deeppink&#39;</span><span class="p">,</span> <span class="s1">&#39;bear&#39;</span><span class="p">:</span> <span class="s1">&#39;plum&#39;</span><span class="p">,</span> <span class="s1">&#39;fork&#39;</span><span class="p">:</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;laptop&#39;</span><span class="p">:</span> <span class="s1">&#39;indigo&#39;</span><span class="p">,</span> <span class="s1">&#39;vase&#39;</span><span class="p">:</span> <span class="s1">&#39;mediumpurple&#39;</span><span class="p">,</span> <span class="s1">&#39;baseball glove&#39;</span><span class="p">:</span> <span class="s1">&#39;slateblue&#39;</span><span class="p">,</span> <span class="s1">&#39;traffic light&#39;</span><span class="p">:</span> <span class="s1">&#39;mediumblue&#39;</span><span class="p">,</span> <span class="s1">&#39;bed&#39;</span><span class="p">:</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;broccoli&#39;</span><span class="p">:</span> <span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="s1">&#39;backpack&#39;</span><span class="p">:</span> <span class="s1">&#39;slategray&#39;</span><span class="p">,</span> <span class="s1">&#39;snowboard&#39;</span><span class="p">:</span> <span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;kite&#39;</span><span class="p">:</span> <span class="s1">&#39;cadetblue&#39;</span><span class="p">,</span> <span class="s1">&#39;teddy bear&#39;</span><span class="p">:</span> <span class="s1">&#39;peacock&#39;</span><span class="p">,</span> <span class="s1">&#39;clock&#39;</span><span class="p">:</span> <span class="s1">&#39;lightcyan&#39;</span><span class="p">,</span> <span class="s1">&#39;wine glass&#39;</span><span class="p">:</span> <span class="s1">&#39;teal&#39;</span><span class="p">,</span> <span class="s1">&#39;frisbee&#39;</span><span class="p">:</span> <span class="s1">&#39;aquamarine&#39;</span><span class="p">,</span> <span class="s1">&#39;donut&#39;</span><span class="p">:</span> <span class="s1">&#39;mincream&#39;</span><span class="p">,</span> <span class="s1">&#39;suitcase&#39;</span><span class="p">:</span> <span class="s1">&#39;seagreen&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">:</span> <span class="s1">&#39;springgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span> <span class="s1">&#39;emeraldgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="s1">&#39;honeydew&#39;</span><span class="p">,</span> <span class="s1">&#39;surfboard&#39;</span><span class="p">:</span> <span class="s1">&#39;palegreen&#39;</span><span class="p">,</span> <span class="s1">&#39;cake&#39;</span><span class="p">:</span> <span class="s1">&#39;sapgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;book&#39;</span><span class="p">:</span> <span class="s1">&#39;lawngreen&#39;</span><span class="p">,</span> <span class="s1">&#39;potted plant&#39;</span><span class="p">:</span> <span class="s1">&#39;greenyellow&#39;</span><span class="p">,</span> <span class="s1">&#39;toaster&#39;</span><span class="p">:</span> <span class="s1">&#39;ivory&#39;</span><span class="p">,</span> <span class="s1">&#39;stop sign&#39;</span><span class="p">:</span> <span class="s1">&#39;beige&#39;</span><span class="p">,</span> <span class="s1">&#39;couch&#39;</span><span class="p">:</span> <span class="s1">&#39;khaki&#39;</span><span class="p">}</span>
+
+
+<span class="n">resized</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">forSecond</span><span class="p">(</span><span class="n">frame2_number</span><span class="p">,</span> <span class="n">output_arrays</span><span class="p">,</span> <span class="n">count_arrays</span><span class="p">,</span> <span class="n">average_count</span><span class="p">,</span> <span class="n">returned_frame</span><span class="p">):</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+
+    <span class="n">this_colors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">eachItem</span> <span class="ow">in</span> <span class="n">average_count</span><span class="p">:</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">eachItem</span> <span class="o">+</span> <span class="s2">&quot; = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">average_count</span><span class="p">[</span><span class="n">eachItem</span><span class="p">]))</span>
+        <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">average_count</span><span class="p">[</span><span class="n">eachItem</span><span class="p">])</span>
+        <span class="n">this_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">color_index</span><span class="p">[</span><span class="n">eachItem</span><span class="p">])</span>
+
+    <span class="k">global</span> <span class="n">resized</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">resized</span> <span class="o">==</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">manager</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_current_fig_manager</span><span class="p">()</span>
+        <span class="n">manager</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+        <span class="n">resized</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Second : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">frame_number</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">returned_frame</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Analysis: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">frame_number</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">this_colors</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%1.1f%%</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+
+
+<span class="n">video_detector</span> <span class="o">=</span> <span class="n">VideoObjectDetection</span><span class="p">()</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">setModelTypeAsYOLOv3</span><span class="p">()</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;yolo.h5&quot;</span><span class="p">))</span>
+<span class="n">video_detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">video_detector</span><span class="o">.</span><span class="n">detectObjectsFromVideo</span><span class="p">(</span><span class="n">input_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;traffic.mp4&quot;</span><span class="p">),</span> <span class="n">output_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;video_second_analysis&quot;</span><span class="p">)</span> <span class="p">,</span>  <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">per_second_function</span><span class="o">=</span><span class="n">forSecond</span><span class="p">,</span>  <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">return_detected_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">log_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p class="attribution">&mdash;<em>parameter</em> <strong>per_minute_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every frame of the video that is detected, the function which was parsed into the parameter will be executed and analytical data of the video  will be parsed into the function. The data returned has the same nature as the <strong>per_second_function</strong> ; the difference is that it covers all the frames in the past 1 minute of the video.</p>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><p>See a sample funtion for this parameter below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">forMinute</span><span class="p">(</span><span class="n">minute_number</span><span class="p">,</span> <span class="n">output_arrays</span><span class="p">,</span> <span class="n">count_arrays</span><span class="p">,</span> <span class="n">average_output_count</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MINUTE : &quot;</span><span class="p">,</span> <span class="n">minute_number</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array for the outputs of each frame &quot;</span><span class="p">,</span> <span class="n">output_arrays</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array for output count for unique objects in each frame : &quot;</span><span class="p">,</span> <span class="n">count_arrays</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output average count for unique objects in the last minute: &quot;</span><span class="p">,</span> <span class="n">average_output_count</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------END OF A MINUTE --------------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p class="attribution">&mdash;<em>parameter</em> <strong>video_complete_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Once all the frames in the video is fully detected, the function will was parsed into the parameter will be executed and analytical data of the video  will be parsed into the function. The data returned has the same nature as the <strong>per_second_function</strong> and <strong>per_minute_function</strong> ; the differences are that no index will be returned and it covers all the frames in the entire video.</p>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><p>See a sample funtion for this parameter below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">forFull</span><span class="p">(</span><span class="n">output_arrays</span><span class="p">,</span> <span class="n">count_arrays</span><span class="p">,</span> <span class="n">average_output_count</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array for the outputs of each frame &quot;</span><span class="p">,</span> <span class="n">output_arrays</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array for output count for unique objects in each frame : &quot;</span><span class="p">,</span> <span class="n">count_arrays</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output average count for unique objects in the entire video: &quot;</span><span class="p">,</span> <span class="n">average_output_count</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------END OF THE VIDEO --------------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../custom/index.html" class="btn btn-neutral float-right" title="Custom Training and Prediction Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../detection/index.html" class="btn btn-neutral" title="Detection Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Moses Olafenwa and John Olafenwa.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.0.2',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
