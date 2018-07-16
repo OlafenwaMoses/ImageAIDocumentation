@@ -16,7 +16,7 @@ The Official GitHub Repository of **ImageAI** is `https://github.com/OlafenwaMos
 We are also working on adding new features to ImageAI soon, Including support for Android, iOS and .NET platforms with all the features contained. Kindly visit the Indiegogo Campaign project via link below to provide any support you can to make this possible.
 
 
-`AI Commons <https://igg.me/at/imageai/>`_
+`Click here to support ImageAI on Indiegogo <https://igg.me/at/imageai/>`_
 
 
 .. figure:: image1.jpg
