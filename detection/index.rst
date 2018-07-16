@@ -20,11 +20,11 @@ This **ObjectDetection** class provides you function to perform object detection
 the **COCO** dataset. The models supported are **RetinaNet**, **YOLOv3** and **TinyYOLOv3**. This means you can detect and recognize 80 different kind of 
 common everyday objects. To get started, download any of the pre-trained model that you want to use via the links below.
 
-`Download RetinaNet Model <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download RetinaNet Model - resnet50_coco_best_v2.0.1.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
 
-`Download YOLOv3 Model <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download YOLOv3 Model - yolo.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
 
-`Download TinyYOLOv3 Model <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download TinyYOLOv3 Model - yolo-tiny.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
 
 
 
