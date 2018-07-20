@@ -13,10 +13,6 @@ This documentation is provided to provide detailed insight into all the classes 
 The Official GitHub Repository of **ImageAI** is `https://github.com/OlafenwaMoses/ImageAI <https://github.com/OlafenwaMoses/ImageAI />`_
 
 
-We are also working on adding new features to ImageAI soon, Including support for Android, iOS and .NET platforms with all the features contained. Kindly visit the Indiegogo Campaign project via link below to provide any support you can to make this possible.
-
-
-`Click here to support ImageAI on Indiegogo <https://igg.me/at/imageai/>`_
 
 
 .. figure:: image1.jpg
