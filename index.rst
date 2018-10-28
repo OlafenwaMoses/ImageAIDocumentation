@@ -7,7 +7,7 @@ Official English Documentation for ImageAI!
 ===========================================
 **ImageAI** is a python library built to empower developers, reseachers and students to build applications and systems with self-contained Deep Learning and Computer Vision capabilities using simple and few lines of code.
 This documentation is provided to provide detailed insight into all the classes and functions available in **ImageAI**, coupled with a number of code examples.
-**ImageAI** is a project developed by `Moses Olafenwa <https://moses.specpal.science/>`_ and `John Olafenwa <https://john.specpal.science/>`_ , the `AI Commons <https://commons.specpal.science/>`_ team. 
+**ImageAI** is a project developed by `Moses Olafenwa <https://moses.aicommons.science/>`_ and `John Olafenwa <https://john.specpal.science/>`_ , the `DeepQuest AI <https://www.deepquestai.com/>`_ team. 
 
 
 The Official GitHub Repository of **ImageAI** is `https://github.com/OlafenwaMoses/ImageAI <https://github.com/OlafenwaMoses/ImageAI />`_
