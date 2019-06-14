@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Detection Classes &mdash; ImageAI 2.0.2 documentation</title>
+  <title>Detection Classes &mdash; ImageAI 2.0.3 documentation</title>
   
 
   
@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Video and Live-Feed Detection and Analysis" href="../video/index.html" />
     <link rel="prev" title="Prediction Classes" href="../prediction/index.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -156,10 +158,8 @@
             
   <div class="section" id="detection-classes">
 <h1>Detection Classes<a class="headerlink" href="#detection-classes" title="Permalink to this headline">¶</a></h1>
-<dl class="docutils">
-<dt><strong>ImageAI</strong> provided very powerful yet easy to use classes and functions to perform ** Image Object Detection and Extraction**.</dt>
-<dd><strong>ImageAI</strong> allows you to perform all of these with state-of-the-art deep learning algorithms like <strong>RetinaNet</strong>, <strong>YOLOv3</strong> and <strong>TinyYOLOv3</strong>. With <strong>ImageAI</strong> you can run detection tasks and analyse images.</dd>
-</dl>
+<p><strong>ImageAI</strong> provides very powerful yet easy to use classes and functions to perform <strong>Image Object Detection and Extraction</strong>.</p>
+<p><strong>ImageAI</strong> allows you to perform all of these with state-of-the-art deep learning algorithms like <strong>RetinaNet</strong>, <strong>YOLOv3</strong> and <strong>TinyYOLOv3</strong>. With <strong>ImageAI</strong> you can run detection tasks and analyse images.</p>
 <p>Find below the classes and their respective functions available for you to use.
 These classes can be integrated into any traditional python program you are developing, be it a website, Windows/Linux/MacOS application or a system
 that supports or part of a Local-Area-Network.</p>
@@ -167,9 +167,9 @@ that supports or part of a Local-Area-Network.</p>
 <p>This <strong>ObjectDetection</strong> class provides you function to perform object detection on any image or set of images, using <strong>pre-trained</strong> models that was trained on
 the <strong>COCO</strong> dataset. The models supported are <strong>RetinaNet</strong>, <strong>YOLOv3</strong> and <strong>TinyYOLOv3</strong>. This means you can detect and recognize 80 different kind of
 common everyday objects. To get started, download any of the pre-trained model that you want to use via the links below.</p>
-<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download RetinaNet Model</a></p>
-<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download YOLOv3 Model</a></p>
-<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download TinyYOLOv3 Model</a></p>
+<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download RetinaNet Model - resnet50_coco_best_v2.0.1.h5</a></p>
+<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download YOLOv3 Model - yolo.h5</a></p>
+<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download TinyYOLOv3 Model - yolo-tiny.h5</a></p>
 <p>Once you have downloaded the model of your choice, you should create a new instance of the <strong>ObjectDetection</strong> class as seen in the sample below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">ObjectDetection</span>
 
@@ -353,7 +353,7 @@ common everyday objects. To get started, download any of the pre-trained model t
         <a href="../video/index.html" class="btn btn-neutral float-right" title="Video and Live-Feed Detection and Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../prediction/index.html" class="btn btn-neutral" title="Prediction Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../prediction/index.html" class="btn btn-neutral float-left" title="Prediction Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -362,7 +362,7 @@ common everyday objects. To get started, download any of the pre-trained model t
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Moses Olafenwa and John Olafenwa.
+        &copy; Copyright 2019, Moses Olafenwa and John Olafenwa
 
     </p>
   </div>
@@ -379,33 +379,16 @@ common everyday objects. To get started, download any of the pre-trained model t
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2.0.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

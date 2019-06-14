@@ -108,13 +108,16 @@ Once you have created an instance above, you can use the functions below to set 
  -- *parameter* **show_network_summary** (optional) : This paramter when set to True displays the structure of the algorithm you are training on your image dataset in the CLI before training starts. It is set to False by default.
  
  -- *parameter* **initial_learning_rate** (optional) : This parameter is a highly technical value. It determines and control the behaviour of your training which is critical to the accuracy that can be achieved. Change this parameter's value only if you understand its function fully.
+ 
+ -- *parameter* **training_image_size** (optional) : This is the size at which the images in your image dataset will be trained, irrespective of their original sizes. The default value is 224 and must not be set to less than 100. Increasing this value increases accuracy but increases training time, and vice-versa.
 
- -- *parameter* **initial_learning_rate** (optional) : This parameter is a highly technical value. It determines and control the behaviour of your training which is critical to the accuracy that can be achieved. Change this parameter's value only if you understand its function fully.
+ -- *parameter* **continue_from_model** (optional) : This is used to set the path to a model file trained on the same dataset. It is primarily for continuos training from a previously saved model.
+ 
+ -- *parameter* **transfer_from_model** (optional) : This is used to set the path to a model file trained on another dataset. It is primarily used to perform tramsfer learning.
 
- -- *training_image_size* **initial_learning_rate** (optional) : This is the size at which the images in your image dataset will be trained, irrespective of their original sizes. The default value is 224 and must not be set to less than 100. Increasing this value increases accuracy but increases training time, and vice-versa.
+ -- *parameter* **transfer_with_full_training** (optional) : This is used to set the pre-trained model to be re-trained across all the layers or only at the top layers.
 
-
-
+ -- *parameter* **save_full_model** ( optional ): This is used to save the trained models with their network types. Any model saved by this specification can be loaded without specifying the network type.
 
 **Sample Code for Custom Model Training**
 
@@ -226,9 +229,38 @@ objects in images.
 
  -- *parameter* **num_objects** (required) : This must be set to the number of classes in your image dataset.
 
--- *parameter* **prediction_speed** (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster" and "fastest". The default values is "normal"
+ -- *parameter* **prediction_speed** (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster" and "fastest". The default values is "normal"
 
 
+* **.loadFullModel()** , This function is used to load the model structure into the program from the file path defined
+        in the setModelPath() function. As opposed to the 'loadModel()' function, you don't need to specify the model type. This means you can load any Keras model trained with or without ImageAI and perform image prediction ::
+        
+        prediction.loadFullModel(num_objects=4)
+
+ -- *parameter* **prediction_speed** (optional) : Acceptable values are "normal", "fast", "faster" and "fastest".
+
+ -- *parameter* **num_objects** (required) : The number of objects the model is trained to recognize.
+
+
+* **.save_model_to_tensorflow()** , This function allows you to save your loaded Keras (.h5) model and save it to the Tensorflow (.pb) model format ::
+    
+    save_model_to_tensorflow(new_model_folder= os.path.join(execution_path, "tensorflow_model"), new_model_name="idenprof_resnet_tensorflow.pb")
+
+
+ -- *parameter* **new_model_folder** (required) : The path to the folder you want the converted Tensorflow model to be saved
+ 
+ -- *parameter* **new_model_name** (required): The desired filename for your converted Tensorflow model e.g 'my_new_model.pb'
+
+* **.save_model_for_deepstack()** , This ffunction allows you to save your loaded Keras (.h5) model and save it to the deployment format of DeepStack custom API. This function will save the model and the JSON file you need for the deployment ::
+    
+    save_model_for_deepstack(new_model_folder= os.path.join(execution_path, "deepstack_model"), new_model_name="idenprof_resnet_deepstack.h5")
+
+ -- *parameter* **new_model_folder** (required) : The path to the folder you want the converted Tensorflow model to be saved
+ 
+ -- *parameter* **new_model_name** (required): The desired filename for your converted Tensorflow model e.g 'my_new_model.pb'
+
+ -- *paramater* **new_model_folder** (required): The path to the folder you want the model to be saved
+ -- *parameter* **new_model_name** (required): The desired filename for your model e.g 'my_new_model.h5'
 
 * **.predictImage()** , This is the function that performs actual prediction of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below ::
 

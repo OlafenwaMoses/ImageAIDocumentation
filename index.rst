@@ -31,24 +31,11 @@ Installing ImageAI
 * **Tensorflow** 1.4.0 or higher ::
 
     pip3 install --upgrade tensorflow
-* **Numpy** 1.13.1 or higher ::
 
-    pip3 install numpy 
-* **SciPy** .19.1 or higher ::
-
-    pip3 install scipy 
 * **OpenCV** ::
 
     pip3 install opencv-python 
-* **Pillow** ::
 
-    pip3 install pillow 
-* **Matplotlib** ::
-
-    pip3 install matplotlib
-* **h5py** ::
-
-    pip3 install h5py
 * **Keras** ::
 
     pip3 install keras
@@ -56,7 +43,7 @@ Installing ImageAI
 Once you have these packages installed on your computer system, you should install **ImageAI** by running the pip command below.
 Installing **ImageAI** ::
 
-    pip3 install https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.2/imageai-2.0.2-py3-none-any.whl
+    pip3 install pip3 install https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.3/imageai-2.0.3-py3-none-any.whl
 
 
 Once **ImageAI** is installed, you can start running very few lines of code to perform very powerful computer visions tasks as seen below. 
@@ -75,7 +62,7 @@ Once **ImageAI** is installed, you can start running very few lines of code to p
 * minivan : 1.7487050965428352
 
 
-** Image Object Detection**
+**Image Object Detection**
 
 *Find all sample codes and documentation via links in the Content secton below this page.*
 

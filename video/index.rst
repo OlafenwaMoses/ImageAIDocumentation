@@ -391,6 +391,29 @@ Once you have created an instance of the class, you can call the functions below
             print("Output average count for unique objects in the entire video: ", average_output_count)
             print("------------END OF THE VIDEO --------------")
 
+ -- *parameter* **detection_timeout** (optional) :  This function allows you to state the number of seconds of a video that should be detected after which the detection function stop processing the video.
+ 
+    See a sample code for this parameter below::
+
+        from imageai.Detection import VideoObjectDetection
+        import os
+        import cv2
+
+        execution_path = os.getcwd()
+
+
+        camera = cv2.VideoCapture(0)
+
+        detector = VideoObjectDetection()
+        detector.setModelTypeAsRetinaNet()
+        detector.setModelPath(os.path.join(execution_path , "resnet50_coco_best_v2.0.1.h5"))
+        detector.loadModel()
+
+
+        video_path = detector.detectObjectsFromVideo(camera_input=camera,
+                                output_file_path=os.path.join(execution_path, "camera_detected_video")
+                                , frames_per_second=20, log_progress=True, minimum_percentage_probability=40, detection_timeout=120)
+
 
 
 

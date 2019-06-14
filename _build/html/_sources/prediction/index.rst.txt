@@ -14,6 +14,8 @@ that supports or part of a Local-Area-Network.
 
 
 
+
+
 **======= imageai.Prediction.ImagePrediction =======**
 
 The **ImagePrediction** class provides you the functions to use state-of-the-art image recognition models like **SqueezeNet**, **ResNet**, 

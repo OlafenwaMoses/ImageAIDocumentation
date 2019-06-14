@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Video and Live-Feed Detection and Analysis &mdash; ImageAI 2.0.2 documentation</title>
+  <title>Video and Live-Feed Detection and Analysis &mdash; ImageAI 2.0.3 documentation</title>
   
 
   
@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Custom Training and Prediction Classes" href="../custom/index.html" />
     <link rel="prev" title="Detection Classes" href="../detection/index.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -166,9 +168,9 @@ that supports or part of a Local-Area-Network.</p>
 <p>This <strong>VideoObjectDetection</strong> class provides you function to detect objects in videos and live-feed from device cameras and IP cameras, using <strong>pre-trained</strong> models that was trained on
 the <strong>COCO</strong> dataset. The models supported are <strong>RetinaNet</strong>, <strong>YOLOv3</strong> and <strong>TinyYOLOv3</strong>. This means you can detect and recognize 80 different kind of
 common everyday objects in any video. To get started, download any of the pre-trained model that you want to use via the links below.</p>
-<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download RetinaNet Model</a></p>
-<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download YOLOv3 Model</a></p>
-<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download TinyYOLOv3 Model</a></p>
+<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download RetinaNet Model - resnet50_coco_best_v2.0.1.h5</a></p>
+<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download YOLOv3 Model - yolo.h5</a></p>
+<p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download TinyYOLOv3 Model -  yolo-tiny.h5</a></p>
 <p>Once you have downloaded the model you chose to use, create an instance of the <strong>VideoObjectDetection</strong> as seen below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
 
@@ -528,6 +530,32 @@ common everyday objects in any video. To get started, download any of the pre-tr
 </pre></div>
 </div>
 </div></blockquote>
+<p class="attribution">&mdash;<em>parameter</em> <strong>detection_timeout</strong> (optional) :  This function allows you to state the number of seconds of a video that should be detected after which the detection function stop processing the video.</p>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><p>See a sample code for this parameter below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+
+<span class="n">camera</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">VideoObjectDetection</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsRetinaNet</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span> <span class="p">,</span> <span class="s2">&quot;resnet50_coco_best_v2.0.1.h5&quot;</span><span class="p">))</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
+
+
+<span class="n">video_path</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detectObjectsFromVideo</span><span class="p">(</span><span class="n">camera_input</span><span class="o">=</span><span class="n">camera</span><span class="p">,</span>
+                        <span class="n">output_file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span><span class="p">,</span> <span class="s2">&quot;camera_detected_video&quot;</span><span class="p">)</span>
+                        <span class="p">,</span> <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">log_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">detection_timeout</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
@@ -544,7 +572,7 @@ common everyday objects in any video. To get started, download any of the pre-tr
         <a href="../custom/index.html" class="btn btn-neutral float-right" title="Custom Training and Prediction Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../detection/index.html" class="btn btn-neutral" title="Detection Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../detection/index.html" class="btn btn-neutral float-left" title="Detection Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -553,7 +581,7 @@ common everyday objects in any video. To get started, download any of the pre-tr
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Moses Olafenwa and John Olafenwa.
+        &copy; Copyright 2019, Moses Olafenwa and John Olafenwa
 
     </p>
   </div>
@@ -570,33 +598,16 @@ common everyday objects in any video. To get started, download any of the pre-tr
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2.0.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

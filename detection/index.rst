@@ -5,8 +5,10 @@
 
 Detection Classes
 =================
-**ImageAI** provided very powerful yet easy to use classes and functions to perform ** Image Object Detection and Extraction**.
- **ImageAI** allows you to perform all of these with state-of-the-art deep learning algorithms like **RetinaNet**, **YOLOv3** and **TinyYOLOv3**. With **ImageAI** you can run detection tasks and analyse images.
+**ImageAI** provides very powerful yet easy to use classes and functions to perform **Image Object Detection and Extraction**.
+
+
+**ImageAI** allows you to perform all of these with state-of-the-art deep learning algorithms like **RetinaNet**, **YOLOv3** and **TinyYOLOv3**. With **ImageAI** you can run detection tasks and analyse images.
 
 Find below the classes and their respective functions available for you to use.
 These classes can be integrated into any traditional python program you are developing, be it a website, Windows/Linux/MacOS application or a system 
