@@ -43,7 +43,7 @@ Installing ImageAI
 Once you have these packages installed on your computer system, you should install **ImageAI** by running the pip command below.
 Installing **ImageAI** ::
 
-    pip3 install pip3 install https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.3/imageai-2.0.3-py3-none-any.whl
+    pip3 install https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.3/imageai-2.0.3-py3-none-any.whl
 
 
 Once **ImageAI** is installed, you can start running very few lines of code to perform very powerful computer visions tasks as seen below. 
