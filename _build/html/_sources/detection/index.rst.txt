@@ -5,6 +5,9 @@
 
 Detection Classes
 =================
+
+.. figure:: ../image1.jpg
+
 **ImageAI** provides very powerful yet easy to use classes and functions to perform **Image Object Detection and Extraction**.
 
 
@@ -87,8 +90,10 @@ Once you have created an instance of the class, you can use the functions below 
 
  -- *parameter* **extract_detected_objects** (optional ) :  This parameter can be used to extract and save/return each object detected in an image as a seperate image. The default values is False.
 
+ -- *parameter* **thread_safe** (optional) : This ensures the loaded detection model works across all threads if set to true.
+
  
- -- *returns* :  The returned values will depend on the parameters parsed into the **detectObjectsFromImage()** function. See the comments and code below::
+ -- *returns* :  The returned values will depend on the parameters parsed into the **detectObjectsFromImage()** function. See the comments and code below
                 
         """
             If all required parameters are set and 'output_image_path' is set to a file path you want the detected image to be saved, the function will return:
@@ -110,7 +115,7 @@ Once you have created an instance of the class, you can use the functions below 
                 detected in the image. Each dictionary contains the following property:
                     * name (string)
                     * percentage_probability (float)
-                    * box_points (tuple of x1,y1,x2 and y2 coordinates)
+                    * box_points (list of x1,y1,x2 and y2 coordinates)
         """
         returned_image, detections = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", minimum_percentage_probability=30)
 
@@ -122,7 +127,7 @@ Once you have created an instance of the class, you can use the functions below 
                     detected in the image. Each dictionary contains the following property:
                     * name (string)
                     * percentage_probability (float)
-                    * box_points (tuple of x1,y1,x2 and y2 coordinates)
+                    * box_points (list of x1,y1,x2 and y2 coordinates)
                 2. an array of string paths to the image of each object extracted from the image
         """
         detections, extracted_objects = detector.detectObjectsFromImage(input_image="image.jpg", output_image_path="imagenew.jpg", extract_detected_objects=True, minimum_percentage_probability=30)
@@ -135,7 +140,7 @@ Once you have created an instance of the class, you can use the functions below 
                     detected in the image. Each dictionary contains the following property:
                     * name (string)
                     * percentage_probability (float)
-                    * box_points (tuple of x1,y1,x2 and y2 coordinates)
+                    * box_points (list of x1,y1,x2 and y2 coordinates)
                 3. an array of numpy arrays of each object detected in the image
         """
         returned_image, detections, extracted_objects = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", extract_detected_objects=True, minimum_percentage_probability=30)
@@ -193,10 +198,6 @@ Find below a code sample for detecting objects in an image::
     for eachObject in detections:
         print(eachObject["name"] , " : ", eachObject["percentage_probability"], " : ", eachObject["box_points"] )
         print("--------------------------------")
-
-
-
-
 
 
 

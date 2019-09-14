@@ -40,17 +40,16 @@ Installing ImageAI
 
     pip3 install keras
 
-Once you have these packages installed on your computer system, you should install **ImageAI** by running the pip command below.
-Installing **ImageAI** ::
+* **ImageAI** ::
 
-    pip3 install https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.3/imageai-2.0.3-py3-none-any.whl
+    pip3 install imageai --upgrade
 
 
 Once **ImageAI** is installed, you can start running very few lines of code to perform very powerful computer visions tasks as seen below. 
 
 **Image Recognition**
 
-*Find all sample codes and documentation via links in the Content secton below this page.*
+*Recognize 1000 different objects in images*
 
 .. figure:: image2.jpg
    :align:  center
@@ -62,38 +61,56 @@ Once **ImageAI** is installed, you can start running very few lines of code to p
 * minivan : 1.7487050965428352
 
 
+`Visit Documentation <prediction>`_
+
+
 **Image Object Detection**
 
-*Find all sample codes and documentation via links in the Content secton below this page.*
+*Detect 80 most common everyday objects in images.*
 
 .. figure:: image3.jpg
    :align:  center
 
 
+`Visit Documentation <detection>`_
+
 
 **Video Object Detection**
 
-*Find all sample codes and documentation via links in the Content secton below this page.*
+*Detect 80 most common everyday objects in videos.*
 
 .. figure:: image4.gif
    :align:  center
 
+`Visit Documentation <video>`_
 
 **Video Detection Analysis**
 
-*Find all sample codes and documentation via links in the Content secton below this page.*
+*Generate time based analysis of objects detected in videos.*
 
 .. figure:: image5.gif
    :align:  center
 
+`Visit Documentation <video>`_
 
 **Custom Image Recognition Training and Inference**
 
-*Find all sample codes and documentation via links in the Content secton below this page.*
+*Train new image new deep learning models on recognize custom objects*
 
 .. figure:: image6.jpg
    :align:  center
 
+
+`Visit Documentation <custom>`_
+
+**Custom Objects Detection Training and Inference**
+
+*Train new YOLOv3 models to detect custom objects*
+
+.. figure:: image7.jpg
+   :align:  center
+
+`Visit Documentation <customdetection>`_
 
 Follow the links in the **Content** section below to see all the code samples and full documentation of available classes and functions.
 
@@ -109,6 +126,7 @@ Follow the links in the **Content** section below to see all the code samples an
    detection/index
    video/index
    custom/index
+   customdetection/index
 
 
 Indices and tables

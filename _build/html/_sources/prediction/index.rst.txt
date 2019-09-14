@@ -3,8 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
+
 Prediction Classes
 ==================
+
+.. figure:: ../image2.jpg
+
 **ImageAI** provides very powerful yet easy to use classes to perform **Image Recognition** tasks. 
 You can perform all of these state-of-the-art computer vision tasks with python code
 that ranges between just 5 lines to 12 lines. Once you have Python, other dependencies and **ImageAI** installed on your computer system,

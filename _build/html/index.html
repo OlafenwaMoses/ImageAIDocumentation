@@ -88,7 +88,8 @@
 <li class="toctree-l1"><a class="reference internal" href="prediction/index.html">Prediction Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="detection/index.html">Detection Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="video/index.html">Video and Live-Feed Detection and Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="custom/index.html">Custom Training and Prediction Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom/index.html">Custom Training: Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customdetection/index.html">Custom Object Detection: Training and Inference</a></li>
 </ul>
 
             
@@ -160,7 +161,7 @@ This documentation is provided to provide detailed insight into all the classes 
 <strong>ImageAI</strong> is a project developed by <a class="reference external" href="https://moses.aicommons.science/">Moses Olafenwa</a> and <a class="reference external" href="https://john.aicommons.science/">John Olafenwa</a> , the <a class="reference external" href="https://www.deepquestai.com/">DeepQuest AI</a> team.</p>
 <p>The Official GitHub Repository of <strong>ImageAI</strong> is <a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/">https://github.com/OlafenwaMoses/ImageAI</a></p>
 <div class="figure align-center">
-<img alt="_images/image1.jpg" src="_images/image1.jpg" />
+<img alt="_images/image11.jpg" src="_images/image11.jpg" />
 </div>
 </div>
 <div class="section" id="installing-imageai">
@@ -186,15 +187,15 @@ This documentation is provided to provide detailed insight into all the classes 
 </pre></div>
 </div>
 </li>
-</ul>
-<p>Once you have these packages installed on your computer system, you should install <strong>ImageAI</strong> by running the pip command below.
-Installing <strong>ImageAI</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">OlafenwaMoses</span><span class="o">/</span><span class="n">ImageAI</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">2.0</span><span class="o">.</span><span class="mi">3</span><span class="o">/</span><span class="n">imageai</span><span class="o">-</span><span class="mf">2.0</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="nb">any</span><span class="o">.</span><span class="n">whl</span>
+<li><p class="first"><strong>ImageAI</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">imageai</span> <span class="o">--</span><span class="n">upgrade</span>
 </pre></div>
 </div>
+</li>
+</ul>
 <p>Once <strong>ImageAI</strong> is installed, you can start running very few lines of code to perform very powerful computer visions tasks as seen below.</p>
 <p><strong>Image Recognition</strong></p>
-<p><em>Find all sample codes and documentation via links in the Content secton below this page.</em></p>
+<p><em>Recognize 1000 different objects in images</em></p>
 <div class="figure align-center">
 <img alt="_images/image2.jpg" src="_images/image2.jpg" />
 </div>
@@ -205,26 +206,37 @@ Installing <strong>ImageAI</strong></p>
 <li>car_wheel : 1.817505806684494</li>
 <li>minivan : 1.7487050965428352</li>
 </ul>
+<p><a class="reference external" href="prediction">Visit Documentation</a></p>
 <p><strong>Image Object Detection</strong></p>
-<p><em>Find all sample codes and documentation via links in the Content secton below this page.</em></p>
+<p><em>Detect 80 most common everyday objects in images.</em></p>
 <div class="figure align-center">
 <img alt="_images/image3.jpg" src="_images/image3.jpg" />
 </div>
+<p><a class="reference external" href="detection">Visit Documentation</a></p>
 <p><strong>Video Object Detection</strong></p>
-<p><em>Find all sample codes and documentation via links in the Content secton below this page.</em></p>
+<p><em>Detect 80 most common everyday objects in videos.</em></p>
 <div class="figure align-center">
 <img alt="_images/image4.gif" src="_images/image4.gif" />
 </div>
+<p><a class="reference external" href="video">Visit Documentation</a></p>
 <p><strong>Video Detection Analysis</strong></p>
-<p><em>Find all sample codes and documentation via links in the Content secton below this page.</em></p>
+<p><em>Generate time based analysis of objects detected in videos.</em></p>
 <div class="figure align-center">
 <img alt="_images/image5.gif" src="_images/image5.gif" />
 </div>
+<p><a class="reference external" href="video">Visit Documentation</a></p>
 <p><strong>Custom Image Recognition Training and Inference</strong></p>
-<p><em>Find all sample codes and documentation via links in the Content secton below this page.</em></p>
+<p><em>Train new image new deep learning models on recognize custom objects</em></p>
 <div class="figure align-center">
-<img alt="_images/image6.jpg" src="_images/image6.jpg" />
+<img alt="_images/image61.jpg" src="_images/image61.jpg" />
 </div>
+<p><a class="reference external" href="custom">Visit Documentation</a></p>
+<p><strong>Custom Objects Detection Training and Inference</strong></p>
+<p><em>Train new YOLOv3 models to detect custom objects</em></p>
+<div class="figure align-center">
+<img alt="_images/image71.jpg" src="_images/image71.jpg" />
+</div>
+<p><a class="reference external" href="customdetection">Visit Documentation</a></p>
 <p>Follow the links in the <strong>Content</strong> section below to see all the code samples and full documentation of available classes and functions.</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
@@ -238,7 +250,10 @@ Installing <strong>ImageAI</strong></p>
 <li class="toctree-l1"><a class="reference internal" href="video/index.html">Video and Live-Feed Detection and Analysis</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="custom/index.html">Custom Training and Prediction Classes</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="custom/index.html">Custom Training: Prediction</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="customdetection/index.html">Custom Object Detection: Training and Inference</a><ul class="simple">
 </ul>
 </li>
 </ul>

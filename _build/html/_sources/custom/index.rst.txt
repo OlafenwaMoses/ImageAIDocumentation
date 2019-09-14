@@ -3,8 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Custom Training and Prediction Classes
+Custom Training: Prediction
 ======================================
+
+.. figure:: ../image6.jpg
+
 **ImageAI** provides very powerful yet easy to use classes to train state-of-the-art deep learning algorithms like **SqueezeNet** , **ResNet**
 , **InceptionV3** and **DenseNet** on your own image datasets using as few as **5 lines of code** to generate your own custom models .
 Once you have trained your own custom model, you can use the **CustomImagePrediction** class provided by **ImageAI** to use your own models to recognize/predict 
@@ -89,7 +92,15 @@ Once you have created an instance above, you can use the functions below to set 
 
     prediction.setDataDirectory(r"C:/Users/Moses/Documents/Moses/AI/Custom Datasets/pets")
 
- -- *parameter* **data_directory** (required) : This is the path to the folder that comtaims your image dataset.
+ -- *parameter* **data_directory** (required) : This is the path to the folder that contains your image dataset.
+
+ -- *parameter* **train_subdirectory** (optional) : This is the path to the train folder of your dataset.
+
+ -- *parameter* **test_subdirectory** (optional) : This is the path to the test folder of your dataset.
+
+ -- *parameter* **model_subdirectory** (optional) : This is the path to the folder in which your trained models will be saved.
+
+ -- *parameter* **json_subdirectory** (optional) : This is the path to the folder in which the JSON file for your trained models is saved.
 
 
 * **.trainModel()** , This is the function that starts the training process. Once it starts, it will create a JSON file in the **dataset/json** folder (e.g **pets/json**) which contains the mapping of the classes of the dataset. The JSON file  will be used during custom prediction to produce reults. Find exmaple code below ::
@@ -232,8 +243,8 @@ objects in images.
  -- *parameter* **prediction_speed** (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster" and "fastest". The default values is "normal"
 
 
-* **.loadFullModel()** , This function is used to load the model structure into the program from the file path defined
-        in the setModelPath() function. As opposed to the 'loadModel()' function, you don't need to specify the model type. This means you can load any Keras model trained with or without ImageAI and perform image prediction ::
+* **.loadFullModel()**, This function is used to load the model structure into the program from the file path defined
+in the setModelPath() function. As opposed to the 'loadModel()' function, you don't need to specify the model type. This means you can load any Keras model trained with or without ImageAI and perform image prediction ::
         
         prediction.loadFullModel(num_objects=4)
 
@@ -272,6 +283,8 @@ objects in images.
 
  -- *parameter* **input_type** (optional) : This refers to the type of input you are parse into the **image_input** parameter. It is "file" by default and it accepts "array" and "stream" as well.
 
+ -- *parameter* **thread_safe** (optional) : This ensures the loaded detection model works across all threads if set to true.
+
 
  -- *returns* **prediction_results** (a python list) : The first value returned by the **predictImage** function is a list that contains all the possible prediction results. The results are arranged in descending order of the percentage probability.
 
@@ -293,6 +306,9 @@ objects in images.
   -- *parameter* **result_count_per_image** (optional) : This refers to the number of possible predictions that should be returned for each of the images. The parameter is set to 2 by default.
 
   -- *parameter* **input_type** (optional) : This refers to the format in which your images are in the list you parsed into the **sent_images_array** parameter. It is "file" by default and it accepts "array" and "stream" as well.
+
+  -- *parameter* **thread_safe** (optional) : This ensures the loaded detection model works across all threads if set to true.
+
 
 
   -- *returns* **output_array** (a python list) : The value returned by the **predictMultipleImages** function is a list that contains dictionaries. Each dictionary correspondes
@@ -319,10 +335,6 @@ Find below sample code for custom prediction ::
 
     for eachPrediction, eachProbability in zip(predictions, probabilities):
         print(eachPrediction , " : " , eachProbability)
-
-
-
-
 
 
 

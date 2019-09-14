@@ -5,6 +5,9 @@
 
 Video and Live-Feed Detection and Analysis
 ==========================================
+
+.. figure:: ../image4.gif
+
 **ImageAI** provided very powerful yet easy to use classes and functions to perform  **Video Object Detection and Tracking**
 and **Video analysis**. **ImageAI** allows you to perform all of these with state-of-the-art deep learning algorithms like **RetinaNet**, **YOLOv3** and **TinyYOLOv3**.
 With **ImageAI** you can run detection tasks and analyse videos and live-video feeds from device cameras and IP cameras.

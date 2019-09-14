@@ -21,12 +21,12 @@
 
 project = 'ImageAI'
 copyright = '2019, Moses Olafenwa and John Olafenwa'
-author = '"Moses Olafenwa" "John Olafenw"'
+author = '"Moses Olafenwa" "John Olafenwa"'
 
 # The short X.Y version
-version = '2.0'
+version = '3.0'
 # The full version, including alpha/beta/rc tags
-release = '2.0.3'
+release = '2.1.5'
 
 
 # -- General configuration ---------------------------------------------------

@@ -91,7 +91,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../video/index.html">Video and Live-Feed Detection and Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../custom/index.html">Custom Training and Prediction Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../custom/index.html">Custom Training: Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customdetection/index.html">Custom Object Detection: Training and Inference</a></li>
 </ul>
 
             
@@ -158,6 +159,9 @@
             
   <div class="section" id="detection-classes">
 <h1>Detection Classes<a class="headerlink" href="#detection-classes" title="Permalink to this headline">¶</a></h1>
+<div class="figure">
+<img alt="../_images/image1.jpg" src="../_images/image1.jpg" />
+</div>
 <p><strong>ImageAI</strong> provides very powerful yet easy to use classes and functions to perform <strong>Image Object Detection and Extraction</strong>.</p>
 <p><strong>ImageAI</strong> allows you to perform all of these with state-of-the-art deep learning algorithms like <strong>RetinaNet</strong>, <strong>YOLOv3</strong> and <strong>TinyYOLOv3</strong>. With <strong>ImageAI</strong> you can run detection tasks and analyse images.</p>
 <p>Find below the classes and their respective functions available for you to use.
@@ -235,58 +239,101 @@ common everyday objects. To get started, download any of the pre-trained model t
 <p class="attribution">&mdash;<em>parameter</em> <strong>extract_detected_objects</strong> (optional ) :  This parameter can be used to extract and save/return each object detected in an image as a seperate image. The default values is False.</p>
 </div></blockquote>
 <blockquote>
-<div><p>– <em>returns</em> :  The returned values will depend on the parameters parsed into the <strong>detectObjectsFromImage()</strong> function. See the comments and code below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    If all required parameters are set and &#39;output_image_path&#39; is set to a file path you want the detected image to be saved, the function will return:</span>
-
-<span class="sd">    1. an array of dictionaries, with each dictionary corresponding to the objects</span>
-<span class="sd">        detected in the image. Each dictionary contains the following property:</span>
-<span class="sd">            * name (string)</span>
-<span class="sd">            * percentage_probability (float)</span>
-<span class="sd">            * box_points (tuple of x1,y1,x2 and y2 coordinates)</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="n">detections</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detectObjectsFromImage</span><span class="p">(</span><span class="n">input_image</span><span class="o">=</span><span class="s2">&quot;image.jpg&quot;</span><span class="p">,</span> <span class="n">output_image_path</span><span class="o">=</span><span class="s2">&quot;imagenew.jpg&quot;</span><span class="p">,</span> <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    If all required parameters are set and output_type = &#39;array&#39; ,the function will return</span>
-
-<span class="sd">    1. a numpy array of the detected image</span>
-<span class="sd">    2. an array of dictionaries, with each dictionary corresponding to the objects</span>
-<span class="sd">        detected in the image. Each dictionary contains the following property:</span>
-<span class="sd">            * name (string)</span>
-<span class="sd">            * percentage_probability (float)</span>
-<span class="sd">            * box_points (tuple of x1,y1,x2 and y2 coordinates)</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="n">returned_image</span><span class="p">,</span> <span class="n">detections</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detectObjectsFromImage</span><span class="p">(</span><span class="n">input_image</span><span class="o">=</span><span class="s2">&quot;image.jpg&quot;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    If extract_detected_objects = True and &#39;output_image_path&#39; is set to a file path you want</span>
-<span class="sd">        the detected image to be saved, the function will return:</span>
-<span class="sd">        1. an array of dictionaries, with each dictionary corresponding to the objects</span>
-<span class="sd">            detected in the image. Each dictionary contains the following property:</span>
-<span class="sd">            * name (string)</span>
-<span class="sd">            * percentage_probability (float)</span>
-<span class="sd">            * box_points (tuple of x1,y1,x2 and y2 coordinates)</span>
-<span class="sd">        2. an array of string paths to the image of each object extracted from the image</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="n">detections</span><span class="p">,</span> <span class="n">extracted_objects</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detectObjectsFromImage</span><span class="p">(</span><span class="n">input_image</span><span class="o">=</span><span class="s2">&quot;image.jpg&quot;</span><span class="p">,</span> <span class="n">output_image_path</span><span class="o">=</span><span class="s2">&quot;imagenew.jpg&quot;</span><span class="p">,</span> <span class="n">extract_detected_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    If extract_detected_objects = True and output_type = &#39;array&#39;, the the function will return:</span>
-<span class="sd">        1. a numpy array of the detected image</span>
-<span class="sd">        2. an array of dictionaries, with each dictionary corresponding to the objects</span>
-<span class="sd">            detected in the image. Each dictionary contains the following property:</span>
-<span class="sd">            * name (string)</span>
-<span class="sd">            * percentage_probability (float)</span>
-<span class="sd">            * box_points (tuple of x1,y1,x2 and y2 coordinates)</span>
-<span class="sd">        3. an array of numpy arrays of each object detected in the image</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="n">returned_image</span><span class="p">,</span> <span class="n">detections</span><span class="p">,</span> <span class="n">extracted_objects</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detectObjectsFromImage</span><span class="p">(</span><span class="n">input_image</span><span class="o">=</span><span class="s2">&quot;image.jpg&quot;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="n">extract_detected_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-</pre></div>
-</div>
+<div><p>– <em>parameter</em> <strong>thread_safe</strong> (optional) : This ensures the loaded detection model works across all threads if set to true.</p>
+<p class="attribution">&mdash;<em>returns</em> :  The returned values will depend on the parameters parsed into the <strong>detectObjectsFromImage()</strong> function. See the comments and code below</p>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><dl class="docutils">
+<dt>“”“</dt>
+<dd><p class="first">If all required parameters are set and ‘output_image_path’ is set to a file path you want the detected image to be saved, the function will return:</p>
+<ol class="last arabic simple">
+<li><dl class="first docutils">
+<dt>an array of dictionaries, with each dictionary corresponding to the objects</dt>
+<dd><dl class="first last docutils">
+<dt>detected in the image. Each dictionary contains the following property:</dt>
+<dd><ul class="first last">
+<li>name (string)</li>
+<li>percentage_probability (float)</li>
+<li>box_points (tuple of x1,y1,x2 and y2 coordinates)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+<p>“””
+detections = detector.detectObjectsFromImage(input_image=”image.jpg”, output_image_path=”imagenew.jpg”, minimum_percentage_probability=30)</p>
+<dl class="docutils">
+<dt>“”“</dt>
+<dd><p class="first">If all required parameters are set and output_type = ‘array’ ,the function will return</p>
+<ol class="last arabic simple">
+<li>a numpy array of the detected image</li>
+<li><dl class="first docutils">
+<dt>an array of dictionaries, with each dictionary corresponding to the objects</dt>
+<dd><dl class="first last docutils">
+<dt>detected in the image. Each dictionary contains the following property:</dt>
+<dd><ul class="first last">
+<li>name (string)</li>
+<li>percentage_probability (float)</li>
+<li>box_points (list of x1,y1,x2 and y2 coordinates)</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+<p>“””
+returned_image, detections = detector.detectObjectsFromImage(input_image=”image.jpg”, output_type=”array”, minimum_percentage_probability=30)</p>
+<dl class="docutils">
+<dt>“”“</dt>
+<dd><dl class="first last docutils">
+<dt>If extract_detected_objects = True and ‘output_image_path’ is set to a file path you want</dt>
+<dd><p class="first">the detected image to be saved, the function will return:
+1. an array of dictionaries, with each dictionary corresponding to the objects</p>
+<blockquote>
+<div>detected in the image. Each dictionary contains the following property:
+* name (string)
+* percentage_probability (float)
+* box_points (list of x1,y1,x2 and y2 coordinates)</div></blockquote>
+<ol class="last arabic simple" start="2">
+<li>an array of string paths to the image of each object extracted from the image</li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>“””
+detections, extracted_objects = detector.detectObjectsFromImage(input_image=”image.jpg”, output_image_path=”imagenew.jpg”, extract_detected_objects=True, minimum_percentage_probability=30)</p>
+<dl class="docutils">
+<dt>“”“</dt>
+<dd><dl class="first last docutils">
+<dt>If extract_detected_objects = True and output_type = ‘array’, the the function will return:</dt>
+<dd><ol class="first last arabic simple">
+<li>a numpy array of the detected image</li>
+<li><dl class="first docutils">
+<dt>an array of dictionaries, with each dictionary corresponding to the objects</dt>
+<dd>detected in the image. Each dictionary contains the following property:
+* name (string)
+* percentage_probability (float)
+* box_points (list of x1,y1,x2 and y2 coordinates)</dd>
+</dl>
+</li>
+<li>an array of numpy arrays of each object detected in the image</li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>“””
+returned_image, detections, extracted_objects = detector.detectObjectsFromImage(input_image=”image.jpg”, output_type=”array”, extract_detected_objects=True, minimum_percentage_probability=30)</p>
+</div></blockquote>
 </div></blockquote>
 <ul>
 <li><p class="first"><strong>.CustomObjects()</strong> , This function is used when you want to detect only a selected number of objects. It returns a dictionary of objects and their True or False values. To detect selected objects in an image, you will have to use the dictionary returned by the this function with the <strong>detectCustomObjectsFromImage()</strong> function. Find the details in the comment and code sample below:</p>
