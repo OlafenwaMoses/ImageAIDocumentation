@@ -90,7 +90,7 @@ Once you have created an instance above, you can use the functions below to set 
 
 * **.setDataDirectory()** , This function accepts a string which must be the path to the folder that contains the **test** and **train** subfolder of your image dataset. Find example code,and parameters of the function below ::
 
-    prediction.setDataDirectory(r"C:/Users/Moses/Documents/Moses/AI/Custom Datasets/pets")
+    model_trainer.setDataDirectory(r"C:/Users/Moses/Documents/Moses/AI/Custom Datasets/pets")
 
  -- *parameter* **data_directory** (required) : This is the path to the folder that contains your image dataset.
 
