@@ -28,9 +28,9 @@ Installing ImageAI
 
 * **Python** 3.5.1 or higher,  `Download Python <https://www.python.org/downloads/>`_
 * **pip3** ,  `Download PyPi <https://pypi.python.org/pypi/pip/>`_
-* **Tensorflow** 1.4.0 or higher ::
+* **Tensorflow** 1.13.1 or higher ::
 
-    pip3 install --upgrade tensorflow
+    pip3 install tensorflow==1.13.1
 
 * **OpenCV** ::
 
@@ -38,7 +38,11 @@ Installing ImageAI
 
 * **Keras** ::
 
-    pip3 install keras
+    pip3 install keras==2.2.4
+
+* **Numpy** ::
+
+    pip3 install numpy==1.16.1
 
 * **ImageAI** ::
 

@@ -1,38 +1,39 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Prediction Classes &mdash; ImageAI 2.0.3 documentation</title>
+  <title>Prediction Classes &mdash; ImageAI 2.1.5 documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Detection Classes" href="../detection/index.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> ImageAI
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ImageAI
           
 
           
@@ -60,7 +61,7 @@
             
             
               <div class="version">
-                2.0
+                3.0
               </div>
             
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,6 +100,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -136,7 +139,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Prediction Classes</li>
     
@@ -159,7 +162,7 @@
             
   <div class="section" id="prediction-classes">
 <h1>Prediction Classes<a class="headerlink" href="#prediction-classes" title="Permalink to this headline">¶</a></h1>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/image21.jpg" src="../_images/image21.jpg" />
 </div>
 <p><strong>ImageAI</strong> provides very powerful yet easy to use classes to perform <strong>Image Recognition</strong> tasks.
@@ -173,7 +176,7 @@ that supports or part of a Local-Area-Network.</p>
 <strong>InceptionV3</strong> and <strong>DenseNet</strong> that were <strong>pre-trained</strong> on the the <strong>ImageNet-1000</strong> dataset.This means you can use this class to predict/recognize
 1000 different objects in any image or number of images. To initiate the class in your code, you will create a new instance of the class in your code
 as seen below</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction</span> <span class="k">import</span> <span class="n">ImagePrediction</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction</span> <span class="kn">import</span> <span class="n">ImagePrediction</span>
 <span class="n">prediction</span> <span class="o">=</span> <span class="n">ImagePrediction</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -186,45 +189,47 @@ as seen below</p>
 <p>After creating a new instance of the <strong>ImagePrediction</strong> class, you can use the functions below to set your instance property and start recognizing
 objects in images.</p>
 <ul>
-<li><p class="first"><strong>.setModelTypeAsSqueezeNet()</strong> , This function sets the model type of the image recognition instance you created to the <strong>SqueezeNet</strong> model, which means you will be performing your image prediction tasks using the pre-trained “SqueezeNet” model you downloaded from the links above.  Find example code below</p>
+<li><p><strong>.setModelTypeAsSqueezeNet()</strong> , This function sets the model type of the image recognition instance you created to the <strong>SqueezeNet</strong> model, which means you will be performing your image prediction tasks using the pre-trained “SqueezeNet” model you downloaded from the links above.  Find example code below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelTypeAsSqueezeNet</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelTypeAsResNet()</strong> , This function sets the model type of the image recognition instance you created to the <strong>ResNet</strong> model, which means you will be performing your image prediction tasks using the pre-trained “ResNet” model you downloaded from the links above. Find example code below</p>
+<li><p><strong>.setModelTypeAsResNet()</strong> , This function sets the model type of the image recognition instance you created to the <strong>ResNet</strong> model, which means you will be performing your image prediction tasks using the pre-trained “ResNet” model you downloaded from the links above. Find example code below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelTypeAsResNet</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelTypeAsInceptionV3()</strong> , This function sets the model type of the image recognition instance you created to the <strong>InecptionV3</strong> model, which means you will be performing your image prediction tasks using the pre-trained “InceptionV3” model you downloaded from the links above.  Find example code below</p>
+<li><p><strong>.setModelTypeAsInceptionV3()</strong> , This function sets the model type of the image recognition instance you created to the <strong>InecptionV3</strong> model, which means you will be performing your image prediction tasks using the pre-trained “InceptionV3” model you downloaded from the links above.  Find example code below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelTypeAsInceptionV3</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelTypeAsDenseNet()</strong> , This function sets the model type of the image recognition instance you created to the <strong>DenseNet</strong> model, which means you will be performing your image prediction tasks using the pre-trained “DenseNet” model you downloaded from the links above. Find example code below</p>
+<li><p><strong>.setModelTypeAsDenseNet()</strong> , This function sets the model type of the image recognition instance you created to the <strong>DenseNet</strong> model, which means you will be performing your image prediction tasks using the pre-trained “DenseNet” model you downloaded from the links above. Find example code below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelTypeAsDenseNet</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelPath()</strong> , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your image prediction instance. Find example code,and parameters of the function below</p>
+<li><p><strong>.setModelPath()</strong> , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your image prediction instance. Find example code,and parameters of the function below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="s2">&quot;resnet50_weights_tf_dim_ordering_tf_kernels.h5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ul>
 <blockquote>
-<div>– <em>parameter</em> <strong>model_path</strong> (required) : This is the path to your downloaded model file.</div></blockquote>
+<div><p>– <em>parameter</em> <strong>model_path</strong> (required) : This is the path to your downloaded model file.</p>
+</div></blockquote>
 <ul>
-<li><p class="first"><strong>.loadModel()</strong> , This function loads the model from the path you specified in the function call above into your image prediction instance. Find example code below</p>
+<li><p><strong>.loadModel()</strong> , This function loads the model from the path you specified in the function call above into your image prediction instance. Find example code below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
 </ul>
 <blockquote>
-<div>– <em>parameter</em> <strong>prediction_speed</strong> (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are “normal”, “fast”, “faster” and “fastest”. The default values is “normal”</div></blockquote>
+<div><p>– <em>parameter</em> <strong>prediction_speed</strong> (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are “normal”, “fast”, “faster” and “fastest”. The default values is “normal”</p>
+</div></blockquote>
 <ul>
-<li><p class="first"><strong>.predictImage()</strong> , This is the function that performs actual prediction of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below</p>
+<li><p><strong>.predictImage()</strong> , This is the function that performs actual prediction of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span><span class="p">,</span> <span class="n">probabilities</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">predictImage</span><span class="p">(</span><span class="s2">&quot;image1.jpg&quot;</span><span class="p">,</span> <span class="n">result_count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -232,16 +237,17 @@ objects in images.</p>
 </ul>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>image_input</strong> (required) : This refers to the path to your image file, Numpy array of your image or image file stream of your image, depending on the input type you specified.</p>
-<p class="attribution">&mdash;<em>parameter</em> <strong>result_count</strong> (optional) : This refers to the number of possible predictions that should be returned. The parameter is set to 5 by default.</p>
+<p class="attribution">—<em>parameter</em> <strong>result_count</strong> (optional) : This refers to the number of possible predictions that should be returned. The parameter is set to 5 by default.</p>
 </div></blockquote>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>input_type</strong> (optional) : This refers to the type of input you are parse into the <strong>image_input</strong> parameter. It is “file” by default and it accepts “array” and “stream” as well.</p>
-<p class="attribution">&mdash;<em>returns</em> <strong>prediction_results</strong> (a python list) : The first value returned by the <strong>predictImage</strong> function is a list that contains all the possible prediction results. The results are arranged in descending order of the percentage probability.</p>
+<p class="attribution">—<em>returns</em> <strong>prediction_results</strong> (a python list) : The first value returned by the <strong>predictImage</strong> function is a list that contains all the possible prediction results. The results are arranged in descending order of the percentage probability.</p>
 </div></blockquote>
 <blockquote>
-<div>– <em>returns</em> <strong>prediction_probabilities</strong> (a python list) : The second value returned by the <strong>predictImage</strong> function is a list that contains the corresponding percentage probability of all the possible predictions in the <strong>prediction_results</strong>.</div></blockquote>
+<div><p>– <em>returns</em> <strong>prediction_probabilities</strong> (a python list) : The second value returned by the <strong>predictImage</strong> function is a list that contains the corresponding percentage probability of all the possible predictions in the <strong>prediction_results</strong>.</p>
+</div></blockquote>
 <ul>
-<li><p class="first"><strong>.predictMultipleImages()</strong> , This function can be used to perform prediction on 2 or more images at once. Find example code,parameters of the function and returned values below</p>
+<li><p><strong>.predictMultipleImages()</strong> , This function can be used to perform prediction on 2 or more images at once. Find example code,parameters of the function and returned values below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results_array</span> <span class="o">=</span> <span class="n">multiple_prediction</span><span class="o">.</span><span class="n">predictMultipleImages</span><span class="p">(</span><span class="n">all_images_array</span><span class="p">,</span> <span class="n">result_count_per_image</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">each_result</span> <span class="ow">in</span> <span class="n">results_array</span><span class="p">:</span>
@@ -261,7 +267,7 @@ in that index as well as the “prediction_probabilities” which is a list of t
 </ul>
 <p><strong>Sample Codes</strong></p>
 <p>Find below sample code for predicting one image</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction</span> <span class="k">import</span> <span class="n">ImagePrediction</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction</span> <span class="kn">import</span> <span class="n">ImagePrediction</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
@@ -277,7 +283,7 @@ in that index as well as the “prediction_probabilities” which is a list of t
 </pre></div>
 </div>
 <p>Find below sample code for prediction multiple images</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction</span> <span class="k">import</span> <span class="n">ImagePrediction</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Prediction</span> <span class="kn">import</span> <span class="n">ImagePrediction</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
@@ -327,11 +333,19 @@ in that index as well as the “prediction_probabilities” which is a list of t
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, Moses Olafenwa and John Olafenwa
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -342,7 +356,6 @@ in that index as well as the “prediction_probabilities” which is a list of t
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

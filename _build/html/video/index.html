@@ -1,38 +1,39 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Video and Live-Feed Detection and Analysis &mdash; ImageAI 2.0.3 documentation</title>
+  <title>Video and Live-Feed Detection and Analysis &mdash; ImageAI 2.1.5 documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Custom Training: Prediction" href="../custom/index.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> ImageAI
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ImageAI
           
 
           
@@ -60,7 +61,7 @@
             
             
               <div class="version">
-                2.0
+                3.0
               </div>
             
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,6 +100,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -136,7 +139,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Video and Live-Feed Detection and Analysis</li>
     
@@ -159,7 +162,7 @@
             
   <div class="section" id="video-and-live-feed-detection-and-analysis">
 <h1>Video and Live-Feed Detection and Analysis<a class="headerlink" href="#video-and-live-feed-detection-and-analysis" title="Permalink to this headline">¶</a></h1>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/image41.gif" src="../_images/image41.gif" />
 </div>
 <p><strong>ImageAI</strong> provided very powerful yet easy to use classes and functions to perform  <strong>Video Object Detection and Tracking</strong>
@@ -176,48 +179,50 @@ common everyday objects in any video. To get started, download any of the pre-tr
 <p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download YOLOv3 Model - yolo.h5</a></p>
 <p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download TinyYOLOv3 Model -  yolo-tiny.h5</a></p>
 <p>Once you have downloaded the model you chose to use, create an instance of the <strong>VideoObjectDetection</strong> as seen below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">VideoObjectDetection</span>
 
 <span class="n">detector</span> <span class="o">=</span> <span class="n">VideoObjectDetection</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Once you have created an instance of the class, you can call the functions below to set its properties and detect objects in a video.</p>
 <ul>
-<li><p class="first"><strong>.setModelTypeAsRetinaNet()</strong> , This function sets the model type of the object detection instance you created to the <strong>RetinaNet</strong> model, which means you will be performing your object detection tasks using the pre-trained “RetinaNet” model you downloaded from the links above.  Find example code below:</p>
+<li><p><strong>.setModelTypeAsRetinaNet()</strong> , This function sets the model type of the object detection instance you created to the <strong>RetinaNet</strong> model, which means you will be performing your object detection tasks using the pre-trained “RetinaNet” model you downloaded from the links above.  Find example code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsRetinaNet</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelTypeAsYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>YOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “YOLOv3” model you downloaded from the links above.  Find example code below:</p>
+<li><p><strong>.setModelTypeAsYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>YOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “YOLOv3” model you downloaded from the links above.  Find example code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsYOLOv3</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelTypeAsTinyYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>TinyYOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “TinyYOLOv3” model you downloaded from the links above.  Find example code below:</p>
+<li><p><strong>.setModelTypeAsTinyYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>TinyYOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “TinyYOLOv3” model you downloaded from the links above.  Find example code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsTinyYOLOv3</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelPath()</strong> , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your object detection instance. Find example code,and parameters of the function below:</p>
+<li><p><strong>.setModelPath()</strong> , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your object detection instance. Find example code,and parameters of the function below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="s2">&quot;yolo.h5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ul>
 <blockquote>
-<div>– <em>parameter</em> <strong>model_path</strong> (required) : This is the path to your downloaded model file.</div></blockquote>
+<div><p>– <em>parameter</em> <strong>model_path</strong> (required) : This is the path to your downloaded model file.</p>
+</div></blockquote>
 <ul>
-<li><p class="first"><strong>.loadModel()</strong> , This function loads the model from the path you specified in the function call above into your object detection instance. Find example code below:</p>
+<li><p><strong>.loadModel()</strong> , This function loads the model from the path you specified in the function call above into your object detection instance. Find example code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
 </ul>
 <blockquote>
-<div>– <em>parameter</em> <strong>detection_speed</strong> (optional) : This parameter allows you to reduce the time it takes to detect objects in a video by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are “normal”, “fast”, “faster”, “fastest” and “flash”. The default values is “normal”</div></blockquote>
+<div><p>– <em>parameter</em> <strong>detection_speed</strong> (optional) : This parameter allows you to reduce the time it takes to detect objects in a video by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are “normal”, “fast”, “faster”, “fastest” and “flash”. The default values is “normal”</p>
+</div></blockquote>
 <ul>
-<li><p class="first"><strong>.detectObjectsFromVideo()</strong> , This is the function that performs object detecttion on a video file or video live-feed after the model has been loaded into the instance you created.  Find a full sample code below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<li><p><strong>.detectObjectsFromVideo()</strong> , This is the function that performs object detecttion on a video file or video live-feed after the model has been loaded into the instance you created.  Find a full sample code below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">VideoObjectDetection</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
@@ -237,20 +242,20 @@ common everyday objects in any video. To get started, download any of the pre-tr
 </ul>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>input_file_path</strong> (required if you did not set <strong>camera_input</strong>) : This refers to the path to the video file you want to detect.</p>
-<p class="attribution">&mdash;<em>parameter</em> <strong>output_file_path</strong> (required if you did not set <strong>save_detected_video</strong> = False) : This refers to the path to which the detected video will be saved. By default, this functionsaves video  <strong>.avi</strong> format.</p>
+<p class="attribution">—<em>parameter</em> <strong>output_file_path</strong> (required if you did not set <strong>save_detected_video</strong> = False) : This refers to the path to which the detected video will be saved. By default, this functionsaves video  <strong>.avi</strong> format.</p>
 </div></blockquote>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>frames_per_second</strong> (optional , but recommended) : This parameters allows you to set your desired frames per second for the detected video that will be saved. The default value is 20 but we recommend you set the value that suits your video or camera live-feed.</p>
-<p class="attribution">&mdash;<em>parameter</em> <strong>log_progress</strong> (optional) : Setting this parameter to True shows the progress of the video or live-feed as it is detected in the CLI. It will report every frame detected as it progresses. The default value is False.</p>
+<p class="attribution">—<em>parameter</em> <strong>log_progress</strong> (optional) : Setting this parameter to True shows the progress of the video or live-feed as it is detected in the CLI. It will report every frame detected as it progresses. The default value is False.</p>
 </div></blockquote>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>return_detected_frame</strong> (optional) : This parameter allows you to return the detected frame as a Numpy array at every frame, second and minute of the video detected. The returned Numpy array will be parsed into the respective <strong>per_frame_function</strong>, <strong>per_second_function</strong> and <strong>per_minute_function</strong> (See details below)</p>
-<p class="attribution">&mdash;<em>parameter</em> <strong>camera_input</strong> (optional) : This parameter can be set in replacement of the <strong>input_file_path</strong> if you want to detect objects in the live-feed of a camera. All you need is to load the camera with OpenCV’s <strong>VideoCapture()</strong> function and parse the object into this parameter.</p>
+<p class="attribution">—<em>parameter</em> <strong>camera_input</strong> (optional) : This parameter can be set in replacement of the <strong>input_file_path</strong> if you want to detect objects in the live-feed of a camera. All you need is to load the camera with OpenCV’s <strong>VideoCapture()</strong> function and parse the object into this parameter.</p>
 </div></blockquote>
 <blockquote>
 <div><blockquote>
 <div><p>See a full code sample below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">VideoObjectDetection</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 
@@ -271,15 +276,15 @@ common everyday objects in any video. To get started, download any of the pre-tr
 </pre></div>
 </div>
 </div></blockquote>
-<p class="attribution">&mdash;<em>parameter</em> <strong>minimum_percentage_probability</strong> (optional ) :  This parameter is used to determine the integrity of the detection results. Lowering the value shows more objects while increasing the value ensures objects with the highest accuracy are detected. The default value is 50.</p>
+<p class="attribution">—<em>parameter</em> <strong>minimum_percentage_probability</strong> (optional ) :  This parameter is used to determine the integrity of the detection results. Lowering the value shows more objects while increasing the value ensures objects with the highest accuracy are detected. The default value is 50.</p>
 </div></blockquote>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>display_percentage_probability</strong> (optional ) :  This parameter can be used to hide the percentage probability of each object detected in the detected video if set to False. The default values is True.</p>
-<p class="attribution">&mdash;<em>parameter</em> <strong>display_object_name</strong> (optional ) :  This parameter can be used to hide the name of each object detected in the detected video if set to False. The default values is True.</p>
+<p class="attribution">—<em>parameter</em> <strong>display_object_name</strong> (optional ) :  This parameter can be used to hide the name of each object detected in the detected video if set to False. The default values is True.</p>
 </div></blockquote>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>save_detected_video</strong> (optional ) :  This parameter can be used to or not to save the detected video or not to save it. It is set to True by default.</p>
-<p class="attribution">&mdash;<em>parameter</em> <strong>per_frame_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every frame of the video that is detected, the function will be parsed into the parameter will be executed and and analytical data of the video will be parsed into the function. The data returned can be visualized or saved in a NoSQL database for future processing and visualization.</p>
+<p class="attribution">—<em>parameter</em> <strong>per_frame_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every frame of the video that is detected, the function will be parsed into the parameter will be executed and and analytical data of the video will be parsed into the function. The data returned can be visualized or saved in a NoSQL database for future processing and visualization.</p>
 </div></blockquote>
 <blockquote>
 <div><blockquote>
@@ -297,7 +302,7 @@ common everyday objects in any video. To get started, download any of the pre-tr
 <span class="sd">    as the fourth value into the function</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">VideoObjectDetection</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 
@@ -326,9 +331,9 @@ common everyday objects in any video. To get started, download any of the pre-tr
 </pre></div>
 </div>
 <p>Below is a full code that has a function that taskes the analyitical data and visualizes it and the detected frame in real time as the video is processed and detected:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">VideoObjectDetection</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 
 <span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
@@ -385,7 +390,7 @@ common everyday objects in any video. To get started, download any of the pre-tr
 </pre></div>
 </div>
 </div></blockquote>
-<p class="attribution">&mdash;<em>parameter</em> <strong>per_second_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every second of the video that is detected, the function will be parsed into the parameter will be executed and analytical data of the video will be parsed into the function. The data returned can be visualized or saved in a NoSQL database for future processing and visualization.</p>
+<p class="attribution">—<em>parameter</em> <strong>per_second_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every second of the video that is detected, the function will be parsed into the parameter will be executed and analytical data of the video will be parsed into the function. The data returned can be visualized or saved in a NoSQL database for future processing and visualization.</p>
 </div></blockquote>
 <blockquote>
 <div><blockquote>
@@ -404,7 +409,7 @@ common everyday objects in any video. To get started, download any of the pre-tr
 <span class="sd">-- If return_detected_frame is set to True, the numpy array of the detected frame will be parsed as the fifth value into the function</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">VideoObjectDetection</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 
@@ -448,9 +453,9 @@ common everyday objects in any video. To get started, download any of the pre-tr
 </pre></div>
 </div>
 <p>Below is a full code that has a function that taskes the analyitical data and visualizes it and the detected frame at the end of the second in real time as the video is processed and detected:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">VideoObjectDetection</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 
 <span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
@@ -507,7 +512,7 @@ common everyday objects in any video. To get started, download any of the pre-tr
 </pre></div>
 </div>
 </div></blockquote>
-<p class="attribution">&mdash;<em>parameter</em> <strong>per_minute_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every frame of the video that is detected, the function which was parsed into the parameter will be executed and analytical data of the video  will be parsed into the function. The data returned has the same nature as the <strong>per_second_function</strong> ; the difference is that it covers all the frames in the past 1 minute of the video.</p>
+<p class="attribution">—<em>parameter</em> <strong>per_minute_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every frame of the video that is detected, the function which was parsed into the parameter will be executed and analytical data of the video  will be parsed into the function. The data returned has the same nature as the <strong>per_second_function</strong> ; the difference is that it covers all the frames in the past 1 minute of the video.</p>
 </div></blockquote>
 <blockquote>
 <div><blockquote>
@@ -521,7 +526,7 @@ common everyday objects in any video. To get started, download any of the pre-tr
 </pre></div>
 </div>
 </div></blockquote>
-<p class="attribution">&mdash;<em>parameter</em> <strong>video_complete_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Once all the frames in the video is fully detected, the function will was parsed into the parameter will be executed and analytical data of the video  will be parsed into the function. The data returned has the same nature as the <strong>per_second_function</strong> and <strong>per_minute_function</strong> ; the differences are that no index will be returned and it covers all the frames in the entire video.</p>
+<p class="attribution">—<em>parameter</em> <strong>video_complete_function</strong> (optional ) :  This parameter allows you to parse in the name of a function you define. Once all the frames in the video is fully detected, the function will was parsed into the parameter will be executed and analytical data of the video  will be parsed into the function. The data returned has the same nature as the <strong>per_second_function</strong> and <strong>per_minute_function</strong> ; the differences are that no index will be returned and it covers all the frames in the entire video.</p>
 </div></blockquote>
 <blockquote>
 <div><blockquote>
@@ -534,12 +539,12 @@ common everyday objects in any video. To get started, download any of the pre-tr
 </pre></div>
 </div>
 </div></blockquote>
-<p class="attribution">&mdash;<em>parameter</em> <strong>detection_timeout</strong> (optional) :  This function allows you to state the number of seconds of a video that should be detected after which the detection function stop processing the video.</p>
+<p class="attribution">—<em>parameter</em> <strong>detection_timeout</strong> (optional) :  This function allows you to state the number of seconds of a video that should be detected after which the detection function stop processing the video.</p>
 </div></blockquote>
 <blockquote>
 <div><blockquote>
 <div><p>See a sample code for this parameter below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">VideoObjectDetection</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">VideoObjectDetection</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 
@@ -585,11 +590,19 @@ common everyday objects in any video. To get started, download any of the pre-tr
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, Moses Olafenwa and John Olafenwa
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -600,7 +613,6 @@ common everyday objects in any video. To get started, download any of the pre-tr
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

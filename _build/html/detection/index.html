@@ -1,38 +1,39 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Detection Classes &mdash; ImageAI 2.0.3 documentation</title>
+  <title>Detection Classes &mdash; ImageAI 2.1.5 documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Video and Live-Feed Detection and Analysis" href="../video/index.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> ImageAI
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> ImageAI
           
 
           
@@ -60,7 +61,7 @@
             
             
               <div class="version">
-                2.0
+                3.0
               </div>
             
           
@@ -77,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -98,6 +100,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -136,7 +139,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Detection Classes</li>
     
@@ -159,7 +162,7 @@
             
   <div class="section" id="detection-classes">
 <h1>Detection Classes<a class="headerlink" href="#detection-classes" title="Permalink to this headline">¶</a></h1>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/image1.jpg" src="../_images/image1.jpg" />
 </div>
 <p><strong>ImageAI</strong> provides very powerful yet easy to use classes and functions to perform <strong>Image Object Detection and Extraction</strong>.</p>
@@ -175,47 +178,49 @@ common everyday objects. To get started, download any of the pre-trained model t
 <p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download YOLOv3 Model - yolo.h5</a></p>
 <p><a class="reference external" href="https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0/">Download TinyYOLOv3 Model - yolo-tiny.h5</a></p>
 <p>Once you have downloaded the model of your choice, you should create a new instance of the <strong>ObjectDetection</strong> class as seen in the sample below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">ObjectDetection</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">ObjectDetection</span>
 
 <span class="n">detector</span> <span class="o">=</span> <span class="n">ObjectDetection</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Once you have created an instance of the class, you can use the functions below to set your instance property and start detecting objects in images.</p>
 <ul>
-<li><p class="first"><strong>.setModelTypeAsRetinaNet()</strong> , This function sets the model type of the object detection instance you created to the <strong>RetinaNet</strong> model, which means you will be performing your object detection tasks using the pre-trained “RetinaNet” model you downloaded from the links above.  Find example code below:</p>
+<li><p><strong>.setModelTypeAsRetinaNet()</strong> , This function sets the model type of the object detection instance you created to the <strong>RetinaNet</strong> model, which means you will be performing your object detection tasks using the pre-trained “RetinaNet” model you downloaded from the links above.  Find example code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsRetinaNet</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelTypeAsYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>YOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “YOLOv3” model you downloaded from the links above.  Find example code below:</p>
+<li><p><strong>.setModelTypeAsYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>YOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “YOLOv3” model you downloaded from the links above.  Find example code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsYOLOv3</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelTypeAsTinyYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>TinyYOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “TinyYOLOv3” model you downloaded from the links above.  Find example code below:</p>
+<li><p><strong>.setModelTypeAsTinyYOLOv3()</strong> , This function sets the model type of the object detection instance you created to the <strong>TinyYOLOv3</strong> model, which means you will be performing your object detection tasks using the pre-trained “TinyYOLOv3” model you downloaded from the links above.  Find example code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelTypeAsTinyYOLOv3</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.setModelPath()</strong> , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your object detection instance. Find example code,and parameters of the function below:</p>
+<li><p><strong>.setModelPath()</strong> , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your object detection instance. Find example code,and parameters of the function below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">setModelPath</span><span class="p">(</span><span class="s2">&quot;yolo.h5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ul>
 <blockquote>
-<div>– <em>parameter</em> <strong>model_path</strong> (required) : This is the path to your downloaded model file.</div></blockquote>
+<div><p>– <em>parameter</em> <strong>model_path</strong> (required) : This is the path to your downloaded model file.</p>
+</div></blockquote>
 <ul>
-<li><p class="first"><strong>.loadModel()</strong> , This function loads the model from the path you specified in the function call above into your object detection instance. Find example code below:</p>
+<li><p><strong>.loadModel()</strong> , This function loads the model from the path you specified in the function call above into your object detection instance. Find example code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">loadModel</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
 </ul>
 <blockquote>
-<div>– <em>parameter</em> <strong>detection_speed</strong> (optional) : This parameter allows you to reduce the time it takes to detect objects in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are “normal”, “fast”, “faster”, “fastest” and “flash”. The default values is “normal”</div></blockquote>
+<div><p>– <em>parameter</em> <strong>detection_speed</strong> (optional) : This parameter allows you to reduce the time it takes to detect objects in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are “normal”, “fast”, “faster”, “fastest” and “flash”. The default values is “normal”</p>
+</div></blockquote>
 <ul>
-<li><p class="first"><strong>.detectObjectsFromImage()</strong> , This is the function that performs object detection task after the model as loaded. It can be called many times to detect objects in any number of images. Find example code below:</p>
+<li><p><strong>.detectObjectsFromImage()</strong> , This is the function that performs object detection task after the model as loaded. It can be called many times to detect objects in any number of images. Find example code below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detections</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detectObjectsFromImage</span><span class="p">(</span><span class="n">input_image</span><span class="o">=</span><span class="s2">&quot;image.jpg&quot;</span><span class="p">,</span> <span class="n">output_image_path</span><span class="o">=</span><span class="s2">&quot;imagenew.jpg&quot;</span><span class="p">,</span> <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -223,39 +228,37 @@ common everyday objects. To get started, download any of the pre-trained model t
 </ul>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>input_image</strong> (required) : This refers to the path to image file which you want to detect. You can set this parameter to the Numpy array of File stream of any image if you set the paramter <strong>input_type</strong> to “array” or “stream”</p>
-<p class="attribution">&mdash;<em>parameter</em> <strong>output_image_path</strong> (required only if <strong>input_type</strong> = “file” ) :  This refers to the file path to which the detected image will be saved. It is required only if <strong>input_type</strong> = “file”</p>
+<p class="attribution">—<em>parameter</em> <strong>output_image_path</strong> (required only if <strong>input_type</strong> = “file” ) :  This refers to the file path to which the detected image will be saved. It is required only if <strong>input_type</strong> = “file”</p>
 </div></blockquote>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>minimum_percentage_probability</strong> (optional ) :  This parameter is used to determine the integrity of the detection results. Lowering the value shows more objects while increasing the value ensures objects with the highest accuracy are detected. The default value is 50.</p>
-<p class="attribution">&mdash;<em>parameter</em> <strong>output_type</strong> (optional ) :  This parameter is used to set the format in which the detected image will be produced. The available values are “file” and “array”. The default value is “file”. If this parameter is set to “array”, the function will return a Numpy array of the detected image. See sample below::</p>
+<p class="attribution">—<em>parameter</em> <strong>output_type</strong> (optional ) :  This parameter is used to set the format in which the detected image will be produced. The available values are “file” and “array”. The default value is “file”. If this parameter is set to “array”, the function will return a Numpy array of the detected image. See sample below::</p>
 </div></blockquote>
 <blockquote>
 <div><blockquote>
-<div>returned_image, detections = detector.detectObjectsFromImage(input_image=”image.jpg”, output_type=”array”, minimum_percentage_probability=30)</div></blockquote>
-<p class="attribution">&mdash;<em>parameter</em> <strong>display_percentage_probability</strong> (optional ) :  This parameter can be used to hide the percentage probability of each object detected in the detected image if set to False. The default values is True.</p>
+<div><p>returned_image, detections = detector.detectObjectsFromImage(input_image=”image.jpg”, output_type=”array”, minimum_percentage_probability=30)</p>
+</div></blockquote>
+<p class="attribution">—<em>parameter</em> <strong>display_percentage_probability</strong> (optional ) :  This parameter can be used to hide the percentage probability of each object detected in the detected image if set to False. The default values is True.</p>
 </div></blockquote>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>display_object_name</strong> (optional ) :  This parameter can be used to hide the name of each object detected in the detected image if set to False. The default values is True.</p>
-<p class="attribution">&mdash;<em>parameter</em> <strong>extract_detected_objects</strong> (optional ) :  This parameter can be used to extract and save/return each object detected in an image as a seperate image. The default values is False.</p>
+<p class="attribution">—<em>parameter</em> <strong>extract_detected_objects</strong> (optional ) :  This parameter can be used to extract and save/return each object detected in an image as a seperate image. The default values is False.</p>
 </div></blockquote>
 <blockquote>
 <div><p>– <em>parameter</em> <strong>thread_safe</strong> (optional) : This ensures the loaded detection model works across all threads if set to true.</p>
-<p class="attribution">&mdash;<em>returns</em> :  The returned values will depend on the parameters parsed into the <strong>detectObjectsFromImage()</strong> function. See the comments and code below</p>
+<p class="attribution">—<em>returns</em> :  The returned values will depend on the parameters parsed into the <strong>detectObjectsFromImage()</strong> function. See the comments and code below</p>
 </div></blockquote>
 <blockquote>
 <div><blockquote>
-<div><dl class="docutils">
-<dt>“”“</dt>
-<dd><p class="first">If all required parameters are set and ‘output_image_path’ is set to a file path you want the detected image to be saved, the function will return:</p>
-<ol class="last arabic simple">
-<li><dl class="first docutils">
-<dt>an array of dictionaries, with each dictionary corresponding to the objects</dt>
-<dd><dl class="first last docutils">
-<dt>detected in the image. Each dictionary contains the following property:</dt>
-<dd><ul class="first last">
-<li>name (string)</li>
-<li>percentage_probability (float)</li>
-<li>box_points (tuple of x1,y1,x2 and y2 coordinates)</li>
+<div><dl class="simple">
+<dt>“””</dt><dd><p>If all required parameters are set and ‘output_image_path’ is set to a file path you want the detected image to be saved, the function will return:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>an array of dictionaries, with each dictionary corresponding to the objects</dt><dd><dl class="simple">
+<dt>detected in the image. Each dictionary contains the following property:</dt><dd><ul class="simple">
+<li><p>name (string)</p></li>
+<li><p>percentage_probability (float)</p></li>
+<li><p>box_points (tuple of x1,y1,x2 and y2 coordinates)</p></li>
 </ul>
 </dd>
 </dl>
@@ -267,19 +270,16 @@ common everyday objects. To get started, download any of the pre-trained model t
 </dl>
 <p>“””
 detections = detector.detectObjectsFromImage(input_image=”image.jpg”, output_image_path=”imagenew.jpg”, minimum_percentage_probability=30)</p>
-<dl class="docutils">
-<dt>“”“</dt>
-<dd><p class="first">If all required parameters are set and output_type = ‘array’ ,the function will return</p>
-<ol class="last arabic simple">
-<li>a numpy array of the detected image</li>
-<li><dl class="first docutils">
-<dt>an array of dictionaries, with each dictionary corresponding to the objects</dt>
-<dd><dl class="first last docutils">
-<dt>detected in the image. Each dictionary contains the following property:</dt>
-<dd><ul class="first last">
-<li>name (string)</li>
-<li>percentage_probability (float)</li>
-<li>box_points (list of x1,y1,x2 and y2 coordinates)</li>
+<dl class="simple">
+<dt>“””</dt><dd><p>If all required parameters are set and output_type = ‘array’ ,the function will return</p>
+<ol class="arabic simple">
+<li><p>a numpy array of the detected image</p></li>
+<li><dl class="simple">
+<dt>an array of dictionaries, with each dictionary corresponding to the objects</dt><dd><dl class="simple">
+<dt>detected in the image. Each dictionary contains the following property:</dt><dd><ul class="simple">
+<li><p>name (string)</p></li>
+<li><p>percentage_probability (float)</p></li>
+<li><p>box_points (list of x1,y1,x2 and y2 coordinates)</p></li>
 </ul>
 </dd>
 </dl>
@@ -291,19 +291,18 @@ detections = detector.detectObjectsFromImage(input_image=”image.jpg”, output
 </dl>
 <p>“””
 returned_image, detections = detector.detectObjectsFromImage(input_image=”image.jpg”, output_type=”array”, minimum_percentage_probability=30)</p>
-<dl class="docutils">
-<dt>“”“</dt>
-<dd><dl class="first last docutils">
-<dt>If extract_detected_objects = True and ‘output_image_path’ is set to a file path you want</dt>
-<dd><p class="first">the detected image to be saved, the function will return:
+<dl>
+<dt>“””</dt><dd><dl>
+<dt>If extract_detected_objects = True and ‘output_image_path’ is set to a file path you want</dt><dd><p>the detected image to be saved, the function will return:
 1. an array of dictionaries, with each dictionary corresponding to the objects</p>
 <blockquote>
-<div>detected in the image. Each dictionary contains the following property:
+<div><p>detected in the image. Each dictionary contains the following property:
 * name (string)
 * percentage_probability (float)
-* box_points (list of x1,y1,x2 and y2 coordinates)</div></blockquote>
-<ol class="last arabic simple" start="2">
-<li>an array of string paths to the image of each object extracted from the image</li>
+* box_points (list of x1,y1,x2 and y2 coordinates)</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>an array of string paths to the image of each object extracted from the image</p></li>
 </ol>
 </dd>
 </dl>
@@ -311,21 +310,19 @@ returned_image, detections = detector.detectObjectsFromImage(input_image=”imag
 </dl>
 <p>“””
 detections, extracted_objects = detector.detectObjectsFromImage(input_image=”image.jpg”, output_image_path=”imagenew.jpg”, extract_detected_objects=True, minimum_percentage_probability=30)</p>
-<dl class="docutils">
-<dt>“”“</dt>
-<dd><dl class="first last docutils">
-<dt>If extract_detected_objects = True and output_type = ‘array’, the the function will return:</dt>
-<dd><ol class="first last arabic simple">
-<li>a numpy array of the detected image</li>
-<li><dl class="first docutils">
-<dt>an array of dictionaries, with each dictionary corresponding to the objects</dt>
-<dd>detected in the image. Each dictionary contains the following property:
+<dl class="simple">
+<dt>“””</dt><dd><dl class="simple">
+<dt>If extract_detected_objects = True and output_type = ‘array’, the the function will return:</dt><dd><ol class="arabic simple">
+<li><p>a numpy array of the detected image</p></li>
+<li><dl class="simple">
+<dt>an array of dictionaries, with each dictionary corresponding to the objects</dt><dd><p>detected in the image. Each dictionary contains the following property:
 * name (string)
 * percentage_probability (float)
-* box_points (list of x1,y1,x2 and y2 coordinates)</dd>
+* box_points (list of x1,y1,x2 and y2 coordinates)</p>
+</dd>
 </dl>
 </li>
-<li>an array of numpy arrays of each object detected in the image</li>
+<li><p>an array of numpy arrays of each object detected in the image</p></li>
 </ol>
 </dd>
 </dl>
@@ -336,7 +333,7 @@ returned_image, detections, extracted_objects = detector.detectObjectsFromImage(
 </div></blockquote>
 </div></blockquote>
 <ul>
-<li><p class="first"><strong>.CustomObjects()</strong> , This function is used when you want to detect only a selected number of objects. It returns a dictionary of objects and their True or False values. To detect selected objects in an image, you will have to use the dictionary returned by the this function with the <strong>detectCustomObjectsFromImage()</strong> function. Find the details in the comment and code sample below:</p>
+<li><p><strong>.CustomObjects()</strong> , This function is used when you want to detect only a selected number of objects. It returns a dictionary of objects and their True or False values. To detect selected objects in an image, you will have to use the dictionary returned by the this function with the <strong>detectCustomObjectsFromImage()</strong> function. Find the details in the comment and code sample below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">There are 80 possible objects that you can detect with the</span>
 <span class="sd">ObjectDetection class, and they are as seen below.</span>
@@ -359,7 +356,7 @@ returned_image, detections, extracted_objects = detector.detectObjectsFromImage(
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>.detectCustomObjectsFromImage()</strong>, This function have all the parameters and returns all the values the <strong>detectObjectsFromImage()</strong> functions does but a slight difference. This function let detect only selected objects in an image. Unlike the normal <strong>detectObjectsFromImage()</strong> function, this needs an extra parameter which is “custom_object” which accepts the dictionary returned by the <strong>CustomObjects()</strong> function. In the sample below, we set the detection funtion to report only detections on persons and dogs:</p>
+<li><p><strong>.detectCustomObjectsFromImage()</strong>, This function have all the parameters and returns all the values the <strong>detectObjectsFromImage()</strong> functions does but a slight difference. This function let detect only selected objects in an image. Unlike the normal <strong>detectObjectsFromImage()</strong> function, this needs an extra parameter which is “custom_object” which accepts the dictionary returned by the <strong>CustomObjects()</strong> function. In the sample below, we set the detection funtion to report only detections on persons and dogs:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">custom</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">CustomObjects</span><span class="p">(</span><span class="n">person</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">detections</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detectCustomObjectsFromImage</span><span class="p">(</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom</span><span class="p">,</span> <span class="n">input_image</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span> <span class="p">,</span> <span class="s2">&quot;image3.jpg&quot;</span><span class="p">),</span> <span class="n">output_image_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">execution_path</span> <span class="p">,</span> <span class="s2">&quot;image3new-custom.jpg&quot;</span><span class="p">),</span> <span class="n">minimum_percentage_probability</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
@@ -369,7 +366,7 @@ returned_image, detections, extracted_objects = detector.detectObjectsFromImage(
 </ul>
 <p><strong>Sample Image Object Detection code</strong></p>
 <p>Find below a code sample for detecting objects in an image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="k">import</span> <span class="n">ObjectDetection</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imageai.Detection</span> <span class="kn">import</span> <span class="n">ObjectDetection</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="n">execution_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
@@ -409,11 +406,19 @@ returned_image, detections, extracted_objects = detector.detectObjectsFromImage(
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, Moses Olafenwa and John Olafenwa
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -424,7 +429,6 @@ returned_image, detections, extracted_objects = detector.detectObjectsFromImage(
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
