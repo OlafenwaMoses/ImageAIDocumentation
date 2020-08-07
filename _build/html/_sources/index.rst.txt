@@ -24,7 +24,7 @@ The Official GitHub Repository of **ImageAI** is `https://github.com/OlafenwaMos
 
 Installing ImageAI
 ===================
-**ImageAI** requires that you have Python 3.5.1 or higher installed as well as some other Python libraries and frameworks. Before you install **ImageAI**, you must install the following dependencies.
+**ImageAI** requires that you have Python 3.6.x installed as well as some other Python libraries and frameworks. Before you install **ImageAI**, you must install the following dependencies.
 
 * **Python** 3.5.1 or higher,  `Download Python <https://www.python.org/downloads/>`_
 * **pip3** ,  `Download PyPi <https://pypi.python.org/pypi/pip/>`_
