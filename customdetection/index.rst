@@ -13,6 +13,10 @@ Custom Object Detection: Training and Inference
 You can use your trained detection models to detect objects in images, videos and perform video analysis.
 
 
+-----------------------------------------
+NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
+-----------------------------------------
+
 
 **======= imageai.Detection.Custom.DetectionModelTrainer =======**
 

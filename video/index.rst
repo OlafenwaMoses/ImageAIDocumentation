@@ -16,6 +16,9 @@ These classes can be integrated into any traditional python program you are deve
 that supports or part of a Local-Area-Network.
 
 
+-----------------------------------------
+NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
+-----------------------------------------
 
 
 **======= imageai.Detection.VideoObjectDetection =======**
@@ -26,11 +29,11 @@ This **VideoObjectDetection** class provides you function to detect objects in v
 the **COCO** dataset. The models supported are **RetinaNet**, **YOLOv3** and **TinyYOLOv3**. This means you can detect and recognize 80 different kind of 
 common everyday objects in any video. To get started, download any of the pre-trained model that you want to use via the links below.
 
-`Download RetinaNet Model - resnet50_coco_best_v2.0.1.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download RetinaNet Model - resnet50_coco_best_v2.1.0.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/essentials-v5/resnet50_coco_best_v2.1.0.h5 />`_
 
-`Download YOLOv3 Model - yolo.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download YOLOv3 Model - yolo.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5 />`_
 
-`Download TinyYOLOv3 Model -  yolo-tiny.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download TinyYOLOv3 Model -  yolo-tiny.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5 />`_
 
 
 Once you have downloaded the model you chose to use, create an instance of the **VideoObjectDetection** as seen below::

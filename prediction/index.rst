@@ -18,57 +18,60 @@ These classes can be integrated into any traditional python program you are deve
 that supports or part of a Local-Area-Network.
 
 
+-----------------------------------------
+NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
+-----------------------------------------
 
 
 
-**======= imageai.Prediction.ImagePrediction =======**
+**======= imageai.Classification.ImageClassification =======**
 
-The **ImagePrediction** class provides you the functions to use state-of-the-art image recognition models like **SqueezeNet**, **ResNet**, 
-**InceptionV3** and **DenseNet** that were **pre-trained** on the the **ImageNet-1000** dataset.This means you can use this class to predict/recognize
+The **ImageClassification** class provides you the functions to use state-of-the-art image recognition models like **MobileNetV2**, **ResNet50**, 
+**InceptionV3** and **DenseNet121** that were **pre-trained** on the the **ImageNet-1000** dataset.This means you can use this class to predict/recognize
 1000 different objects in any image or number of images. To initiate the class in your code, you will create a new instance of the class in your code 
 as seen below ::
 
-    from imageai.Prediction import ImagePrediction
-    prediction = ImagePrediction()
+    from imageai.Classification import ImageClassification
+    prediction = ImageClassification()
 
 
-We have provided pre-trained **SqueezeNet**, **ResNet**, **InceptionV3** and **DenseNet** image recognition models which you use with your 
-**ImagePrediction** class to recognize images. Find below the link to download the pre-trained models. You can download the model you want to use.
+We have provided pre-trained **MobileNetV2**, **ResNet50**, **InceptionV3** and **DenseNet121** image recognition models which you use with your 
+**ImageClassification** class to recognize images. Find below the link to download the pre-trained models. You can download the model you want to use.
 
-`Download SqueezeNet Model <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download MobileNetV2 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/essentials-v5/mobilenet_v2.h5 />`_
 
-`Download ResNet Model <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download ResNet50 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/essentials-v5/resnet50_imagenet_tf.2.0.h5 />`_
 
-`Download InceptionV3 Model <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download InceptionV3 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/inception_v3_weights_tf_dim_ordering_tf_kernels.h5 />`_
 
-`Download DenseNet Model <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download DenseNet121 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/DenseNet-BC-121-32.h5 />`_
 
-After creating a new instance of the **ImagePrediction** class, you can use the functions below to set your instance property and start recognizing 
+After creating a new instance of the **ImageClassification** class, you can use the functions below to set your instance property and start recognizing 
 objects in images.
 
-* **.setModelTypeAsSqueezeNet()** , This function sets the model type of the image recognition instance you created to the **SqueezeNet** model, which means you will be performing your image prediction tasks using the pre-trained "SqueezeNet" model you downloaded from the links above.  Find example code below :: 
+* **.setModelTypeAsMobileNetV2()** , This function sets the model type of the image recognition instance you created to the **MobileNetV2** model, which means you will be performing your image prediction tasks using the pre-trained "MobileNetV2" model you downloaded from the links above.  Find example code below :: 
 
-    prediction.setModelTypeAsSqueezeNet()
-
-
-* **.setModelTypeAsResNet()** , This function sets the model type of the image recognition instance you created to the **ResNet** model, which means you will be performing your image prediction tasks using the pre-trained "ResNet" model you downloaded from the links above. Find example code below ::
-
-    prediction.setModelTypeAsResNet()
+    prediction.setModelTypeAsMobileNetV2()
 
 
-* **.setModelTypeAsInceptionV3()** , This function sets the model type of the image recognition instance you created to the **InecptionV3** model, which means you will be performing your image prediction tasks using the pre-trained "InceptionV3" model you downloaded from the links above.  Find example code below ::
+* **.setModelTypeAsResNet50()** , This function sets the model type of the image recognition instance you created to the **ResNet50** model, which means you will be performing your image prediction tasks using the pre-trained "ResNet50" model you downloaded from the links above. Find example code below ::
+
+    prediction.setModelTypeAsResNet50()
+
+
+* **.setModelTypeAsInceptionV3()** , This function sets the model type of the image recognition instance you created to the **InceptionV3** model, which means you will be performing your image prediction tasks using the pre-trained "InceptionV3" model you downloaded from the links above.  Find example code below ::
 
     prediction.setModelTypeAsInceptionV3()
 
 
-* **.setModelTypeAsDenseNet()** , This function sets the model type of the image recognition instance you created to the **DenseNet** model, which means you will be performing your image prediction tasks using the pre-trained "DenseNet" model you downloaded from the links above. Find example code below ::
+* **.setModelTypeAsDenseNet121()** , This function sets the model type of the image recognition instance you created to the **DenseNet121** model, which means you will be performing your image prediction tasks using the pre-trained "DenseNet121" model you downloaded from the links above. Find example code below ::
 
-    prediction.setModelTypeAsDenseNet()
+    prediction.setModelTypeAsDenseNet121()
 
 
 * **.setModelPath()** , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your image prediction instance. Find example code,and parameters of the function below ::
 
-    prediction.setModelPath("resnet50_weights_tf_dim_ordering_tf_kernels.h5")
+    prediction.setModelPath("resnet50_imagenet_tf.2.0.h5")
 
  -- *parameter* **model_path** (required) : This is the path to your downloaded model file.
 
@@ -80,9 +83,9 @@ objects in images.
  -- *parameter* **prediction_speed** (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster" and "fastest". The default values is "normal"
 
 
-* **.predictImage()** , This is the function that performs actual prediction of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below ::
+* **.classifyImage()** , This is the function that performs actual classification of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below ::
 
-    predictions, probabilities = prediction.predictImage("image1.jpg", result_count=10)
+    predictions, probabilities = prediction.classifyImage("image1.jpg", result_count=10)
 
  -- *parameter* **image_input** (required) : This refers to the path to your image file, Numpy array of your image or image file stream of your image, depending on the input type you specified.
 
@@ -96,78 +99,25 @@ objects in images.
  -- *returns* **prediction_probabilities** (a python list) : The second value returned by the **predictImage** function is a list that contains the corresponding percentage probability of all the possible predictions in the **prediction_results**. 
 
 
-* **.predictMultipleImages()** , This function can be used to perform prediction on 2 or more images at once. Find example code,parameters of the function and returned values below ::
-
-    results_array = multiple_prediction.predictMultipleImages(all_images_array, result_count_per_image=5)
-
-    for each_result in results_array:
-        predictions, percentage_probabilities = each_result["predictions"], each_result["percentage_probabilities"]
-        for index in range(len(predictions)):
-            print(predictions[index] , " : " , percentage_probabilities[index])
-        print("-----------------------")
-
-  -- *parameter* **sent_images_array** (required) : This refers to a list that contains the path to your image files, Numpy array of your images or image file stream of your images, depending on the input type you specified.
-
-  -- *parameter* **result_count_per_image** (optional) : This refers to the number of possible predictions that should be returned for each of the images. The parameter is set to 2 by default.
-
-  -- *parameter* **input_type** (optional) : This refers to the format in which your images are in the list you parsed into the **sent_images_array** parameter. It is "file" by default and it accepts "array" and "stream" as well.
-
-
-  -- *returns* **output_array** (a python list) : The value returned by the **predictMultipleImages** function is a list that contains dictionaries. Each dictionary correspondes
-  the images contained in the array you parsed into the **sent_images_array**. Each dictionary has "prediction_results" property which is a list of athe prediction result for the image
-  in that index as well as the "prediction_probabilities" which is a list of the corresponding percentage probability for each result.
-
 
 **Sample Codes**
 
 
 Find below sample code for predicting one image ::
 
-    from imageai.Prediction import ImagePrediction
+    from imageai.Classification import ImageClassification 
     import os
 
     execution_path = os.getcwd()
 
-    prediction = ImagePrediction()
-    prediction.setModelTypeAsResNet()
-    prediction.setModelPath(os.path.join(execution_path, "resnet50_weights_tf_dim_ordering_tf_kernels.h5"))
+    prediction = ImageClassification()
+    prediction.setModelTypeAsResNet50()
+    prediction.setModelPath(os.path.join(execution_path, "resnet50_imagenet_tf.2.0.h5"))
     prediction.loadModel()
 
-    predictions, probabilities = prediction.predictImage(os.path.join(execution_path, "image1.jpg"), result_count=10)
+    predictions, probabilities = prediction.classifyImage(os.path.join(execution_path, "image1.jpg"), result_count=10)
     for eachPrediction, eachProbability in zip(predictions, probabilities):
         print(eachPrediction , " : " , eachProbability)
-
-
-Find below sample code for prediction multiple images ::
-
-    from imageai.Prediction import ImagePrediction
-    import os
-
-    execution_path = os.getcwd()
-
-    multiple_prediction = ImagePrediction()
-    multiple_prediction.setModelTypeAsResNet()
-    multiple_prediction.setModelPath(os.path.join(execution_path, "resnet50_weights_tf_dim_ordering_tf_kernels.h5"))
-    multiple_prediction.loadModel()
-
-    all_images_array = []
-
-    all_files = os.listdir(execution_path)
-    for each_file in all_files:
-        if(each_file.endswith(".jpg") or each_file.endswith(".png")):
-            all_images_array.append(each_file)
-
-    results_array = multiple_prediction.predictMultipleImages(all_images_array, result_count_per_image=5)
-
-    for each_result in results_array:
-        predictions, percentage_probabilities = each_result["predictions"], each_result["percentage_probabilities"]
-        for index in range(len(predictions)):
-            print(predictions[index] , " : " , percentage_probabilities[index])
-        print("-----------------------")
-
-
-
-
 
 
 

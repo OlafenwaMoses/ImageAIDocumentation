@@ -10,6 +10,11 @@ This documentation is provided to provide detailed insight into all the classes 
 **ImageAI** is a project developed by `Moses Olafenwa <https://moses.aicommons.science/>`_ and `John Olafenwa <https://john.aicommons.science/>`_ , the `DeepQuest AI <https://www.deepquestai.com/>`_ team. 
 
 
+-----------------------------------------
+NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
+-----------------------------------------
+
+
 The Official GitHub Repository of **ImageAI** is `https://github.com/OlafenwaMoses/ImageAI <https://github.com/OlafenwaMoses/ImageAI />`_
 
 
@@ -23,30 +28,29 @@ The Official GitHub Repository of **ImageAI** is `https://github.com/OlafenwaMos
 
 
 Installing ImageAI
-===================
-**ImageAI** requires that you have Python 3.6.x installed as well as some other Python libraries and frameworks. Before you install **ImageAI**, you must install the following dependencies.
+==================
 
-* **Python** 3.5.1 or higher,  `Download Python <https://www.python.org/downloads/>`_
-* **pip3** ,  `Download PyPi <https://pypi.python.org/pypi/pip/>`_
-* **Tensorflow** 1.13.1 or higher ::
+**ImageAI** requires that you have Python 3.7.6 installed as well as some other Python libraries and frameworks. Before you install **ImageAI**, you must install the following dependencies.
 
-    pip3 install tensorflow==1.13.1
+* **Python** 3.7.6 ,  `Download Python <https://www.python.org/downloads/release/python-376/ />`_
+* **pip** ,  `Download PyPi <https://pypi.python.org/pypi/pip/>`_
+* **Tensorflow** 2.4.0 ::
 
-* **OpenCV** ::
+    pip install tensorflow==2.4.0
 
-    pip3 install opencv-python 
+or **Tensorflow-GPU** if you have a NVIDIA GPU with CUDA and cuDNN installed 
+   ::
 
-* **Keras** ::
+    pip install tensorflow-gpu==2.4.0
 
-    pip3 install keras==2.2.4
 
-* **Numpy** ::
+* **Other Dependencies** ::
 
-    pip3 install numpy==1.16.1
+    pip install keras==2.4.3 numpy==1.19.3 pillow==7.0.0 scipy==1.4.1 h5py==2.10.0 matplotlib==3.3.2 opencv-python keras-resnet==0.2.0 
 
 * **ImageAI** ::
 
-    pip3 install imageai --upgrade
+    pip install imageai --upgrade
 
 
 Once **ImageAI** is installed, you can start running very few lines of code to perform very powerful computer visions tasks as seen below. 

@@ -15,13 +15,18 @@ any image or set of images.
 
 
 
+-----------------------------------------
+NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
+-----------------------------------------
 
-**======= imageai.Prediction.Custom.ModelTraining =======**
+
+
+**======= imageai.Classification.Custom.ClassificationModelTrainer =======**
 
 
 
-The **ModelTraining** class allows you to train any of the 4 supported deep learning algorithms (**SqueezeNet** , **ResNet**
-, **InceptionV3** and **DenseNet**) on your own image dataset to generate your own custom models. Your image dataset must contain at least
+The **ClassificationModelTrainer** class allows you to train any of the 4 supported deep learning algorithms (**MobileNetV2** , **ResNet50**
+, **InceptionV3** and **DenseNet121**) on your own image dataset to generate your own custom models. Your image dataset must contain at least
 2 different classes/types of images (e.g cat and dog) and you must collect at least 500 images for each of the classes to achieve maximum accuracy.
 
 The training process generates a JSON file that maps the objects types in your image dataset and creates lots of models. 
@@ -61,20 +66,20 @@ To train a custom prediction model, you need to prepare the images you want to u
 
 Once your dataset is ready, you can proceed to creating an instance of the **ModelTraining** class. Find the example below ::
 
-    from imageai.Prediction.Custom import ModelTraining
+    from imageai.Classification.Custom import ClassificationModelTrainer
 
-    model_trainer = ModelTraining()
+    model_trainer = ClassificationModelTrainer()
 
 
 Once you have created an instance above, you can use the functions below to set your instance property and start the traning process.
 
 
-* **.setModelTypeAsSqueezeNet()** , This function sets the model type of the training instance you created to the **SqueezeNet** model, which means the **SqueezeNet** algorithm will be trained on your dataset.  Find example code below :: 
+* **.setModelTypeAsMobileNetV2()** , This function sets the model type of the training instance you created to the **MobileNetV2** model, which means the **MobileNetV2** algorithm will be trained on your dataset.  Find example code below :: 
 
-    model_trainer.setModelTypeAsSqueezeNet()
+    model_trainer.setModelTypeAsMobileNetV2()
 
 
-* **.setModelTypeAsResNet()** , This function sets the model type of the training instance you created to the **ResNet** model, which means the **ResNet** algorithm will be trained on your dataset.  Find example code below :: 
+* **.setModelTypeAsResNet50()** , This function sets the model type of the training instance you created to the **ResNet50** model, which means the **ResNet50** algorithm will be trained on your dataset.  Find example code below :: 
 
     model_trainer.setModelTypeAsResNet()
 
@@ -84,9 +89,9 @@ Once you have created an instance above, you can use the functions below to set 
     model_trainer.setModelTypeAsInceptionV3()
 
 
-* **.setModelTypeAsDenseNet()** , This function sets the model type of the training instance you created to the **DenseNet** model, which means the **DenseNet** algorithm will be trained on your dataset.  Find example code below :: 
+* **.setModelTypeAsDenseNet121()** , This function sets the model type of the training instance you created to the **DenseNet121** model, which means the **DenseNet121** algorithm will be trained on your dataset.  Find example code below :: 
 
-    model_trainer.setModelTypeAsDenseNet()
+    model_trainer.setModelTypeAsDenseNet121()
 
 * **.setDataDirectory()** , This function accepts a string which must be the path to the folder that contains the **test** and **train** subfolder of your image dataset. Find example code,and parameters of the function below ::
 
@@ -135,10 +140,10 @@ Once you have created an instance above, you can use the functions below to set 
 
 Find below a sample code for training custom models for your image dataset ::
 
-    from imageai.Prediction.Custom import ModelTraining
+    from imageai.Classification.Custom import ClassificationModelTrainer
 
-    model_trainer = ModelTraining()
-    model_trainer.setModelTypeAsResNet()
+    model_trainer = ClassificationModelTrainer()
+    model_trainer.setModelTypeAsResNet50()
     model_trainer.setDataDirectory(r"C:/Users/Moses/Documents/Moses/AI/Custom Datasets/pets")
     model_trainer.trainModel(num_objects=10, num_experiments=100, enhance_data=True, batch_size=32, show_network_summary=True)
 
@@ -187,28 +192,28 @@ Once you are done training your custom model, you can use the **CustomImagePredi
 
 
 
-**======= imageai.Prediction.Custom.CustomImagePrediction =======**
+**======= imageai.Classification.Custom.CustomImageClassification =======**
 
 
-This class can be considered a replica of the **imageai.Prediction.ImagePrediction** as it has all the same functions, parameters and results. The 
+This class can be considered a replica of the **imageai.Classification.CustomImageClassification** as it has all the same functions, parameters and results. The 
 only differences are that this class works with your own trained model, you will need to specify the path to the JSON file generated during the training
 and will need to specify the number of classes in your image dataset when loading the model. Below is an example of creating an instance of the class ::
 
-    from imageai.Prediction.Custom import CustomImagePrediction
+    from imageai.Classification.Custom import CustomImageClassification
     
-    prediction = CustomImagePrediction()
+    prediction = CustomImageClassification()
 
 Once you have created the new instance, you can use the functions below to set your instance property and start recognizing 
 objects in images.
 
-* **.setModelTypeAsSqueezeNet()** , This function sets the model type of the image recognition instance you created to the **SqueezeNet** model, which means you will be performing your image prediction tasks using the "SqueezeNet" model generated during your custom training.  Find example code below :: 
+* **.setModelTypeAsMobileNetV2()** , This function sets the model type of the image recognition instance you created to the **MobileNetV2** model, which means you will be performing your image prediction tasks using the "MobileNetV2" model generated during your custom training.  Find example code below :: 
 
-    prediction.setModelTypeAsSqueezeNet()
+    prediction.setModelTypeAsMobileNetV2()
 
 
-* **.setModelTypeAsResNet()** , This function sets the model type of the image recognition instance you created to the **ResNet** model, which means you will be performing your image prediction tasks using the "ResNet" model model generated during your custom training. Find example code below ::
+* **.setModelTypeAsResNet50()** , This function sets the model type of the image recognition instance you created to the **ResNet50** model, which means you will be performing your image prediction tasks using the "ResNet" model model generated during your custom training. Find example code below ::
 
-    prediction.setModelTypeAsResNet()
+    prediction.setModelTypeAsResNet50()
 
 
 * **.setModelTypeAsInceptionV3()** , This function sets the model type of the image recognition instance you created to the **InecptionV3** model, which means you will be performing your image prediction tasks using the "InceptionV3" model generated during your custom training.  Find example code below ::
@@ -216,9 +221,9 @@ objects in images.
     prediction.setModelTypeAsInceptionV3()
 
 
-* **.setModelTypeAsDenseNet()** , This function sets the model type of the image recognition instance you created to the **DenseNet** model, which means you will be performing your image prediction tasks using the "DenseNet" model generated during your custom training. Find example code below ::
+* **.setModelTypeAsDenseNet121()** , This function sets the model type of the image recognition instance you created to the **DenseNet121** model, which means you will be performing your image prediction tasks using the "DenseNet" model generated during your custom training. Find example code below ::
 
-    prediction.setModelTypeAsDenseNet()
+    prediction.setModelTypeAsDenseNet121()
 
 
 * **.setModelPath()** , This function accepts a string which must be the path to the model file generated during your custom training and must corresponds to the model type you set for your image prediction instance. Find example code,and parameters of the function below ::
@@ -242,40 +247,9 @@ objects in images.
 
  -- *parameter* **prediction_speed** (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster" and "fastest". The default values is "normal"
 
+* **.classifyImage()** , This is the function that performs actual prediction of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below ::
 
-* **.loadFullModel()**, This function is used to load the model structure into the program from the file path defined
-in the setModelPath() function. As opposed to the 'loadModel()' function, you don't need to specify the model type. This means you can load any Keras model trained with or without ImageAI and perform image prediction ::
-        
-        prediction.loadFullModel(num_objects=4)
-
- -- *parameter* **prediction_speed** (optional) : Acceptable values are "normal", "fast", "faster" and "fastest".
-
- -- *parameter* **num_objects** (required) : The number of objects the model is trained to recognize.
-
-
-* **.save_model_to_tensorflow()** , This function allows you to save your loaded Keras (.h5) model and save it to the Tensorflow (.pb) model format ::
-    
-    save_model_to_tensorflow(new_model_folder= os.path.join(execution_path, "tensorflow_model"), new_model_name="idenprof_resnet_tensorflow.pb")
-
-
- -- *parameter* **new_model_folder** (required) : The path to the folder you want the converted Tensorflow model to be saved
- 
- -- *parameter* **new_model_name** (required): The desired filename for your converted Tensorflow model e.g 'my_new_model.pb'
-
-* **.save_model_for_deepstack()** , This ffunction allows you to save your loaded Keras (.h5) model and save it to the deployment format of DeepStack custom API. This function will save the model and the JSON file you need for the deployment ::
-    
-    save_model_for_deepstack(new_model_folder= os.path.join(execution_path, "deepstack_model"), new_model_name="idenprof_resnet_deepstack.h5")
-
- -- *parameter* **new_model_folder** (required) : The path to the folder you want the converted Tensorflow model to be saved
- 
- -- *parameter* **new_model_name** (required): The desired filename for your converted Tensorflow model e.g 'my_new_model.pb'
-
- -- *paramater* **new_model_folder** (required): The path to the folder you want the model to be saved
- -- *parameter* **new_model_name** (required): The desired filename for your model e.g 'my_new_model.h5'
-
-* **.predictImage()** , This is the function that performs actual prediction of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below ::
-
-    predictions, probabilities = prediction.predictImage("image1.jpg", result_count=2)
+    predictions, probabilities = prediction.classifyImage("image1.jpg", result_count=2)
 
  -- *parameter* **image_input** (required) : This refers to the path to your image file, Numpy array of your image or image file stream of your image, depending on the input type you specified.
 
@@ -291,47 +265,22 @@ in the setModelPath() function. As opposed to the 'loadModel()' function, you do
  -- *returns* **prediction_probabilities** (a python list) : The second value returned by the **predictImage** function is a list that contains the corresponding percentage probability of all the possible predictions in the **prediction_results**. 
 
 
-* **.predictMultipleImages()** , This function can be used to perform prediction on 2 or more images at once. Find example code, parameters of the function and returned values below ::
-
-    results_array = multiple_prediction.predictMultipleImages(all_images_array, result_count_per_image=2)
-
-    for each_result in results_array:
-        predictions, percentage_probabilities = each_result["predictions"], each_result["percentage_probabilities"]
-        for index in range(len(predictions)):
-            print(predictions[index] , " : " , percentage_probabilities[index])
-        print("-----------------------")
-
-  -- *parameter* **sent_images_array** (required) : This refers to a list that contains the path to your image files, Numpy array of your images or image file stream of your images, depending on the input type you specified.
-
-  -- *parameter* **result_count_per_image** (optional) : This refers to the number of possible predictions that should be returned for each of the images. The parameter is set to 2 by default.
-
-  -- *parameter* **input_type** (optional) : This refers to the format in which your images are in the list you parsed into the **sent_images_array** parameter. It is "file" by default and it accepts "array" and "stream" as well.
-
-  -- *parameter* **thread_safe** (optional) : This ensures the loaded detection model works across all threads if set to true.
-
-
-
-  -- *returns* **output_array** (a python list) : The value returned by the **predictMultipleImages** function is a list that contains dictionaries. Each dictionary correspondes
-  the images contained in the array you parsed into the **sent_images_array**. Each dictionary has "prediction_results" property which is a list of athe prediction result for the image
-  in that index as well as the "prediction_probabilities" which is a list of the corresponding percentage probability for each result.
-
-
 **Sample Codes**
 
 Find below sample code for custom prediction ::
 
-    from imageai.Prediction.Custom import CustomImagePrediction
+    from imageai.Classification.Custom import CustomImageClassification
     import os
 
     execution_path = os.getcwd()
 
-    prediction = CustomImagePrediction()
-    prediction.setModelTypeAsResNet()
+    prediction = CustomImageClassification()
+    prediction.setModelTypeAsResNet50()
     prediction.setModelPath(os.path.join(execution_path, "resnet_model_ex-020_acc-0.651714.h5"))
     prediction.setJsonPath(os.path.join(execution_path, "model_class.json"))
     prediction.loadModel(num_objects=4)
 
-    predictions, probabilities = prediction.predictImage(os.path.join(execution_path, "4.jpg"), result_count=5)
+    predictions, probabilities = prediction.classifyImage(os.path.join(execution_path, "4.jpg"), result_count=5)
 
     for eachPrediction, eachProbability in zip(predictions, probabilities):
         print(eachPrediction , " : " , eachProbability)

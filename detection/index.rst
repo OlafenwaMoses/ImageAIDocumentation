@@ -18,6 +18,10 @@ These classes can be integrated into any traditional python program you are deve
 that supports or part of a Local-Area-Network.
 
 
+-----------------------------------------
+NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
+-----------------------------------------
+
 
 **======= imageai.Detection.ObjectDetection =======**
 
@@ -26,11 +30,11 @@ This **ObjectDetection** class provides you function to perform object detection
 the **COCO** dataset. The models supported are **RetinaNet**, **YOLOv3** and **TinyYOLOv3**. This means you can detect and recognize 80 different kind of 
 common everyday objects. To get started, download any of the pre-trained model that you want to use via the links below.
 
-`Download RetinaNet Model - resnet50_coco_best_v2.0.1.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download RetinaNet Model - resnet50_coco_best_v2.1.0.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/essentials-v5/resnet50_coco_best_v2.1.0.h5 />`_
 
-`Download YOLOv3 Model - yolo.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download YOLOv3 Model - yolo.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5 />`_
 
-`Download TinyYOLOv3 Model - yolo-tiny.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0 />`_
+`Download TinyYOLOv3 Model - yolo-tiny.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5 />`_
 
 
 
@@ -95,17 +99,20 @@ Once you have created an instance of the class, you can use the functions below 
  
  -- *returns* :  The returned values will depend on the parameters parsed into the **detectObjectsFromImage()** function. See the comments and code below
                 
+    .. code-block:: python
+
         """
-            If all required parameters are set and 'output_image_path' is set to a file path you want the detected image to be saved, the function will return:
-        
-            1. an array of dictionaries, with each dictionary corresponding to the objects 
-                detected in the image. Each dictionary contains the following property:
-                    * name (string)
-                    * percentage_probability (float)
-                    * box_points (tuple of x1,y1,x2 and y2 coordinates)
+        If all required parameters are set and 'output_image_path' is set to a file path you want the detected image to be saved, the function will return:
+    
+        1. an array of dictionaries, with each dictionary corresponding to the objects 
+            detected in the image. Each dictionary contains the following property:
+                * name (string)
+                * percentage_probability (float)
+                * box_points (tuple of x1,y1,x2 and y2 coordinates)
         """
         detections = detector.detectObjectsFromImage(input_image="image.jpg", output_image_path="imagenew.jpg", minimum_percentage_probability=30)
 
+    .. code-block:: python
 
         """
             If all required parameters are set and output_type = 'array' ,the function will return
@@ -119,19 +126,22 @@ Once you have created an instance of the class, you can use the functions below 
         """
         returned_image, detections = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", minimum_percentage_probability=30)
 
+    .. code-block:: python
 
         """
-            If extract_detected_objects = True and 'output_image_path' is set to a file path you want
-                the detected image to be saved, the function will return:
-                1. an array of dictionaries, with each dictionary corresponding to the objects
-                    detected in the image. Each dictionary contains the following property:
-                    * name (string)
-                    * percentage_probability (float)
-                    * box_points (list of x1,y1,x2 and y2 coordinates)
-                2. an array of string paths to the image of each object extracted from the image
+        If extract_detected_objects = True and 'output_image_path' is set to a file path you want
+            the detected image to be saved, the function will return:
+            1. an array of dictionaries, with each dictionary corresponding to the objects
+                detected in the image. Each dictionary contains the following property:
+                * name (string)
+                * percentage_probability (float)
+                * box_points (list of x1,y1,x2 and y2 coordinates)
+            2. an array of string paths to the image of each object extracted from the image
         """
+
         detections, extracted_objects = detector.detectObjectsFromImage(input_image="image.jpg", output_image_path="imagenew.jpg", extract_detected_objects=True, minimum_percentage_probability=30)
 
+    .. code-block:: python
 
         """
             If extract_detected_objects = True and output_type = 'array', the the function will return:
