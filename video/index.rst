@@ -71,7 +71,7 @@ Once you have created an instance of the class, you can call the functions below
  -- *parameter* **detection_speed** (optional) : This parameter allows you to reduce the time it takes to detect objects in a video by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster", "fastest" and "flash". The default values is "normal"
 
 
-* **.detectObjectsFromVideo()** , This is the function that performs object detecttion on a video file or video live-feed after the model has been loaded into the instance you created.  Find a full sample code below::
+* **.detectObjectsFromVideo()** , This is the function that performs object detection on a video file or video live-feed after the model has been loaded into the instance you created.  Find a full sample code below::
 
     from imageai.Detection import VideoObjectDetection
     import os
@@ -92,7 +92,7 @@ Once you have created an instance of the class, you can call the functions below
 
  -- *parameter* **input_file_path** (required if you did not set **camera_input**) : This refers to the path to the video file you want to detect. 
 
- -- *parameter* **output_file_path** (required if you did not set **save_detected_video** = False) : This refers to the path to which the detected video will be saved. By default, this functionsaves video  **.avi** format. 
+ -- *parameter* **output_file_path** (required if you did not set **save_detected_video** = False) : This refers to the path to which the detected video will be saved. By default, this function saves video  **.avi** format. 
 
  -- *parameter* **frames_per_second** (optional , but recommended) : This parameters allows you to set your desired frames per second for the detected video that will be saved. The default value is 20 but we recommend you set the value that suits your video or camera live-feed.
 
@@ -145,7 +145,7 @@ Once you have created an instance of the class, you can call the functions below
         each frame of the video is detected. If this parameter is set to a function, after every video
         frame is detected, the function will be executed with the following values parsed into it:
         -- position number of the frame
-        -- an array of dictinaries, with each dictinary corresponding to each object detected.
+        -- an array of dictionaries, with each dictionary corresponding to each object detected.
             Each dictionary contains 'name', 'percentage_probability' and 'box_points'
         -- a dictionary with with keys being the name of each unique objects and value
            are the number of instances of each of the objects present
@@ -183,7 +183,7 @@ Once you have created an instance of the class, you can call the functions below
 
         ------------END OF A FRAME --------------
 
-    Below is a full code that has a function that taskes the analyitical data and visualizes it and the detected frame in real time as the video is processed and detected::
+    Below is a full code that has a function that takes the analytical data and visualizes it and the detected frame in real time as the video is processed and detected::
 
         from imageai.Detection import VideoObjectDetection
         import os
@@ -310,7 +310,7 @@ Once you have created an instance of the class, you can call the functions below
         ------------END OF A SECOND --------------
 
 
-    Below is a full code that has a function that taskes the analyitical data and visualizes it and the detected frame at the end of the second in real time as the video is processed and detected::
+    Below is a full code that has a function that takes the analytical data and visualizes it and the detected frame at the end of the second in real time as the video is processed and detected::
 
         from imageai.Detection import VideoObjectDetection
         import os
