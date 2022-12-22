@@ -18,12 +18,6 @@ These classes can be integrated into any traditional python program you are deve
 that supports or part of a Local-Area-Network.
 
 
------------------------------------------
-NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
------------------------------------------
-
-
-
 **======= imageai.Classification.ImageClassification =======**
 
 The **ImageClassification** class provides you the functions to use state-of-the-art image recognition models like **MobileNetV2**, **ResNet50**, 
@@ -38,13 +32,13 @@ as seen below ::
 We have provided pre-trained **MobileNetV2**, **ResNet50**, **InceptionV3** and **DenseNet121** image recognition models which you use with your 
 **ImageClassification** class to recognize images. Find below the link to download the pre-trained models. You can download the model you want to use.
 
-`Download MobileNetV2 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/essentials-v5/mobilenet_v2.h5 />`_
+`Download MobileNetV2 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/mobilenet_v2-b0353104.pth />`_
 
-`Download ResNet50 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/essentials-v5/resnet50_imagenet_tf.2.0.h5 />`_
+`Download ResNet50 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/resnet50-19c8e357.pth />`_
 
-`Download InceptionV3 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/inception_v3_weights_tf_dim_ordering_tf_kernels.h5 />`_
+`Download InceptionV3 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/inception_v3_google-1a9a5a14.pth />`_
 
-`Download DenseNet121 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/DenseNet-BC-121-32.h5 />`_
+`Download DenseNet121 Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/densenet121-a639ec97.pth />`_
 
 After creating a new instance of the **ImageClassification** class, you can use the functions below to set your instance property and start recognizing 
 objects in images.
@@ -71,7 +65,7 @@ objects in images.
 
 * **.setModelPath()** , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your image prediction instance. Find example code,and parameters of the function below ::
 
-    prediction.setModelPath("resnet50_imagenet_tf.2.0.h5")
+    prediction.setModelPath("resnet50-19c8e357.pth")
 
  -- *parameter* **model_path** (required) : This is the path to your downloaded model file.
 
@@ -79,9 +73,6 @@ objects in images.
 * **.loadModel()** , This function loads the model from the path you specified in the function call above into your image prediction instance. Find example code below ::
 
     prediction.loadModel()
-
- -- *parameter* **prediction_speed** (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster" and "fastest". The default values is "normal"
-
 
 * **.classifyImage()** , This is the function that performs actual classification of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below ::
 
@@ -91,13 +82,14 @@ objects in images.
 
  -- *parameter* **result_count** (optional) : This refers to the number of possible predictions that should be returned. The parameter is set to 5 by default.
 
- -- *parameter* **input_type** (optional) : This refers to the type of input you are parse into the **image_input** parameter. It is "file" by default and it accepts "array" and "stream" as well.
-
 
  -- *returns* **prediction_results** (a python list) : The first value returned by the **predictImage** function is a list that contains all the possible prediction results. The results are arranged in descending order of the percentage probability.
 
  -- *returns* **prediction_probabilities** (a python list) : The second value returned by the **predictImage** function is a list that contains the corresponding percentage probability of all the possible predictions in the **prediction_results**. 
 
+* **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+
+    prediction.useGPU()
 
 
 **Sample Codes**
@@ -112,7 +104,7 @@ Find below sample code for predicting one image ::
 
     prediction = ImageClassification()
     prediction.setModelTypeAsResNet50()
-    prediction.setModelPath(os.path.join(execution_path, "resnet50_imagenet_tf.2.0.h5"))
+    prediction.setModelPath(os.path.join(execution_path, "resnet50-19c8e357.pth"))
     prediction.loadModel()
 
     predictions, probabilities = prediction.classifyImage(os.path.join(execution_path, "image1.jpg"), result_count=10)

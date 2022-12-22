@@ -7,16 +7,17 @@ Official English Documentation for ImageAI!
 ===========================================
 **ImageAI** is a python library built to empower developers, reseachers and students to build applications and systems with self-contained Deep Learning and Computer Vision capabilities using simple and few lines of code.
 This documentation is provided to provide detailed insight into all the classes and functions available in **ImageAI**, coupled with a number of code examples.
-**ImageAI** is a project developed by `Moses Olafenwa <https://moses.aicommons.science/>`_ and `John Olafenwa <https://john.aicommons.science/>`_ , the `DeepQuest AI <https://www.deepquestai.com/>`_ team. 
-
-
------------------------------------------
-NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
------------------------------------------
+**ImageAI** is a project developed by `Moses Olafenwa <https://twitter.com/OlafenwaMoses>`_.
 
 
 The Official GitHub Repository of **ImageAI** is `https://github.com/OlafenwaMoses/ImageAI <https://github.com/OlafenwaMoses/ImageAI />`_
 
+
+---------------------------------
+ImageAI now uses PyTorch backend.
+---------------------------------
+
+For full details on this and if you plan on using existing Tensorflow pretrained models, custom models and Pascal VOC dataset, visit the `BACKEND_MIGRATION.md documentation <https://github.com/OlafenwaMoses/ImageAI/blob/master/BACKEND_MIGRATION.md>`_.
 
 
 
@@ -32,21 +33,13 @@ Installing ImageAI
 
 **ImageAI** requires that you have Python 3.7.6 installed as well as some other Python libraries and frameworks. Before you install **ImageAI**, you must install the following dependencies.
 
-* **Python** 3.7.6 ,  `Download Python <https://www.python.org/downloads/release/python-376/ />`_
-* **pip** ,  `Download PyPi <https://pypi.python.org/pypi/pip/>`_
-* **Tensorflow** 2.4.0 ::
+* `Download and Install <https://www.python.org/downloads/>`_ **Python 3.7**, **Python 3.8**, **Python 3.9** or **Python 3.10**
+* Install Dependencies (CPU) ::
 
-    pip install tensorflow==2.4.0
+    pip install cython pillow>=7.0.0 numpy>=1.18.1 opencv-python>=4.1.2 torch>=1.9.0 --extra-index-url https://download.pytorch.org/whl/cpu torchvision>=0.10.0 --extra-index-url https://download.pytorch.org/whl/cpu pytest==7.1.3 tqdm==4.64.1 scipy>=1.7.3 matplotlib>=3.4.3 mock==4.0.3
+* Install Dependencies (GPU/CUDA) ::
 
-or **Tensorflow-GPU** if you have a NVIDIA GPU with CUDA and cuDNN installed 
-   ::
-
-    pip install tensorflow-gpu==2.4.0
-
-
-* **Other Dependencies** ::
-
-    pip install keras==2.4.3 numpy==1.19.3 pillow==7.0.0 scipy==1.4.1 h5py==2.10.0 matplotlib==3.3.2 opencv-python keras-resnet==0.2.0 
+    pip install cython pillow>=7.0.0 numpy>=1.18.1 opencv-python>=4.1.2 torch>=1.9.0 --extra-index-url https://download.pytorch.org/whl/cu102 torchvision>=0.10.0 --extra-index-url https://download.pytorch.org/whl/cu102 pytest==7.1.3 tqdm==4.64.1 scipy>=1.7.3 matplotlib>=3.4.3 mock==4.0.3
 
 * **ImageAI** ::
 

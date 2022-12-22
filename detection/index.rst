@@ -18,11 +18,6 @@ These classes can be integrated into any traditional python program you are deve
 that supports or part of a Local-Area-Network.
 
 
------------------------------------------
-NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
------------------------------------------
-
-
 **======= imageai.Detection.ObjectDetection =======**
 
 
@@ -30,11 +25,11 @@ This **ObjectDetection** class provides you function to perform object detection
 the **COCO** dataset. The models supported are **RetinaNet**, **YOLOv3** and **TinyYOLOv3**. This means you can detect and recognize 80 different kind of 
 common everyday objects. To get started, download any of the pre-trained model that you want to use via the links below.
 
-`Download RetinaNet Model - resnet50_coco_best_v2.1.0.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/essentials-v5/resnet50_coco_best_v2.1.0.h5 />`_
+`Download RetinaNet Model - retinanet_resnet50_fpn_coco-eeacb38b.pth <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/retinanet_resnet50_fpn_coco-eeacb38b.pth />`_
 
-`Download YOLOv3 Model - yolo.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5 />`_
+`Download YOLOv3 Model - yolov3.pt <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/yolov3.pt />`_
 
-`Download TinyYOLOv3 Model - yolo-tiny.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5 />`_
+`Download TinyYOLOv3 Model - tiny-yolov3.pt <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/tiny-yolov3.pt />`_
 
 
 
@@ -61,7 +56,7 @@ Once you have created an instance of the class, you can use the functions below 
 
 * **.setModelPath()** , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your object detection instance. Find example code,and parameters of the function below::
 
-    detector.setModelPath("yolo.h5")
+    detector.setModelPath("yolov3.pt")
 
  -- *parameter* **model_path** (required) : This is the path to your downloaded model file.
 
@@ -69,10 +64,6 @@ Once you have created an instance of the class, you can use the functions below 
 * **.loadModel()** , This function loads the model from the path you specified in the function call above into your object detection instance. Find example code below::
 
     detector.loadModel()
-
- -- *parameter* **detection_speed** (optional) : This parameter allows you to reduce the time it takes to detect objects in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster", "fastest" and "flash". The default values is "normal"
-
-
 
 * **.detectObjectsFromImage()** , This is the function that performs object detection task after the model as loaded. It can be called many times to detect objects in any number of images. Find example code below::
 
@@ -93,8 +84,6 @@ Once you have created an instance of the class, you can use the functions below 
  -- *parameter* **display_object_name** (optional ) :  This parameter can be used to hide the name of each object detected in the detected image if set to False. The default values is True.
 
  -- *parameter* **extract_detected_objects** (optional ) :  This parameter can be used to extract and save/return each object detected in an image as a seperate image. The default values is False.
-
- -- *parameter* **thread_safe** (optional) : This ensures the loaded detection model works across all threads if set to true.
 
  
  -- *returns* :  The returned values will depend on the parameters parsed into the **detectObjectsFromImage()** function. See the comments and code below
@@ -155,6 +144,9 @@ Once you have created an instance of the class, you can use the functions below 
         """
         returned_image, detections, extracted_objects = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", extract_detected_objects=True, minimum_percentage_probability=30)
 
+* **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+
+    detector.useGPU()
 
 
 * **.CustomObjects()** , This function is used when you want to detect only a selected number of objects. It returns a dictionary of objects and their True or False values. To detect selected objects in an image, you will have to use the dictionary returned by the this function with the **detectCustomObjectsFromImage()** function. Find the details in the comment and code sample below::
@@ -201,7 +193,7 @@ Find below a code sample for detecting objects in an image::
 
     detector = ObjectDetection()
     detector.setModelTypeAsYOLOv3()
-    detector.setModelPath( os.path.join(execution_path , "yolo.h5"))
+    detector.setModelPath( os.path.join(execution_path , "yolov3.pt"))
     detector.loadModel()
     detections = detector.detectObjectsFromImage(input_image=os.path.join(execution_path , "image.jpg"), output_image_path=os.path.join(execution_path , "imagenew.jpg"), minimum_percentage_probability=30)
 
