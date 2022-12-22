@@ -15,12 +15,6 @@ any image or set of images.
 
 
 
------------------------------------------
-NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
------------------------------------------
-
-
-
 **======= imageai.Classification.Custom.ClassificationModelTrainer =======**
 
 
@@ -99,41 +93,16 @@ Once you have created an instance above, you can use the functions below to set 
 
  -- *parameter* **data_directory** (required) : This is the path to the folder that contains your image dataset.
 
- -- *parameter* **train_subdirectory** (optional) : This is the path to the train folder of your dataset.
 
- -- *parameter* **test_subdirectory** (optional) : This is the path to the test folder of your dataset.
+* **.trainModel()** , This is the function that starts the training process. Once it starts, it will create a JSON file in the **dataset/json** folder which contains the mapping of the classes of the dataset. The JSON file  will be used during custom prediction to produce reults. Find exmaple code below ::
 
- -- *parameter* **model_subdirectory** (optional) : This is the path to the folder in which your trained models will be saved.
-
- -- *parameter* **json_subdirectory** (optional) : This is the path to the folder in which the JSON file for your trained models is saved.
+    model_trainer.trainModel(num_experiments=100, batch_size=32)
 
 
-* **.trainModel()** , This is the function that starts the training process. Once it starts, it will create a JSON file in the **dataset/json** folder (e.g **pets/json**) which contains the mapping of the classes of the dataset. The JSON file  will be used during custom prediction to produce reults. Find exmaple code below ::
-
-    model_trainer.trainModel(num_objects=4, num_experiments=100, enhance_data=True, batch_size=32, show_network_summary=True)
-
-
- -- *parameter* **num_objects** (required) : This refers to the number of different classes in your image dataset.
- 
  -- *parameter* **num_experiments** (required) : This is the number of times the algorithm will be trained on your image dataset. The accuracy of your training does increases as the number of times it trains increases. However, it does peak after a certain number of trainings;and that point depends on the size and nature of the dataset.
  
- -- *parameter* **enhance_data** (optional) : This parameter is used to tranform your image dataset in order to generate more sample for training. It is set to False by default. However, it is useful to set it to True if your image dataset contains less than 1000 images per class.
-
  -- *parameter* **batch_size** (optional) : During training, the algorithm is trained on a set of images in parallel. Because of this, the default value is set to 32. You can increase or reduce this value if you understand well enough to know the capacity of the system you are using to train. Should you intend to chamge this value, you should set it to values that are in multiples of 8 to optimize the training process.
 
- -- *parameter* **show_network_summary** (optional) : This paramter when set to True displays the structure of the algorithm you are training on your image dataset in the CLI before training starts. It is set to False by default.
- 
- -- *parameter* **initial_learning_rate** (optional) : This parameter is a highly technical value. It determines and control the behaviour of your training which is critical to the accuracy that can be achieved. Change this parameter's value only if you understand its function fully.
- 
- -- *parameter* **training_image_size** (optional) : This is the size at which the images in your image dataset will be trained, irrespective of their original sizes. The default value is 224 and must not be set to less than 100. Increasing this value increases accuracy but increases training time, and vice-versa.
-
- -- *parameter* **continue_from_model** (optional) : This is used to set the path to a model file trained on the same dataset. It is primarily for continuos training from a previously saved model.
- 
- -- *parameter* **transfer_from_model** (optional) : This is used to set the path to a model file trained on another dataset. It is primarily used to perform tramsfer learning.
-
- -- *parameter* **transfer_with_full_training** (optional) : This is used to set the pre-trained model to be re-trained across all the layers or only at the top layers.
-
- -- *parameter* **save_full_model** ( optional ): This is used to save the trained models with their network types. Any model saved by this specification can be loaded without specifying the network type.
 
 **Sample Code for Custom Model Training**
 
@@ -150,33 +119,22 @@ Find below a sample code for training custom models for your image dataset ::
 
 Below is a sample of the result when the training starts ::
 
+    
+    ==================================================
+    Training with GPU
+    ==================================================
     Epoch 1/100
-    1/25 [>.............................] - ETA: 52s - loss: 2.3026 - acc: 0.2500
-    2/25 [=>............................] - ETA: 41s - loss: 2.3027 - acc: 0.1250
-    3/25 [==>...........................] - ETA: 37s - loss: 2.2961 - acc: 0.1667
-    4/25 [===>..........................] - ETA: 36s - loss: 2.2980 - acc: 0.1250
-    5/25 [=====>........................] - ETA: 33s - loss: 2.3178 - acc: 0.1000
-    6/25 [======>.......................] - ETA: 31s - loss: 2.3214 - acc: 0.0833
-    7/25 [=======>......................] - ETA: 30s - loss: 2.3202 - acc: 0.0714
-    8/25 [========>.....................] - ETA: 29s - loss: 2.3207 - acc: 0.0625
-    9/25 [=========>....................] - ETA: 27s - loss: 2.3191 - acc: 0.0556
-    10/25 [===========>..................] - ETA: 25s - loss: 2.3167 - acc: 0.0750
-    11/25 [============>.................] - ETA: 23s - loss: 2.3162 - acc: 0.0682
-    12/25 [=============>................] - ETA: 21s - loss: 2.3143 - acc: 0.0833
-    13/25 [==============>...............] - ETA: 20s - loss: 2.3135 - acc: 0.0769
-    14/25 [===============>..............] - ETA: 18s - loss: 2.3132 - acc: 0.0714
-    15/25 [=================>............] - ETA: 16s - loss: 2.3128 - acc: 0.0667
-    16/25 [==================>...........] - ETA: 15s - loss: 2.3121 - acc: 0.0781
-    17/25 [===================>..........] - ETA: 13s - loss: 2.3116 - acc: 0.0735
-    18/25 [====================>.........] - ETA: 12s - loss: 2.3114 - acc: 0.0694
-    19/25 [=====================>........] - ETA: 10s - loss: 2.3112 - acc: 0.0658
-    20/25 [=======================>......] - ETA: 8s - loss: 2.3109 - acc: 0.0625
-    21/25 [========================>.....] - ETA: 7s - loss: 2.3107 - acc: 0.0595
-    22/25 [=========================>....] - ETA: 5s - loss: 2.3104 - acc: 0.0568
-    23/25 [==========================>...] - ETA: 3s - loss: 2.3101 - acc: 0.0543
-    24/25 [===========================>..] - ETA: 1s - loss: 2.3097 - acc: 0.0625Epoch 00000: saving model to C:\Users\Moses\Documents\Moses\W7\AI\Custom Datasets\IDENPROF\idenprof-small-test\idenprof\models\model_ex-000_acc-0.100000.h5
-
-    25/25 [==============================] - 51s - loss: 2.3095 - acc: 0.0600 - val_loss: 2.3026 - val_acc: 0.1000
+    ----------
+    100%|█████████████████████████████████████████████████████████████████████████████████| 282/282 [02:15<00:00,  2.08it/s]
+    train Loss: 3.8062 Accuracy: 0.1178
+    100%|███████████████████████████████████████████████████████████████████████████████████| 63/63 [00:26<00:00,  2.36it/s]
+    test Loss: 2.2829 Accuracy: 0.1215
+    Epoch 2/100
+    ----------
+    100%|█████████████████████████████████████████████████████████████████████████████████| 282/282 [01:57<00:00,  2.40it/s]
+    train Loss: 2.2682 Accuracy: 0.1303
+    100%|███████████████████████████████████████████████████████████████████████████████████| 63/63 [00:20<00:00,  3.07it/s]
+    test Loss: 2.2388 Accuracy: 0.1470
 
 
 Let us explain the details shown above: 
@@ -185,10 +143,9 @@ Let us explain the details shown above:
 
 2. The line 1/25 [>.............................] - ETA: 52s - loss: 2.3026 - acc: 0.2500 represents the number of batches that has been trained in the present experiment
 
-3. The line Epoch 00000: saving model to C:\Users\User\PycharmProjects\ImageAITest\pets\models\modelex-000acc-0.100000.h5 refers to the model saved after the present experiment. The ex_000 represents the experiment at this stage while the acc0.100000 and valacc: 0.1000 represents the accuracy of the model on the test images after the present experiment (maximum value value of accuracy is 1.0). This result helps to know the best performed model you can use for custom image prediction. 
+3. The best model is automatically saved to <dataset-directory>/models>
 
 Once you are done training your custom model, you can use the **CustomImagePrediction** class described below to perform image prediction with your model. 
-
 
 
 
@@ -228,24 +185,20 @@ objects in images.
 
 * **.setModelPath()** , This function accepts a string which must be the path to the model file generated during your custom training and must corresponds to the model type you set for your image prediction instance. Find example code,and parameters of the function below ::
 
-    prediction.setModelPath("resnet_model_ex-020_acc-0.651714.h5")
+    prediction.setModelPath("resnet50-idenprof-test_acc_0.78200_epoch-91.pt")
 
  -- *parameter* **model_path** (required) : This is the path to your downloaded model file.
 
 * **.setJsonPath()** , This function accepts a string which must be the path to the JSON file generated during your custom training. Find example code and parameters of the function below ::
 
-    prediction.setJsonPath("model_class.json")
+    prediction.setJsonPath("idenprof_model_classes.jsonn")
 
  -- *parameter* **model_path** (required) : This is the path to your downloaded model file.
 
 
 * **.loadModel()** , This function loads the model from the path you specified in the function call above into your image prediction instance. You will have to set the parameter **num_objects** to the number of classes in your image dataset. Find example code and parameter details below ::
 
-    prediction.loadModel(num_objects=4)
-
- -- *parameter* **num_objects** (required) : This must be set to the number of classes in your image dataset.
-
- -- *parameter* **prediction_speed** (optional) : This parameter allows you to reduce the time it takes to predict in an image by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster" and "fastest". The default values is "normal"
+    prediction.loadModel()
 
 * **.classifyImage()** , This is the function that performs actual prediction of an image. It can be called many times on many images once the model as been loaded into your prediction instance. Find example code,parameters of the function and returned values below ::
 
@@ -255,14 +208,13 @@ objects in images.
 
  -- *parameter* **result_count** (optional) : This refers to the number of possible predictions that should be returned. The parameter is set to 5 by default.
 
- -- *parameter* **input_type** (optional) : This refers to the type of input you are parse into the **image_input** parameter. It is "file" by default and it accepts "array" and "stream" as well.
-
- -- *parameter* **thread_safe** (optional) : This ensures the loaded detection model works across all threads if set to true.
-
-
  -- *returns* **prediction_results** (a python list) : The first value returned by the **predictImage** function is a list that contains all the possible prediction results. The results are arranged in descending order of the percentage probability.
 
  -- *returns* **prediction_probabilities** (a python list) : The second value returned by the **predictImage** function is a list that contains the corresponding percentage probability of all the possible predictions in the **prediction_results**. 
+
+* **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+
+    prediction.useGPU()
 
 
 **Sample Codes**
@@ -276,9 +228,9 @@ Find below sample code for custom prediction ::
 
     prediction = CustomImageClassification()
     prediction.setModelTypeAsResNet50()
-    prediction.setModelPath(os.path.join(execution_path, "resnet_model_ex-020_acc-0.651714.h5"))
-    prediction.setJsonPath(os.path.join(execution_path, "model_class.json"))
-    prediction.loadModel(num_objects=4)
+    prediction.setModelPath(os.path.join(execution_path, "resnet50-idenprof-test_acc_0.78200_epoch-91.pt"))
+    prediction.setJsonPath(os.path.join(execution_path, "idenprof_model_classes.json"))
+    prediction.loadModel()
 
     predictions, probabilities = prediction.classifyImage(os.path.join(execution_path, "4.jpg"), result_count=5)
 

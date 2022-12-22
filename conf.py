@@ -20,13 +20,13 @@
 # -- Project information -----------------------------------------------------
 
 project = 'ImageAI'
-copyright = '2021, Moses Olafenwa and John Olafenwa'
-author = '"Moses Olafenwa" "John Olafenwa"'
+copyright = '2022, Moses Olafenwa'
+author = '"Moses Olafenwa"'
 
 # The short X.Y version
-version = '2.1'
+version = '3.0'
 # The full version, including alpha/beta/rc tags
-release = '2.1.6'
+release = '3.0.2'
 
 
 # -- General configuration ---------------------------------------------------
@@ -134,7 +134,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'ImageAI.tex', 'ImageAI Documentation',
-     '"Moses Olafenwa" "John Olafenwa"', 'manual'),
+     '"Moses Olafenwa"', 'manual'),
 ]
 
 

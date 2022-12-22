@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Custom Object Detection: Training and Inference
-=================
+===============================================
 
 .. figure:: ../image7.jpg
 
@@ -13,18 +13,13 @@ Custom Object Detection: Training and Inference
 You can use your trained detection models to detect objects in images, videos and perform video analysis.
 
 
------------------------------------------
-NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
------------------------------------------
-
-
 **======= imageai.Detection.Custom.DetectionModelTrainer =======**
 
 
-This is the Detection Model training class, which allows you to train object detection models on image datasets that are in Pascal VOC annotation format, using the YOLOv3.
+This is the Detection Model training class, which allows you to train object detection models on image datasets that are in **YOLO annotation format**, using the YOLOv3 and TinyYOLOv3 model.
 The training process generates a JSON file that maps the objects names in your image dataset and the detection anchors, as well as creates lots of models.
 
-To get started, you need prepare your dataset in the **Pascal VOC Format** and organize it as detailed below:
+To get started, you need prepare your dataset in the **YOLO annotation format** and organize it as detailed below:
 
 -- Decide the type of object(s) you want to detect and collect about 200 (minimum recommendation) or more picture of each of the object(s)
 
@@ -41,27 +36,20 @@ To get started, you need prepare your dataset in the **Pascal VOC Format** and o
     >> train    >> images       >> img_1.jpg  (shows Object_1)
                 >> images       >> img_2.jpg  (shows Object_2)
                 >> images       >> img_3.jpg  (shows Object_1, Object_3 and Object_n)
-                >> annotations  >> img_1.xml  (describes Object_1)
-                >> annotations  >> img_2.xml  (describes Object_2)
-                >> annotations  >> img_3.xml  (describes Object_1, Object_3 and Object_n)
+                >> annotations  >> img_1.txt  (describes Object_1)
+                >> annotations  >> img_2.txt (describes Object_2)
+                >> annotations  >> img_3.txt  (describes Object_1, Object_3 and Object_n)
 
     >> validation   >> images       >> img_151.jpg (shows Object_1, Object_3 and Object_n)
                     >> images       >> img_152.jpg (shows Object_2)
                     >> images       >> img_153.jpg (shows Object_1)
-                    >> annotations  >> img_151.xml (describes Object_1, Object_3 and Object_n)
-                    >> annotations  >> img_152.xml (describes Object_2)
-                    >> annotations  >> img_153.xml (describes Object_1)
+                    >> annotations  >> img_151.txt (describes Object_1, Object_3 and Object_n)
+                    >> annotations  >> img_152.txt (describes Object_2)
+                    >> annotations  >> img_153.txt (describes Object_1)
 
 
 
-- You can train your custom detection model completely from scratch or use transfer learning (recommended for better accuracy) from a pre-trained YOLOv3 model. Also, we have provided a sample annotated Hololens and Headsets (Hololens and Oculus) dataset for you to train with. Download the pre-trained YOLOv3 model and the sample datasets in the link below
-
-`Sample dataset and pre-trained YOLOv3 <https://github.com/OlafenwaMoses/ImageAI/releases/tag/essential-v4>`_
-
-
-- For the purpose of training your detection model, we advice that you have the **Tensorflow-GPU v1.13.1** installed to avoid errors::
-
-    pip3 install tensorflow-gpu==1.13.1
+- You can train your custom detection model completely from scratch or use transfer learning (recommended for better accuracy) from a pre-trained YOLOv3 model or TinyYOLOv3. Also, we have provided a sample annotated Hololens and Headsets (Hololens and Oculus) dataset for you to train with. Download the pre-trained `YOLOv3 <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/yolov3.pt>`_ or `TinyYOLOv3 model <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/tiny-yolov3.pt>`_ and the `sample dataset <https://github.com/OlafenwaMoses/ImageAI/releases/download/test-resources-v3/hololens-yolo.zip>`_.
 
 
 Below is the code to train new detection models on your dataset::
@@ -71,7 +59,7 @@ Below is the code to train new detection models on your dataset::
     trainer = DetectionModelTrainer()
     trainer.setModelTypeAsYOLOv3()
     trainer.setDataDirectory(data_directory="hololens")
-    trainer.setTrainConfig(object_names_array=["hololens"], batch_size=4, num_experiments=200, train_from_pretrained_model="pretrained-yolov3.h5")
+    trainer.setTrainConfig(object_names_array=["hololens"], batch_size=4, num_experiments=200, train_from_pretrained_model="yolov3.pt")
     trainer.trainModel()
 
 In the first 2 lines, we imported the **DetectionModelTrainer** class and created an instance of it ::
@@ -111,144 +99,53 @@ Then we called the following functions
 
 When you run the training code, **ImageAI** will perform the following actions:
 
-- generate a **detection_config.json** in the *dataset_folder/json* folder. Please note that the **JSON** file generated in a training session can only be used with the **detection models** saved in the training session.
-
-- saves the **Tensorboard** report for the training in the *dataet_folder/logs* folder.
+- generate a **.json** in the *dataset_folder/json* folder. Please note that the **JSON** file generated in a training session can only be used with the **detection models** saved in the training session.
 
 - saves new models n the *dataset_folder/models* folder as the training loss reduces.
 
 As the training progresses, the information displayed in the terminal will look similar to the sample below::
 
-    Using TensorFlow backend.
-    Generating anchor boxes for training images and annotation...
-    Average IOU for 9 anchors: 0.78
-    Anchor Boxes generated.
-    Detection configuration saved in  hololens/json/detection_config.json
-    Training on: 	['hololens']
-    Training with Batch Size:  4
-    Number of Experiments:  200
+    Generating anchor boxes for training images...
+    thr=0.25: 1.0000 best possible recall, 6.93 anchors past thr
+    n=9, img_size=416, metric_all=0.463/0.856-mean/best, past_thr=0.549-mean:
+    ====================
+    Pretrained YOLOv3 model loaded to initialize weights
+    ====================
+    Epoch 1/100
+    ----------
+    Train:
+    30it [00:14,  2.09it/s]
+        box loss-> 0.09820, object loss-> 0.27985, class loss-> 0.00000
+    Validation:
+    15it [01:45,  7.05s/it]
+        recall: 0.085714 precision: 0.000364 mAP@0.5: 0.000186, mAP@0.5-0.95: 0.000030
 
-    Epoch 1/200
-    480/480 [==============================] - 395s 823ms/step - loss: 36.9000 - yolo_layer_1_loss: 3.2970 - yolo_layer_2_loss: 9.4923 - yolo_layer_3_loss: 24.1107 - val_loss: 15.6321 - val_yolo_layer_1_loss: 2.0275 - val_yolo_layer_2_loss: 6.4191 - val_yolo_layer_3_loss: 7.1856
-    Epoch 2/200
-    480/480 [==============================] - 293s 610ms/step - loss: 11.9330 - yolo_layer_1_loss: 1.3968 - yolo_layer_2_loss: 4.2894 - yolo_layer_3_loss: 6.2468 - val_loss: 7.9868 - val_yolo_layer_1_loss: 1.7054 - val_yolo_layer_2_loss: 2.9156 - val_yolo_layer_3_loss: 3.3657
-    Epoch 3/200
-    480/480 [==============================] - 293s 610ms/step - loss: 7.1228 - yolo_layer_1_loss: 1.0583 - yolo_layer_2_loss: 2.2863 - yolo_layer_3_loss: 3.7782 - val_loss: 6.4964 - val_yolo_layer_1_loss: 1.1391 - val_yolo_layer_2_loss: 2.2058 - val_yolo_layer_3_loss: 3.1514
-    Epoch 4/200
-    480/480 [==============================] - 297s 618ms/step - loss: 5.5802 - yolo_layer_1_loss: 0.9742 - yolo_layer_2_loss: 1.8916 - yolo_layer_3_loss: 2.7144 - val_loss: 6.4275 - val_yolo_layer_1_loss: 1.6153 - val_yolo_layer_2_loss: 2.1203 - val_yolo_layer_3_loss: 2.6919
-    Epoch 5/200
-    480/480 [==============================] - 295s 615ms/step - loss: 4.8717 - yolo_layer_1_loss: 0.7568 - yolo_layer_2_loss: 1.6641 - yolo_layer_3_loss: 2.4508 - val_loss: 6.3723 - val_yolo_layer_1_loss: 1.6434 - val_yolo_layer_2_loss: 2.1188 - val_yolo_layer_3_loss: 2.6101
-    Epoch 6/200
-    480/480 [==============================] - 300s 624ms/step - loss: 4.7989 - yolo_layer_1_loss: 0.8708 - yolo_layer_2_loss: 1.6683 - yolo_layer_3_loss: 2.2598 - val_loss: 5.8672 - val_yolo_layer_1_loss: 1.2349 - val_yolo_layer_2_loss: 2.0504 - val_yolo_layer_3_loss: 2.5820
-    Epoch 7/200
-
-
-
-After training is completed, you can evaluate the **mAP** score of your saved models in order to pick the one with the most accurate results. 
-
-To do this, simply run the code below::
-
-    from imageai.Detection.Custom import DetectionModelTrainer
-
-    trainer = DetectionModelTrainer()
-    trainer.setModelTypeAsYOLOv3()
-    trainer.setDataDirectory(data_directory="hololens")
-    metrics = trainer.evaluateModel(model_path="hololens/models", json_path="hololens/json/detection_config.json", iou_threshold=0.5, object_threshold=0.3, nms_threshold=0.5)
-    print(metrics)
+    Epoch 2/100
+    ----------
+    Train:
+    30it [00:07,  4.25it/s]
+        box loss-> 0.08691, object loss-> 0.07011, class loss-> 0.00000
+    Validation:
+    15it [01:37,  6.53s/it]
+        recall: 0.214286 precision: 0.000854 mAP@0.5: 0.000516, mAP@0.5-0.95: 0.000111
 
 
-The above code is similar to our training code, except for the line where we called the **evaluateModel()** function. See details on the function below.
 
-
-* **.trainer.evaluateModel()** , This function allows you to compute and obtain the **mAP** of your saved model(s) based on criterias such as **IoU** and **confidence score** ::
-    
-    trainer.setTrainConfig()
-
--- *parameter* **model_path** (required) : This can be the path to a single model or the folder containing your saved models
-
--- *parameter* **json_path** (required) : This is the **detection_config.json** generated during the training that saved the models.
-
--- *parameter* **iou_threshold** (optional) : This is used to set the desired **Intersection over Union** for the **mAP** evaluation.
-
--- *parameter* **object_threshold** (optional) : This is used to set the minimum **confidence score** for the **mAP** evaluation.
-
--- *parameter* **nms_threshold** (optional) : This is used to set the minimum **Non-maximum Suppression** value for the **mAP** evaluation.
-
-
-When you run the above code, you get a result similar to the one below::
-
-    [{
-        'average_precision': {'hololens': 0.9231334437735249},
-        'map': 0.9231334437735249,
-        'model_file': 'hololens/models/detection_model-ex-07--loss-4.42.h5',
-        'using_iou': 0.5,
-        'using_non_maximum_suppression': 0.5,
-        'using_object_threshold': 0.3
-    },
-    {
-        'average_precision': {'hololens': 0.9725334437735249},
-        'map': 0.97251334437735249,
-        'model_file': 'hololens/models/detection_model-ex-10--loss-3.95.h5',
-        'using_iou': 0.5,
-        'using_non_maximum_suppression': 0.5,
-        'using_object_threshold': 0.3
-    },
-    {
-        'average_precision': {'hololens': 0.92041334437735249},
-        'map': 0.92041334437735249,
-        'model_file': 'hololens/models/detection_model-ex-05--loss-5.26.h5',
-        'using_iou': 0.5,
-        'using_non_maximum_suppression': 0.5,
-        'using_object_threshold': 0.3
-    },
-    {
-        'average_precision': {'hololens': 0.81201334437735249},
-        'map': 0.81201334437735249,
-        'model_file': 'hololens/models/detection_model-ex-03--loss-6.44.h5',
-        'using_iou': 0.5,
-        'using_non_maximum_suppression': 0.5,
-        'using_object_threshold': 0.3
-    },
-    {
-        'average_precision': {'hololens': 0.94311334437735249},
-        'map': 0.94311334437735249,
-        'model_file': 'hololens/models/detection_model-ex-18--loss-2.96.h5',
-        'using_iou': 0.5,
-        'using_non_maximum_suppression': 0.5,
-        'using_object_threshold': 0.3
-    },
-    {
-        'average_precision': {'hololens': 0.94041334437735249},
-        'map': 0.94041334437735249,
-        'model_file': 'hololens/models/detection_model-ex-17--loss-3.10.h5',
-        'using_iou': 0.5,
-        'using_non_maximum_suppression': 0.5,
-        'using_object_threshold': 0.3
-    },
-    {
-        'average_precision': {'hololens': 0.97251334437735249},
-        'map': 0.97251334437735249,
-        'model_file': 'hololens/models/detection_model-ex-08--loss-4.16.h5',
-        'using_iou': 0.5,
-        'using_non_maximum_suppression': 0.5,
-        'using_object_threshold': 0.3
-    }
-    ]
-
+For each increase in the mAP0.5 after an experiment, a model is saved in the hololens-yolo/models folder. The higher the mAP0.5, the better the model.
 
 
 
 
 **======= imageai.Detection.Custom.CustomObjectDetection =======**
 
-**CustomObjectDetection** class provides very convenient and powerful methods to perform object detection on images and extract each object from the image using your own custom **YOLOv3 model** and the corresponding **detection_config.json** generated during the training. 
+**CustomObjectDetection** class provides very convenient and powerful methods to perform object detection on images and extract each object from the image using your own custom **YOLOv3 model** and the corresponding **.json** generated during the training. 
 
 To test the custom object detection, you can download a sample custom model we have trained to detect the Hololens headset and its **detection_config.json** file via the links below:
 
 
-`Hololens Detection Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/essential-v4/hololens-ex-60--loss-2.76.h5>`_
+`Hololens Detection Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/yolov3_hololens-yolo_mAP-0.82726_epoch-73.pt>`_
 
-`detection_config.json <https://github.com/OlafenwaMoses/ImageAI/releases/download/essential-v4/detection_config.json>`_
+`detection_config.json <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/hololens-yolo_yolov3_detection_config.json>`_
 
 - Sample Image
 
@@ -260,8 +157,8 @@ Once you download the custom object detection model file, you should copy the mo
 
     detector = CustomObjectDetection()
     detector.setModelTypeAsYOLOv3()
-    detector.setModelPath("hololens-ex-60--loss-2.76.h5")
-    detector.setJsonPath("detection_config.json")
+    detector.setModelPath("yolov3_hololens-yolo_mAP-0.82726_epoch-73.pt")
+    detector.setJsonPath("hololens-yolo_yolov3_detection_config.json")
     detector.loadModel()
     detections = detector.detectObjectsFromImage(input_image="holo1.jpg", output_image_path="holo1-detected.jpg")
     for detection in detections:
@@ -292,7 +189,7 @@ See more details below:
     
     detector.setModelPath()
 
--- *parameter* **detection_model_path** (required) : This is path to your model file
+-- *parameter* **model_path** (required) : This is path to your model file
 
 
 
@@ -300,7 +197,7 @@ See more details below:
     
     detector.setJsonPath()
 
--- *parameter* **configuration_json** (required) : This is path to *detection_json* file
+-- *parameter* **configuration_json** (required) : This is path to *.json* file
 
 
 
@@ -318,70 +215,75 @@ See more details below:
 
  -- *parameter* **minimum_percentage_probability** (optional ) :  This parameter is used to determine the integrity of the detection results. Lowering the value shows more objects while increasing the value ensures objects with the highest accuracy are detected. The default value is 50.
 
- -- *parameter* **output_type** (optional ) :  This parameter is used to set the format in which the detected image will be produced. The available values are "file" and "array". The default value is "file". If this parameter is set to "array", the function will return a Numpy array of the detected image. See sample below::
+ -- *parameter* **output_type** (optional ) :  This parameter is used to set the format in which the detected image will be produced. The available values are "file" and "array". The default value is "file". If this parameter is set to "array", the function will return a Numpy array of the detected image. See sample below
 
-     returned_image, detections = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", minimum_percentage_probability=30)
+ .. code-block:: 
+
+    returned_image, detections = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", minimum_percentage_probability=30)
 
  -- *parameter* **display_percentage_probability** (optional ) :  This parameter can be used to hide the percentage probability of each object detected in the detected image if set to False. The default values is True.
 
  -- *parameter* **display_object_name** (optional ) :  This parameter can be used to hide the name of each object detected in the detected image if set to False. The default values is True.
 
  -- *parameter* **extract_detected_objects** (optional ) :  This parameter can be used to extract and save/return each object detected in an image as a seperate image. The default values is False.
-
- -- *parameter* **thread_safe** (optional) : This ensures the loaded detection model works across all threads if set to true.
-
  
  -- *returns* :  The returned values will depend on the parameters parsed into the **detectObjectsFromImage()** function. See the comments and code below
-                
-        """
-            If all required parameters are set and 'output_image_path' is set to a file path you want the detected image to be saved, the function will return:
+
+ .. code-block:: 
+            
+    If all required parameters are set and 'output_image_path' is set to a file path you want the detected image to be saved, the function will return:
         
-            1. an array of dictionaries, with each dictionary corresponding to the objects 
-                detected in the image. Each dictionary contains the following property:
-                    * name (string)
-                    * percentage_probability (float)
-                    * box_points (list of x1,y1,x2 and y2 coordinates)
-        """
-        detections = detector.detectObjectsFromImage(input_image="image.jpg", output_image_path="imagenew.jpg", minimum_percentage_probability=30)
+        1. an array of dictionaries, with each dictionary corresponding to the objects 
+            detected in the image. Each dictionary contains the following property:
+                * name (string)
+                * percentage_probability (float)
+                * box_points (list of x1,y1,x2 and y2 coordinates)
+    
+    detections = detector.detectObjectsFromImage(input_image="image.jpg", output_image_path="imagenew.jpg", minimum_percentage_probability=30)
 
 
-        """
-            If all required parameters are set and output_type = 'array' ,the function will return
+        
+    If all required parameters are set and output_type = 'array' ,the function will return
 
-            1. a numpy array of the detected image
-            2. an array of dictionaries, with each dictionary corresponding to the objects 
-                detected in the image. Each dictionary contains the following property:
-                    * name (string)
-                    * percentage_probability (float)
-                    * box_points (list of x1,y1,x2 and y2 coordinates)
-        """
-        returned_image, detections = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", minimum_percentage_probability=30)
+    1. a numpy array of the detected image
+    2. an array of dictionaries, with each dictionary corresponding to the objects 
+        detected in the image. Each dictionary contains the following property:
+            * name (string)
+            * percentage_probability (float)
+            * box_points (list of x1,y1,x2 and y2 coordinates)
+        
+    returned_image, detections = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", minimum_percentage_probability=30)
 
 
-        """
-            If extract_detected_objects = True and 'output_image_path' is set to a file path you want
-                the detected image to be saved, the function will return:
-                1. an array of dictionaries, with each dictionary corresponding to the objects
-                    detected in the image. Each dictionary contains the following property:
-                    * name (string)
-                    * percentage_probability (float)
-                    * box_points (list of x1,y1,x2 and y2 coordinates)
-                2. an array of string paths to the image of each object extracted from the image
-        """
+        
+    If extract_detected_objects = True and 'output_image_path' is set to a file path you want
+        the detected image to be saved, the function will return:
+        1. an array of dictionaries, with each dictionary corresponding to the objects
+            detected in the image. Each dictionary contains the following property:
+            * name (string)
+            * percentage_probability (float)
+            * box_points (list of x1,y1,x2 and y2 coordinates)
+        2. an array of string paths to the image of each object extracted from the image
+
+
         detections, extracted_objects = detector.detectObjectsFromImage(input_image="image.jpg", output_image_path="imagenew.jpg", extract_detected_objects=True, minimum_percentage_probability=30)
 
 
-        """
-            If extract_detected_objects = True and output_type = 'array', the the function will return:
-                1. a numpy array of the detected image
-                2. an array of dictionaries, with each dictionary corresponding to the objects
-                    detected in the image. Each dictionary contains the following property:
-                    * name (string)
-                    * percentage_probability (float)
-                    * box_points (list of x1,y1,x2 and y2 coordinates)
-                3. an array of numpy arrays of each object detected in the image
-        """
+        
+    If extract_detected_objects = True and output_type = 'array', the the function will return:
+        1. a numpy array of the detected image
+        2. an array of dictionaries, with each dictionary corresponding to the objects
+            detected in the image. Each dictionary contains the following property:
+            * name (string)
+            * percentage_probability (float)
+            * box_points (list of x1,y1,x2 and y2 coordinates)
+        3. an array of numpy arrays of each object detected in the image
+   
         returned_image, detections, extracted_objects = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", extract_detected_objects=True, minimum_percentage_probability=30)
+
+ * **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+
+    detector.useGPU()
 
 
 **======= imageai.Detection.Custom.CustomVideoObjectDetection =======**
@@ -391,9 +293,9 @@ See more details below:
 To test the custom object detection, you can download a sample custom model we have trained to detect the Hololens headset and its **detection_config.json** file via the links below:
 
 
-`Hololens Detection Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/essential-v4/hololens-ex-60--loss-2.76.h5>`_
+`Hololens Detection Model <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/yolov3_hololens-yolo_mAP-0.82726_epoch-73.pt>`_
 
-`detection_config.json <https://github.com/OlafenwaMoses/ImageAI/releases/download/essential-v4/detection_config.json>`_
+`detection_config.json <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/hololens-yolo_yolov3_detection_config.json>`_
 
 Download a sample video of the Hololens in the link below.
 
@@ -409,8 +311,8 @@ Then run the code below in the video::
 
     video_detector = CustomVideoObjectDetection()
     video_detector.setModelTypeAsYOLOv3()
-    video_detector.setModelPath("hololens-ex-60--loss-2.76.h5")
-    video_detector.setJsonPath("detection_config.json")
+    video_detector.setModelPath("yolov3_hololens-yolo_mAP-0.82726_epoch-73.pt")
+    video_detector.setJsonPath("hololens-yolo_yolov3_detection_config.json")
     video_detector.loadModel()
 
     video_detector.detectObjectsFromVideo(input_file_path="holo1.mp4",
@@ -434,7 +336,7 @@ See details on the available functions below
     
     video_detector.setModelPath()
 
--- *parameter* **detection_model_path** (required) : This is path to your model file
+-- *parameter* **model_path** (required) : This is path to your model file
 
 
 
@@ -450,6 +352,9 @@ See details on the available functions below
     
     video_detector.loadModel()
 
+* **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+
+    video_detector.useGPU()
 
 
 * **.detectObjectsFromVideo()** , This is the function that performs object detecttion on a video file or video live-feed after the model has been loaded into the instance you created.  Find a full sample code below::
@@ -478,8 +383,9 @@ See details on the available functions below
 
  -- *parameter* **per_frame_function** (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every frame of the video that is detected, the function will be parsed into the parameter will be executed and and analytical data of the video will be parsed into the function. The data returned can be visualized or saved in a NoSQL database for future processing and visualization.
  
-    See a sample function for this parameter below::
-        """
+    See a sample function for this parameter below
+    .. code-block:: 
+
         This parameter allows you to parse in a function you will want to execute after
         each frame of the video is detected. If this parameter is set to a function, after every video
         frame is detected, the function will be executed with the following values parsed into it:
@@ -500,8 +406,9 @@ See details on the available functions below
 
  -- *parameter* **per_second_function** (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every second of the video that is detected, the function will be parsed into the parameter will be executed and analytical data of the video will be parsed into the function. The data returned can be visualized or saved in a NoSQL database for future processing and visualization.
  
-    See a sample function for this parameter below::
-        """
+    See a sample function for this parameter below
+    .. code-block::
+
         This parameter allows you to parse in a function you will want to execute after
         each second of the video is detected. If this parameter is set to a function, after every second of a video
         is detected, the function will be executed with the following values parsed into it:
@@ -513,7 +420,6 @@ See details on the available functions below
         -- a dictionary with its keys being the name of each unique object detected throughout the past second, and the key values are the average number of instances of the object found in all the frames contained in the past second
 
         -- If return_detected_frame is set to True, the numpy array of the detected frame will be parsed as the fifth value into the function
-        """
 
         def forSeconds(second_number, output_arrays, count_arrays, average_output_count):
             print("SECOND : ", second_number)
@@ -524,7 +430,8 @@ See details on the available functions below
 
  -- *parameter* **per_minute_function** (optional ) :  This parameter allows you to parse in the name of a function you define. Then, for every frame of the video that is detected, the function which was parsed into the parameter will be executed and analytical data of the video  will be parsed into the function. The data returned has the same nature as the **per_second_function** ; the difference is that it covers all the frames in the past 1 minute of the video.
     
-    See a sample function for this parameter below::
+    See a sample function for this parameter below
+    .. code-block::
 
         def forMinute(minute_number, output_arrays, count_arrays, average_output_count):
             print("MINUTE : ", minute_number)
@@ -537,7 +444,8 @@ See details on the available functions below
 
  -- *parameter* **video_complete_function** (optional ) :  This parameter allows you to parse in the name of a function you define. Once all the frames in the video is fully detected, the function will was parsed into the parameter will be executed and analytical data of the video  will be parsed into the function. The data returned has the same nature as the **per_second_function** and **per_minute_function** ; the differences are that no index will be returned and it covers all the frames in the entire video. 
  
-    See a sample funtion for this parameter below::
+    See a sample funtion for this parameter below
+    .. code-block::
 
         def forFull(output_arrays, count_arrays, average_output_count):
             print("Array for the outputs of each frame ", output_arrays)

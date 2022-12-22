@@ -16,11 +16,6 @@ These classes can be integrated into any traditional python program you are deve
 that supports or part of a Local-Area-Network.
 
 
------------------------------------------
-NOTE: ImageAI will switch to PyTorch backend starting from June, 2021
------------------------------------------
-
-
 **======= imageai.Detection.VideoObjectDetection =======**
 
 
@@ -29,11 +24,11 @@ This **VideoObjectDetection** class provides you function to detect objects in v
 the **COCO** dataset. The models supported are **RetinaNet**, **YOLOv3** and **TinyYOLOv3**. This means you can detect and recognize 80 different kind of 
 common everyday objects in any video. To get started, download any of the pre-trained model that you want to use via the links below.
 
-`Download RetinaNet Model - resnet50_coco_best_v2.1.0.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/essentials-v5/resnet50_coco_best_v2.1.0.h5 />`_
+`Download RetinaNet Model - retinanet_resnet50_fpn_coco-eeacb38b.pth <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/retinanet_resnet50_fpn_coco-eeacb38b.pth />`_
 
-`Download YOLOv3 Model - yolo.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5 />`_
+`Download YOLOv3 Model - yolov3.pt <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/yolov3.pt />`_
 
-`Download TinyYOLOv3 Model -  yolo-tiny.h5 <https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5 />`_
+`Download TinyYOLOv3 Model - tiny-yolov3.pt <https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/tiny-yolov3.pt />`_
 
 
 Once you have downloaded the model you chose to use, create an instance of the **VideoObjectDetection** as seen below::
@@ -59,7 +54,7 @@ Once you have created an instance of the class, you can call the functions below
 
 * **.setModelPath()** , This function accepts a string which must be the path to the model file you downloaded and must corresponds to the model type you set for your object detection instance. Find example code,and parameters of the function below::
 
-    detector.setModelPath("yolo.h5")
+    detector.setModelPath("yolov3.pt")
 
  -- *parameter* **model_path** (required) : This is the path to your downloaded model file.
 
@@ -70,6 +65,9 @@ Once you have created an instance of the class, you can call the functions below
 
  -- *parameter* **detection_speed** (optional) : This parameter allows you to reduce the time it takes to detect objects in a video by up to 80% which leads to slight reduction in accuracy. This parameter accepts string values. The available values are "normal", "fast", "faster", "fastest" and "flash". The default values is "normal"
 
+* **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+
+    detector.useGPU()
 
 * **.detectObjectsFromVideo()** , This is the function that performs object detecttion on a video file or video live-feed after the model has been loaded into the instance you created.  Find a full sample code below::
 
@@ -80,7 +78,7 @@ Once you have created an instance of the class, you can call the functions below
 
     detector = VideoObjectDetection()
     detector.setModelTypeAsYOLOv3()
-    detector.setModelPath( os.path.join(execution_path , "yolo.h5"))
+    detector.setModelPath( os.path.join(execution_path , "yolov3.pt"))
     detector.loadModel()
 
     video_path = detector.detectObjectsFromVideo(input_file_path=os.path.join(execution_path, "traffic.mp4"),
@@ -115,7 +113,7 @@ Once you have created an instance of the class, you can call the functions below
 
         detector = VideoObjectDetection()
         detector.setModelTypeAsYOLOv3()
-        detector.setModelPath(os.path.join(execution_path , "yolo.h5"))
+        detector.setModelPath(os.path.join(execution_path , "yolov3.pt"))
         detector.loadModel()
 
         video_path = detector.detectObjectsFromVideo(camera_input=camera,
@@ -166,7 +164,7 @@ Once you have created an instance of the class, you can call the functions below
 
         video_detector = VideoObjectDetection()
         video_detector.setModelTypeAsYOLOv3()
-        video_detector.setModelPath(os.path.join(execution_path, "yolo.h5"))
+        video_detector.setModelPath(os.path.join(execution_path, "yolov3.pt"))
         video_detector.loadModel()
 
 
@@ -235,7 +233,7 @@ Once you have created an instance of the class, you can call the functions below
 
         video_detector = VideoObjectDetection()
         video_detector.setModelTypeAsYOLOv3()
-        video_detector.setModelPath(os.path.join(execution_path, "yolo.h5"))
+        video_detector.setModelPath(os.path.join(execution_path, "yolov3.pt"))
         video_detector.loadModel()
 
         plt.show()
@@ -278,7 +276,7 @@ Once you have created an instance of the class, you can call the functions below
 
         video_detector = VideoObjectDetection()
         video_detector.setModelTypeAsYOLOv3()
-        video_detector.setModelPath(os.path.join(execution_path, "yolo.h5"))
+        video_detector.setModelPath(os.path.join(execution_path, "yolov3.pt"))
         video_detector.loadModel()
 
 
@@ -362,7 +360,7 @@ Once you have created an instance of the class, you can call the functions below
 
         video_detector = VideoObjectDetection()
         video_detector.setModelTypeAsYOLOv3()
-        video_detector.setModelPath(os.path.join(execution_path, "yolo.h5"))
+        video_detector.setModelPath(os.path.join(execution_path, "yolov3.pt"))
         video_detector.loadModel()
 
         plt.show()
@@ -412,7 +410,7 @@ Once you have created an instance of the class, you can call the functions below
 
         detector = VideoObjectDetection()
         detector.setModelTypeAsRetinaNet()
-        detector.setModelPath(os.path.join(execution_path , "resnet50_coco_best_v2.0.1.h5"))
+        detector.setModelPath(os.path.join(execution_path , "retinanet_resnet50_fpn_coco-eeacb38b.pth"))
         detector.loadModel()
 
 
