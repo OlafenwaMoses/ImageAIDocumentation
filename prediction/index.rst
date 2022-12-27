@@ -87,9 +87,9 @@ objects in images.
 
  -- *returns* **prediction_probabilities** (a python list) : The second value returned by the **predictImage** function is a list that contains the corresponding percentage probability of all the possible predictions in the **prediction_results**. 
 
-* **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+* **.useCPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
 
-    prediction.useGPU()
+    prediction.useCPU()
 
 
 **Sample Codes**
