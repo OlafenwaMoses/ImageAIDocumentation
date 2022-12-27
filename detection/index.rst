@@ -144,9 +144,9 @@ Once you have created an instance of the class, you can use the functions below 
         """
         returned_image, detections, extracted_objects = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", extract_detected_objects=True, minimum_percentage_probability=30)
 
-* **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+* **.useCPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
 
-    detector.useGPU()
+    detector.useCPU()
 
 
 * **.CustomObjects()** , This function is used when you want to detect only a selected number of objects. It returns a dictionary of objects and their True or False values. To detect selected objects in an image, you will have to use the dictionary returned by the this function with the **detectCustomObjectsFromImage()** function. Find the details in the comment and code sample below::

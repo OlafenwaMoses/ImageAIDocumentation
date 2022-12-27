@@ -281,9 +281,9 @@ See more details below:
    
         returned_image, detections, extracted_objects = detector.detectObjectsFromImage(input_image="image.jpg", output_type="array", extract_detected_objects=True, minimum_percentage_probability=30)
 
- * **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+ * **.useCPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
 
-    detector.useGPU()
+    detector.useCPU()
 
 
 **======= imageai.Detection.Custom.CustomVideoObjectDetection =======**
@@ -352,9 +352,9 @@ See details on the available functions below
     
     video_detector.loadModel()
 
-* **.useGPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
+* **.useCPU()** , This function loads the model in CPU and forces processes to be done on the CPU. This is because by default, ImageAI will use GPU/CUDA if available else default to CPU. Find example code::
 
-    video_detector.useGPU()
+    video_detector.useCPU()
 
 
 * **.detectObjectsFromVideo()** , This is the function that performs object detecttion on a video file or video live-feed after the model has been loaded into the instance you created.  Find a full sample code below::
